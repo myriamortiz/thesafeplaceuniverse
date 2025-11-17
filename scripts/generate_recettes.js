@@ -1,4 +1,4 @@
-i// ----- generate_recettes.js -----
+// ----- generate_recettes.js -----
 
 const fs = require("fs");
 
