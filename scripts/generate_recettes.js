@@ -1,131 +1,155 @@
 import fs from "fs";
-import path from "path";
 
-// --- Recettes compatibles Myriam --- //
-const RECIPES = [
+// -----------------------------
+//  Recettes brunch
+// -----------------------------
+const brunchList = [
   {
-    titre: "Bowl quinoa + poulet citronné",
-    kcal: 430,
-    glutenFree: true,
-    dairyFree: true,
+    titre: "Omelette épinards & brebis",
+    kcal: 380,
     ingredients: [
-      "120 g de quinoa",
-      "1 blanc de poulet",
-      "1/2 avocat",
-      "1 poignée de roquette",
-      "Jus de citron",
-      "1 c. café huile d’olive",
-      "Sel, poivre"
+      "2 œufs",
+      "1 poignée d'épinards",
+      "20 g fromage de brebis",
+      "1 c. café huile d'olive"
     ],
     instructions:
-      "1. Cuire le quinoa.\n2. Griller le poulet.\n3. Mélanger quinoa + poulet + avocat.\n4. Assaisonner citron + huile d’olive."
+      "1. Battre les œufs. 2. Cuire avec épinards. 3. Ajouter brebis en fin."
   },
   {
-    titre: "Saumon + riz complet + brocoli vapeur",
-    kcal: 480,
-    glutenFree: true,
-    dairyFree: true,
-    ingredients: [
-      "1 pavé de saumon",
-      "120 g de riz complet",
-      "1 bol de brocoli",
-      "Citron, sel, poivre"
-    ],
-    instructions:
-      "1. Cuire le riz.\n2. Cuire le saumon au four 12 min.\n3. Cuire le brocoli vapeur."
-  },
-  {
-    titre: "Curry coco veggie rapide",
+    titre: "Porridge flocons sans gluten & lait amande",
     kcal: 400,
-    glutenFree: true,
-    dairyFree: true,
     ingredients: [
-      "1 courgette",
-      "1 carotte",
-      "1/2 boîte pois chiches",
-      "100 ml lait de coco",
-      "1 c. café pâte curry",
-      "Sel"
+      "50 g flocons sans gluten",
+      "200 ml lait d’amande",
+      "1/2 banane",
+      "Cannelle"
     ],
     instructions:
-      "1. Faire revenir les légumes.\n2. Ajouter pois chiches + coco + curry.\n3. Servir chaud."
+      "1. Chauffer lait + flocons. 2. Ajouter banane et cannelle."
   },
   {
-    titre: "Wok crevettes + légumes",
-    kcal: 390,
-    glutenFree: true,
-    dairyFree: true,
+    titre: "Tartines sarrasin avocat & œuf",
+    kcal: 420,
     ingredients: [
-      "150 g de crevettes",
-      "Carottes, poivrons, brocoli",
-      "1 c. soupe sauce soja sans gluten",
-      "Ail, gingembre"
-    ],
-    instructions:
-      "1. Faire sauter les crevettes.\n2. Ajouter légumes et assaisonnement."
-  },
-  {
-    titre: "Buddha bowl patate douce & pois chiches",
-    kcal: 410,
-    glutenFree: true,
-    dairyFree: true,
-    ingredients: [
-      "1 petite patate douce",
-      "80 g pois chiches",
-      "Épinards",
+      "2 tartines sarrasin",
       "1/2 avocat",
-      "Sésame",
+      "1 œuf",
       "Citron"
     ],
     instructions:
-      "1. Rôtir la patate douce.\n2. Réchauffer les pois chiches.\n3. Composer le bol + citron."
+      "1. Griller tartines. 2. Ajouter avocat. 3. Cuire œuf au plat."
   },
   {
-    titre: "Pâtes sans gluten + légumes grillés",
-    kcal: 430,
-    glutenFree: true,
-    dairyFree: true,
+    titre: "Smoothie bowl fruits rouges coco",
+    kcal: 350,
     ingredients: [
-      "120 g pâtes sans gluten (riz/maïs/lentilles)",
-      "1 courgette",
-      "1 poivron",
-      "Huile d’olive",
-      "Ail, herbes"
+      "150 g fruits rouges",
+      "100 ml lait coco",
+      "Granola sans gluten"
     ],
     instructions:
-      "1. Cuire les pâtes.\n2. Griller les légumes.\n3. Mélanger et assaisonner."
-  },
-  {
-    titre: "Poulet miel & moutarde + légumes",
-    kcal: 450,
-    glutenFree: true,
-    dairyFree: true,
-    ingredients: [
-      "1 blanc de poulet",
-      "1 c. café miel",
-      "1 c. café moutarde",
-      "Courgette, carottes"
-    ],
-    instructions:
-      "1. Mélanger miel + moutarde.\n2. Cuire le poulet.\n3. Ajouter légumes."
+      "1. Mixer fruits + lait. 2. Servir avec granola."
   }
 ];
 
-// --- Génération aléatoire --- //
-function pickRandomRecipes(count) {
-  const selected = [];
-  const pool = [...RECIPES];
-
-  while (selected.length < count && pool.length > 0) {
-    const index = Math.floor(Math.random() * pool.length);
-    selected.push(pool[index]);
-    pool.splice(index, 1);
+// -----------------------------
+//  Recettes collation
+// -----------------------------
+const snacksList = [
+  {
+    titre: "Pomme + amandes",
+    kcal: 150,
+    ingredients: ["1 pomme", "10 amandes"],
+    instructions: "Prêt immédiatement."
+  },
+  {
+    titre: "Yaourt végétal coco + miel",
+    kcal: 160,
+    ingredients: ["1 yaourt coco", "1 c. café miel"],
+    instructions: "Mélanger et déguster."
+  },
+  {
+    titre: "Banane + beurre d’amande",
+    kcal: 180,
+    ingredients: ["1 banane", "1 c. café beurre d’amande"],
+    instructions: "Simple et rapide."
+  },
+  {
+    titre: "Fruits rouges + graines chia",
+    kcal: 140,
+    ingredients: ["100 g fruits rouges", "1 c. café graines de chia"],
+    instructions: "Mélanger ensemble."
   }
-  return selected;
+];
+
+// -----------------------------
+//  Recettes dîner
+// -----------------------------
+const dinnerList = [
+  {
+    titre: "Poulet grillé + patate douce + brocoli",
+    kcal: 480,
+    ingredients: ["1 blanc de poulet", "1 patate douce", "Brocoli vapeur"],
+    instructions:
+      "1. Cuire patate douce. 2. Griller poulet. 3. Ajouter brocoli vapeur."
+  },
+  {
+    titre: "Saumon + riz complet + brocoli",
+    kcal: 480,
+    ingredients: ["1 saumon", "120 g riz complet", "Brocoli"],
+    instructions:
+      "1. Cuire riz. 2. Cuire saumon. 3. Cuire brocoli."
+  },
+  {
+    titre: "Curry coco pois chiches",
+    kcal: 430,
+    ingredients: ["Pois chiches", "Lait coco", "Courgette", "Curry"],
+    instructions:
+      "Faire mijoter ensemble 10 min."
+  },
+  {
+    titre: "Wok crevettes & légumes",
+    kcal: 390,
+    ingredients: ["Crevettes", "Carottes", "Poivrons", "Sauce soja SG"],
+    instructions:
+      "Faire revenir le tout dans un wok."
+  },
+  {
+    titre: "Pâtes sans gluten + légumes grillés",
+    kcal: 410,
+    ingredients: ["Pâtes SG", "Courgette", "Poivron", "Herbes"],
+    instructions:
+      "Cuire pâtes + griller légumes."
+  },
+  {
+    titre: "Chili light dinde",
+    kcal: 450,
+    ingredients: ["Dinde hachée", "Haricots rouges", "Oignons", "Épices"],
+    instructions:
+      "Faire mijoter 15 min."
+  }
+];
+
+// -----------------------------
+//  Création du menu 7 jours
+// -----------------------------
+const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+
+function pickRandom(list) {
+  return list[Math.floor(Math.random() * list.length)];
 }
 
-const output = pickRandomRecipes(5);
+const semaine = jours.map(jour => ({
+  jour,
+  brunch: pickRandom(brunchList),
+  collation: pickRandom(snacksList),
+  diner: pickRandom(dinnerList)
+}));
 
-const outPath = path.join("data", "recettes.json");
+// -----------------------------
+// Écriture du fichier
+// -----------------------------
+fs.writeFileSync("data/recettes.json", JSON.stringify(semaine, null, 2), "utf8");
 
-fs.writeFileSync(outPath, JSON.stringif
+console.log("🌸 Recettes complètes générées pour 7 jours (21 recettes) !");
