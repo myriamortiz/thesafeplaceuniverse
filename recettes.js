@@ -6,8 +6,8 @@ async function loadRecettes() {
   if (!container) return;
 
   try {
-    const response = await fetch(
-      "https://myriamortiz.github.io/thesafeplaceuniverse/data/recettes.json?cache=" + Date.now()
+    const response = await fetch("data/recettes.json?cache=" + Date.now());
+
     );
 
     if (!response.ok) throw new Error("Erreur");
