@@ -1,3 +1,5 @@
+// ----- generate_courses.js -----
+
 const fs = require("fs");
 
 // Lire recettes
