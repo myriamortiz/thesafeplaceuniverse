@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🍱 Alimentation – The Safe Place Universe</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="autoUpdate.js"></script>
 </head>
 
 <body>
   <section class="splash">
     <h1>🍱 Alimentation</h1>
-    <p class="subtitle">Ton espace de nutrition douce et consciente 🌿</p>
+    <p class="subtitle">Brunch, collation & dîner – 100 % auto ✨</p>
   </section>
 
   <div class="mantra">
@@ -19,119 +20,52 @@
 
   <main class="content">
 
-    <!-- 🕒 Organisation alimentaire -->
-    <div class="card schedule-card">
-      <h2>🕒 Organisation alimentaire</h2>
-      <p class="subtitle">Adaptée à ton rythme de travail et ton jeûne intermittent 🌙</p>
-
-      <table class="schedule-table">
-        <thead>
-          <tr>
-            <th>Poste</th>
-            <th>Fenêtre alimentaire</th>
-            <th>Brunch</th>
-            <th>Collation</th>
-            <th>Dîner</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Matin (8h–16h15)</strong></td>
-            <td>12h–19h</td>
-            <td>12h00</td>
-            <td>16h30</td>
-            <td>18h30</td>
-          </tr>
-          <tr>
-            <td><strong>Après-midi (16h–00h15)</strong></td>
-            <td>17h30–00h30</td>
-            <td>17h30</td>
-            <td>21h00</td>
-            <td>23h30</td>
-          </tr>
-          <tr>
-            <td><strong>Nuit (00h–8h15)</strong></td>
-            <td>15h30–22h30</td>
-            <td>15h30</td>
-            <td>19h00</td>
-            <td>22h00</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 🌸 Plan automatique de la semaine -->
     <div class="card">
-      <h2>🌸 Ton plan alimentaire de la semaine</h2>
-      <p class="subtitle">Mise à jour automatique chaque lundi matin 🌙</p>
+      <h2>🌸 Plan alimentaire de la semaine</h2>
+      <p class="subtitle">Mis à jour automatiquement chaque lundi</p>
       <div id="weeklyPlan" class="week-grid"></div>
     </div>
 
-    <!-- 💭 Ressenti -->
     <div class="card mood-card">
       <h2>💭 Mon ressenti du jour</h2>
       <textarea id="foodMood" rows="3" placeholder="Comment te sens-tu aujourd’hui ? 💬"></textarea>
       <p id="moodMsg" class="fade-msg">✨ C’est noté avec douceur 🌸</p>
     </div>
 
-    <!-- 🌸 Navigation -->
     <nav class="menu">
       <a href="recettes.html">🧁 Voir mes recettes</a>
       <a href="courses.html">🛒 Voir ma liste de courses</a>
-      <a href="complements.html">🌿 Compléments saisonniers</a>
       <a href="index.html">🏡 Retour à l’accueil</a>
     </nav>
   </main>
 
   <script>
-    // 🌸 Charge le menu généré automatiquement (data/menu.json)
-    fetch("/thesafeplaceuniverse/data/menu.json")
-      .then(r => r.json())
-      .then(menu => {
-        const planContainer = document.getElementById("weeklyPlan");
-        planContainer.innerHTML = "";
+    async function loadMenu() {
+      const container = document.getElementById("weeklyPlan");
+
+      try {
+        const response = await fetch("data/menu.json?cache=" + Date.now());
+        const menu = await response.json();
+
+        container.innerHTML = "";
 
         menu.forEach(day => {
-          const card = document.createElement("div");
-          card.className = "day-card";
-          card.innerHTML = `
-            <h3>🌸 ${day.jour}</h3>
-            <p><strong>Repas :</strong> ${day.repas}</p>
-            <p><strong>Collation :</strong> ${day.collation}</p>
+          container.innerHTML += `
+            <div class="day-card">
+              <h3>🌸 ${day.jour}</h3>
+              <p><strong>Brunch :</strong> ${day.brunch}</p>
+              <p><strong>Collation :</strong> ${day.collation}</p>
+              <p><strong>Dîner :</strong> ${day.diner}</p>
+            </div>
           `;
-          planContainer.appendChild(card);
         });
-      })
-      .catch(() => {
-        document.getElementById("weeklyPlan").innerHTML =
-          "<p>Impossible de charger ton plan alimentaire 🌧️</p>";
-      });
-
-    // 💭 Sauvegarde du ressenti
-    const mood = document.getElementById("foodMood");
-    const msg = document.getElementById("moodMsg");
-
-    if (localStorage.getItem("foodMood")) {
-      mood.value = localStorage.getItem("foodMood");
+      } catch {
+        container.innerHTML = "<p>Impossible de charger ton menu 🌧️</p>";
+      }
     }
 
-    mood.addEventListener("input", () => {
-      localStorage.setItem("foodMood", mood.value);
-      msg.style.display = "block";
-      msg.style.opacity = "1";
-      setTimeout(() => {
-        msg.style.opacity = "0";
-        setTimeout(() => (msg.style.display = "none"), 400);
-      }, 1500);
-    });
+    document.addEventListener("DOMContentLoaded", loadMenu);
   </script>
 
-  <!-- Script auto Lundi -->
-  <script defer src="autoUpdate.js"></script>
-
-  <!-- Bannière -->
-  <div id="autoBanner" class="auto-banner" style="display:none;">
-    ✨ Ta nouvelle semaine a été générée automatiquement 🌸
-  </div>
 </body>
 </html>
