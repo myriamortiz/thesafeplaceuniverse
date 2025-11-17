@@ -5,379 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🧁 Recettes – The Safe Place Universe</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="autoUpdate.js"></script>
 </head>
 
 <body>
+
   <section class="splash">
     <h1>🧁 Recettes de la semaine</h1>
     <p class="subtitle">Des plats sains, simples et pleins de douceur 🌷</p>
   </section>
 
   <main class="content">
+
     <div class="card">
       <p class="mantra">“Je cuisine avec amour, et chaque bouchée nourrit mon bien-être.” 💫</p>
-      <div id="recipesContainer" class="week-grid"></div>
+
+      <!-- Zone où l’on affichera les recettes -->
+      <div id="recettes-container"></div>
     </div>
 
     <nav class="menu">
       <a href="courses.html">🛒 Voir ma liste de courses</a>
       <a href="alimentation.html">🍱 Retour à l’alimentation</a>
     </nav>
+
   </main>
 
+  <!-- ⭐ SCRIPT AUTO : charge data/recettes.json -->
   <script>
-    const recipes = [
-      // 🌸 Jour 1
-      {
-        day: "🌸 Jour 1",
-        meals: [
-          {
-            name: "Brunch — Omelette douceur",
-            ingredients: [
-              "2 œufs + 1 blanc",
-              "½ avocat",
-              "100 g patate douce rôtie",
-              "30 g fromage de chèvre",
-              "1 kiwi",
-              "1 c. à c. graines de chia"
-            ],
-            steps: [
-              "Fais rôtir la patate douce au four 25 min à 180°C.",
-              "Prépare l’omelette, dépose les tranches d’avocat et le chèvre.",
-              "Ajoute le kiwi en dessert et saupoudre de chia 🌿."
-            ]
-          },
-          {
-            name: "Collation — Yaourt douceur",
-            ingredients: [
-              "100 g yaourt brebis nature",
-              "10 amandes",
-              "½ banane"
-            ],
-            steps: [
-              "Mélange les morceaux de banane au yaourt.",
-              "Ajoute les amandes concassées juste avant de déguster ✨."
-            ]
-          },
-          {
-            name: "Dîner — Saumon vapeur zen",
-            ingredients: [
-              "120 g filet de saumon",
-              "100 g riz basmati",
-              "Légumes vapeur (brocolis, carottes, courgettes)",
-              "1 c. à c. huile d’olive",
-              "1 carré chocolat noir 85 %"
-            ],
-            steps: [
-              "Fais cuire le riz et les légumes vapeur.",
-              "Fais cuire ton saumon doucement à la poêle ou vapeur.",
-              "Verse un filet d’huile d’olive et savoure en pleine conscience 💕."
-            ]
-          }
-        ]
-      },
+    fetch("data/recettes.json")
+      .then(r => r.json())
+      .then(recettes => {
+        const container = document.getElementById("recettes-container");
+        container.innerHTML = "<h2>Recettes de la semaine</h2>";
 
-      // 🌸 Jour 2
-      {
-        day: "🌸 Jour 2",
-        meals: [
-          {
-            name: "Brunch — Bowl frais et coloré",
-            ingredients: [
-              "120 g tofu grillé",
-              "80 g quinoa cuit",
-              "Légumes croquants (poivron, concombre, carotte râpée)",
-              "Sauce : yaourt végétal, citron, herbes",
-              "1 mandarine"
-            ],
-            steps: [
-              "Grille le tofu, prépare le quinoa.",
-              "Assemble ton bowl avec les légumes et la sauce citronnée 🌸."
-            ]
-          },
-          {
-            name: "Collation — Smoothie vitalité",
-            ingredients: [
-              "200 ml lait d’amande",
-              "½ banane",
-              "1 c. à s. poudre protéinée végétale"
-            ],
-            steps: [
-              "Mix tous les ingrédients jusqu’à texture onctueuse 💫."
-            ]
-          },
-          {
-            name: "Dîner — Poulet au four gourmand",
-            ingredients: [
-              "120 g poulet",
-              "150 g pommes de terre grenaille",
-              "Haricots verts",
-              "1 c. à c. huile de sésame",
-              "1 yaourt brebis + cannelle"
-            ],
-            steps: [
-              "Fais rôtir le poulet et les pommes grenaille au four.",
-              "Sers avec les haricots sautés à l’huile de sésame 🕯."
-            ]
-          }
-        ]
-      },
-
-      // 🌸 Jour 3
-      {
-        day: "🌸 Jour 3",
-        meals: [
-          {
-            name: "Brunch — Galettes sarrasin maison",
-            ingredients: [
-              "2 petites galettes sarrasin",
-              "1 œuf",
-              "1 tranche jambon blanc",
-              "30 g fromage de chèvre",
-              "1 poignée myrtilles fraîches"
-            ],
-            steps: [
-              "Garnis tes galettes avec l’œuf, le jambon et le chèvre.",
-              "Ajoute les myrtilles en touche sucrée 🌸."
-            ]
-          },
-          {
-            name: "Collation — Pomme & purée d’amandes",
-            ingredients: [
-              "1 pomme",
-              "2 c. à s. purée d’amandes"
-            ],
-            steps: [
-              "Coupe ta pomme en tranches et nappe de purée d’amandes 🍎."
-            ]
-          },
-          {
-            name: "Dîner — Cabillaud & lentilles corail",
-            ingredients: [
-              "120 g pavé de cabillaud",
-              "100 g lentilles corail",
-              "Légumes rôtis (aubergine, poivron, courgette)",
-              "1 c. à c. huile d’olive"
-            ],
-            steps: [
-              "Fais cuire les lentilles et les légumes au four.",
-              "Fais revenir ton cabillaud à la poêle à feu doux 🌿."
-            ]
-          }
-        ]
-      },
-
-      // 🌸 Jour 4
-      {
-        day: "🌸 Jour 4",
-        meals: [
-          {
-            name: "Brunch — Porridge réconfortant",
-            ingredients: [
-              "40 g flocons d’avoine",
-              "200 ml lait d’avoine",
-              "1 c. à c. graines de lin moulues",
-              "½ banane écrasée",
-              "1 c. à c. miel",
-              "1 œuf dur"
-            ],
-            steps: [
-              "Fais chauffer les flocons avec le lait, la banane et le miel.",
-              "Saupoudre de graines de lin et ajoute l’œuf dur à côté 🕯."
-            ]
-          },
-          {
-            name: "Collation — Coco & fruits rouges",
-            ingredients: [
-              "1 yaourt de coco",
-              "1 poignée fruits rouges"
-            ],
-            steps: [
-              "Mélange le tout et savoure frais ✨."
-            ]
-          },
-          {
-            name: "Dîner — Dinde & ratatouille",
-            ingredients: [
-              "120 g steak de dinde",
-              "100 g riz complet",
-              "Ratatouille maison",
-              "1 c. à c. huile d’olive"
-            ],
-            steps: [
-              "Prépare ta ratatouille maison, fais cuire la dinde.",
-              "Sers avec le riz complet 🌿."
-            ]
-          }
-        ]
-      },
-
-      // 🌸 Jour 5
-      {
-        day: "🌸 Jour 5",
-        meals: [
-          {
-            name: "Brunch — Tartines sarrasin & thon",
-            ingredients: [
-              "2 tartines pain sarrasin",
-              "1 avocat",
-              "80 g thon nature",
-              "Jus de citron",
-              "1 poignée roquette",
-              "1 poire"
-            ],
-            steps: [
-              "Écrase l’avocat, ajoute le thon et le citron.",
-              "Garnis les tartines, ajoute la roquette 🌸."
-            ]
-          },
-          {
-            name: "Collation — Noix & compote",
-            ingredients: [
-              "20 g noix de cajou",
-              "1 compote sans sucre ajouté"
-            ],
-            steps: [
-              "Un snack simple et rassasiant 💕."
-            ]
-          },
-          {
-            name: "Dîner — Crevettes au wok",
-            ingredients: [
-              "120 g crevettes",
-              "100 g riz basmati",
-              "Légumes wok (brocoli, carotte, pois mange-tout)",
-              "1 c. à c. huile de coco"
-            ],
-            steps: [
-              "Fais sauter les crevettes et légumes au wok.",
-              "Sers avec le riz basmati 🦐."
-            ]
-          }
-        ]
-      },
-
-      // 🌸 Jour 6
-      {
-        day: "🌸 Jour 6",
-        meals: [
-          {
-            name: "Brunch — Œufs & tartines noisette",
-            ingredients: [
-              "2 œufs + 1 blanc",
-              "2 tranches pain sans gluten",
-              "1 c. à c. purée de noisettes",
-              "1 orange"
-            ],
-            steps: [
-              "Prépare tes œufs brouillés.",
-              "Tartine de purée de noisettes et ajoute l’orange 🍊."
-            ]
-          },
-          {
-            name: "Collation — Yaourt & granola",
-            ingredients: [
-              "1 yaourt brebis",
-              "1 c. à s. granola maison sans sucre"
-            ],
-            steps: [
-              "Verse le granola juste avant de déguster 🌸."
-            ]
-          },
-          {
-            name: "Dîner — Poulet & patate douce",
-            ingredients: [
-              "120 g escalope poulet grillée",
-              "100 g patate douce",
-              "Courgettes rôties",
-              "1 c. à c. huile d’olive"
-            ],
-            steps: [
-              "Rôtis la patate douce et les courgettes.",
-              "Fais griller le poulet et assemble 🍗."
-            ]
-          }
-        ]
-      },
-
-      // 🌸 Jour 7
-      {
-        day: "🌸 Jour 7",
-        meals: [
-          {
-            name: "Brunch — Pancakes protéinés",
-            ingredients: [
-              "40 g flocons avoine",
-              "1 œuf",
-              "½ banane",
-              "Lait végétal",
-              "1 c. à c. purée de cacahuète",
-              "Fruits rouges",
-              "1 yaourt végétal"
-            ],
-            steps: [
-              "Mix tous les ingrédients et cuis les pancakes.",
-              "Sers avec purée de cacahuète et fruits rouges 🍓."
-            ]
-          },
-          {
-            name: "Collation — Barre ou amandes",
-            ingredients: [
-              "1 barre protéinée maison ou 20 g amandes",
-              "1 tisane"
-            ],
-            steps: [
-              "Une collation douce et simple 🌿."
-            ]
-          },
-          {
-            name: "Dîner — Truite & légumes verts",
-            ingredients: [
-              "120 g truite ou saumon",
-              "80 g riz basmati",
-              "Légumes verts vapeur",
-              "1 c. à c. huile d’olive",
-              "1 carré chocolat noir"
-            ],
-            steps: [
-              "Fais cuire le riz et les légumes à la vapeur.",
-              "Fais revenir le poisson, ajoute l’huile d’olive et déguste 🕯."
-            ]
-          }
-        ]
-      }
-    ];
-
-    const container = document.getElementById("recipesContainer");
-
-    recipes.forEach(day => {
-      const dayCard = document.createElement("div");
-      dayCard.className = "day-card";
-
-      const title = document.createElement("h3");
-      title.textContent = day.day;
-      dayCard.appendChild(title);
-
-      day.meals.forEach(meal => {
-        const mealDiv = document.createElement("div");
-        mealDiv.className = "recipe-block";
-        mealDiv.innerHTML = `
-          <h4>${meal.name}</h4>
-          <p><strong>Ingrédients :</strong></p>
-          <ul>${meal.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-          <p><strong>Préparation :</strong></p>
-          <ol>${meal.steps.map(s => `<li>${s}</li>`).join("")}</ol>
-        `;
-        dayCard.appendChild(mealDiv);
+        recettes.forEach(r => {
+          container.innerHTML += `
+            <div class="day-card">
+              <h3>${r.nom}</h3>
+              <p><strong>Ingrédients :</strong></p>
+              <ul>
+                ${r.etapes.map(etape => `<li>${etape}</li>`).join("")}
+              </ul>
+            </div>
+          `;
+        });
+      })
+      .catch(() => {
+        document.getElementById("recettes-container").innerHTML =
+          "<p>Impossible de charger les recettes 🌧️</p>";
       });
-
-      container.appendChild(dayCard);
-    });
   </script>
 
-  <!-- 🌸 Ajout du script automatique -->
-  <script defer src="autoUpdate.js"></script>
 </body>
 </html>
-
-

@@ -85,57 +85,51 @@
   </main>
 
   <script>
-    // 🌸 Données de base du plan (exemple de structure auto)
-    const plans = [
-      { brunch: "Omelette, avocat, patate douce rôtie, kiwi", collation: "Yaourt brebis, amandes, banane", diner: "Saumon, riz basmati, légumes vapeur" },
-      { brunch: "Tofu grillé, quinoa, légumes croquants", collation: "Smoothie amande-banane", diner: "Poulet au four, pommes grenaille, haricots verts" },
-      { brunch: "Galettes sarrasin maison, œuf, jambon, chèvre", collation: "Pomme + purée d’amandes", diner: "Cabillaud, lentilles corail, légumes rôtis" },
-      { brunch: "Porridge avoine + miel, œuf dur", collation: "Yaourt coco + fruits rouges", diner: "Dinde, riz complet, ratatouille maison" },
-      { brunch: "Tartines sarrasin avocat-thon, poire", collation: "Noix de cajou + compote", diner: "Crevettes sautées, riz basmati, wok de légumes" },
-      { brunch: "Œufs brouillés, pain SG, orange", collation: "Yaourt brebis + granola", diner: "Poulet grillé, patate douce, courgettes rôties" },
-      { brunch: "Pancakes protéinés, fruits rouges, yaourt", collation: "Barre protéinée ou amandes", diner: "Saumon ou truite, riz, légumes verts vapeur" }
-    ];
+  // 🌸 Charge le menu généré automatiquement
+  fetch("data/menu.json")
+    .then(r => r.json())
+    .then(menu => {
+      const planContainer = document.getElementById("weeklyPlan");
+      planContainer.innerHTML = ""; // On vide le contenu actuel
 
-    // 🕰 Vérifie le lundi pour régénérer
-    const today = new Date();
-    const weekNumber = Math.ceil(today.getDate() / 7);
-    const savedWeek = localStorage.getItem("weekGenerated");
+      menu.forEach((day, index) => {
+        // Chaque "day" = { jour, repas, collation }
+        const card = document.createElement("div");
+        card.className = "day-card";
 
-    if (!savedWeek || savedWeek != weekNumber) {
-      localStorage.setItem("weekGenerated", weekNumber);
-      localStorage.setItem("weeklyPlan", JSON.stringify(plans));
-    }
+        card.innerHTML = `
+          <h3>🌸 ${day.jour}</h3>
+          <p><strong>Repas :</strong> ${day.repas}</p>
+          <p><strong>Collation :</strong> ${day.collation}</p>
+        `;
 
-    const plan = JSON.parse(localStorage.getItem("weeklyPlan"));
-    const planContainer = document.getElementById("weeklyPlan");
-
-    plan.forEach((day, index) => {
-      const card = document.createElement("div");
-      card.className = "day-card";
-      card.innerHTML = `
-        <h3>🌸 Jour ${index + 1}</h3>
-        <p><strong>Brunch :</strong> ${day.brunch}</p>
-        <p><strong>Collation :</strong> ${day.collation}</p>
-        <p><strong>Dîner :</strong> ${day.diner}</p>
-      `;
-      planContainer.appendChild(card);
+        planContainer.appendChild(card);
+      });
+    })
+    .catch(() => {
+      document.getElementById("weeklyPlan").innerHTML =
+        "<p>Impossible de charger ton plan alimentaire 🌧️</p>";
     });
 
-    // 💭 Sauvegarde du ressenti
-    const mood = document.getElementById("foodMood");
-    const msg = document.getElementById("moodMsg");
-    if (localStorage.getItem("foodMood")) mood.value = localStorage.getItem("foodMood");
+  // 💭 Sauvegarde du ressenti (inchangé)
+  const mood = document.getElementById("foodMood");
+  const msg = document.getElementById("moodMsg");
 
-    mood.addEventListener("input", () => {
-      localStorage.setItem("foodMood", mood.value);
-      msg.style.display = "block";
-      msg.style.opacity = "1";
-      setTimeout(() => {
-        msg.style.opacity = "0";
-        setTimeout(() => (msg.style.display = "none"), 400);
-      }, 1500);
-    });
-  </script>
+  if (localStorage.getItem("foodMood")) {
+    mood.value = localStorage.getItem("foodMood");
+  }
+
+  mood.addEventListener("input", () => {
+    localStorage.setItem("foodMood", mood.value);
+    msg.style.display = "block";
+    msg.style.opacity = "1";
+    setTimeout(() => {
+      msg.style.opacity = "0";
+      setTimeout(() => (msg.style.display = "none"), 400);
+    }, 1500);
+  });
+</script>
+
 
   <!-- 🌸 Ajout du script automatique -->
   <script defer src="autoUpdate.js"></script>
