@@ -1,47 +1,67 @@
-<script>
-  fetch("/thesafeplaceuniverse/data/courses.json?cache=" + Date.now())
-    .then(r => r.json())
-    .then(courses => {
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛒 Courses – The Safe Place Universe</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="autoUpdate.js"></script>
+</head>
+
+<body>
+
+  <section class="splash">
+    <h1>🛒 Liste de courses</h1>
+    <p class="subtitle">Générée automatiquement à partir des 21 recettes 🌿</p>
+  </section>
+
+  <main class="content">
+    <div class="card">
+      <div id="courses-container">Chargement...</div>
+    </div>
+
+    <nav class="menu">
+      <a href="recettes.html">🧁 Recettes</a>
+      <a href="alimentation.html">🍱 Alimentation</a>
+    </nav>
+  </main>
+
+  <script>
+    async function loadCourses() {
       const container = document.getElementById("courses-container");
-      container.innerHTML = "<h2>🛒 Liste de courses</h2>";
 
-      const listWrapper = document.createElement("div");
-      listWrapper.className = "card";
+      try {
+        const response = await fetch("data/courses.json?cache=" + Date.now());
+        const items = await response.json();
 
-      const ul = document.createElement("ul");
-      ul.className = "checklist";
+        container.innerHTML = "<ul class='checklist'></ul>";
+        const ul = container.querySelector("ul");
 
-      courses.forEach(item => {
-        const li = document.createElement("li");
+        items.forEach(item => {
+          const id = "chk-" + item.toLowerCase().replace(/\s+/g, "-");
 
-        const id = "chk-" + item.toLowerCase().replace(/\s+/g, "-");
-
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.id = id;
-
-        if (localStorage.getItem(id) === "true") {
-          checkbox.checked = true;
-        }
-
-        checkbox.addEventListener("change", () => {
-          localStorage.setItem(id, checkbox.checked);
+          ul.innerHTML += `
+            <li>
+              <input type="checkbox" id="${id}" ${localStorage.getItem(id) === "true" ? "checked" : ""}>
+              <label for="${id}">${item}</label>
+            </li>
+          `;
         });
 
-        const label = document.createElement("label");
-        label.setAttribute("for", id);
-        label.textContent = " " + item;
+        // Sauvegarde état
+        ul.addEventListener("change", e => {
+          if (e.target.tagName === "INPUT") {
+            localStorage.setItem(e.target.id, e.target.checked);
+          }
+        });
 
-        li.appendChild(checkbox);
-        li.appendChild(label);
-        ul.appendChild(li);
-      });
+      } catch {
+        container.innerHTML = "<p>Impossible de charger la liste de courses 🌧️</p>";
+      }
+    }
 
-      listWrapper.appendChild(ul);
-      container.appendChild(listWrapper);
-    })
-    .catch(() => {
-      document.getElementById("courses-container").innerHTML =
-        "<p>Impossible de charger la liste de courses 🌧️</p>";
-    });
-</script>
+    document.addEventListener("DOMContentLoaded", loadCourses);
+  </script>
+
+</body>
+</html>
