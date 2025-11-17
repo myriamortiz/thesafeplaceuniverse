@@ -1,87 +1,47 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🛒 Liste de courses – The Safe Place Universe</title>
-  <link rel="stylesheet" href="style.css" />
-  <script defer src="autoUpdate.js"></script>
-</head>
+<script>
+  fetch("/thesafeplaceuniverse/data/courses.json?cache=" + Date.now())
+    .then(r => r.json())
+    .then(courses => {
+      const container = document.getElementById("courses-container");
+      container.innerHTML = "<h2>🛒 Liste de courses</h2>";
 
-<body>
+      const listWrapper = document.createElement("div");
+      listWrapper.className = "card";
 
-  <section class="splash">
-    <h1>🛒 Liste de courses</h1>
-    <p class="subtitle">Ta semaine, prête à cuisiner en douceur 🌷</p>
-  </section>
+      const ul = document.createElement("ul");
+      ul.className = "checklist";
 
-  <main class="content">
+      courses.forEach(item => {
+        const li = document.createElement("li");
 
-    <div class="card">
-      <p class="mantra">“Je prépare mes repas avec légèreté, bienveillance et plaisir.” 💫</p>
+        const id = "chk-" + item.toLowerCase().replace(/\s+/g, "-");
 
-      <!-- 🔥 Liste auto -->
-      <div id="courses-container">
-        <p>Chargement de la liste de courses…</p>
-      </div>
-    </div>
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = id;
 
-    <nav class="menu">
-      <a href="recettes.html">🧁 Voir mes recettes</a>
-      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
-    </nav>
+        if (localStorage.getItem(id) === "true") {
+          checkbox.checked = true;
+        }
 
-  </main>
-
-  <!-- ⭐ Nouveau script AUTO -->
-  <script>
-    fetch("data/courses.json")
-      .then(r => r.json())
-      .then(courses => {
-        const container = document.getElementById("courses-container");
-        container.innerHTML = "<h2>🛒 Liste de courses</h2>";
-
-        const listWrapper = document.createElement("div");
-        listWrapper.className = "card";
-
-        const ul = document.createElement("ul");
-        ul.className = "checklist";
-
-        courses.forEach(item => {
-          const li = document.createElement("li");
-
-          const id = "chk-" + item.toLowerCase().replace(/\s+/g, "-");
-
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.id = id;
-
-          // Recharge l’état
-          if (localStorage.getItem(id) === "true") {
-            checkbox.checked = true;
-          }
-
-          checkbox.addEventListener("change", () => {
-            localStorage.setItem(id, checkbox.checked);
-          });
-
-          const label = document.createElement("label");
-          label.setAttribute("for", id);
-          label.textContent = " " + item;
-
-          li.appendChild(checkbox);
-          li.appendChild(label);
-          ul.appendChild(li);
+        checkbox.addEventListener("change", () => {
+          localStorage.setItem(id, checkbox.checked);
         });
 
-        listWrapper.appendChild(ul);
-        container.appendChild(listWrapper);
-      })
-      .catch(() => {
-        document.getElementById("courses-container").innerHTML =
-          "<p>Impossible de charger la liste de courses 🌧️</p>";
-      });
-  </script>
+        const label = document.createElement("label");
+        label.setAttribute("for", id);
+        label.textContent = " " + item;
 
-</body>
-</html>
+        li.appendChild(checkbox);
+        li.appendChild(label);
+        ul.appendChild(li);
+      });
+
+      listWrapper.appendChild(ul);
+      container.appendChild(listWrapper);
+    })
+    .catch(() => {
+      document.getElementById("courses-container").innerHTML =
+        "<p>Impossible de charger la liste de courses 🌧️</p>";
+    });
+</script>
