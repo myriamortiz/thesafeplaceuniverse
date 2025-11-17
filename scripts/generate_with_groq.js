@@ -1,8 +1,6 @@
 // ----- generate_with_groq.js -----
 const fs = require("fs");
-
-// --- Node 18+ inclut déjà fetch nativement ---
-const fetch = global.fetch;
+const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const apiKey = process.env.GROQ_API_KEY;
 
@@ -21,56 +19,61 @@ async function askGroq(prompt) {
 
   const json = await response.json();
 
+  if (!json.choices || !json.choices[0]) {
+    console.error("❌ Réponse Groq invalide :", json);
+    throw new Error("Groq n'a pas renvoyé de résultat.");
+  }
+
   return json.choices[0].message.content;
 }
 
-// --------- 1) Générer le menu ---------
+// --------- 1) Menu ---------
 async function generateMenu() {
   const prompt = `
-Tu es nutritionniste et tu génères un menu complet pour 7 jours.
-Règles :
+Tu génères un menu de 7 jours :
 - 1400 kcal/jour
-- Sans blé (alternatives sans gluten OK)
-- Sans lactose (OK végétal / brebis / chèvre)
+- Sans blé, sans lactose (OK végétal/brebis/chèvre)
 - Jeûne 17:7
-- 2 repas + 1 collation : brunch, collation, dîner
+- 1 brunch + 1 collation + 1 dîner / jour
 Format JSON strict :
 [
-  { "jour": "Jour X", "brunch": "...", "collation": "...", "diner": "..." }
+  { "jour": "Jour 1", "brunch": "...", "collation": "...", "diner": "..." }
 ]
-  `;
+`;
 
   const output = await askGroq(prompt);
   fs.writeFileSync("data/menu.json", output);
-  console.log("🍽️ menu.json généré via Groq");
+  console.log("🍽️ menu.json généré");
 }
 
-// --------- 2) Générer les recettes ---------
+// --------- 2) Recettes ---------
 async function generateRecettes() {
   const menu = JSON.parse(fs.readFileSync("data/menu.json", "utf8"));
+
   const prompt = `
-Génère toutes les recettes du MENU suivant :
+Génère toutes les RECETTES du menu suivant :
 ${JSON.stringify(menu)}
 
-FORMAT JSON STRICT :
+Format JSON strict :
 [
   {
-    "jour": "Jour X",
+    "jour": "Jour 1",
     "brunch": { "ingredients": [...], "instructions": "..." },
     "collation": { "ingredients": [...], "instructions": "..." },
     "diner": { "ingredients": [...], "instructions": "..." }
   }
 ]
-  `;
+`;
+
   const output = await askGroq(prompt);
   fs.writeFileSync("data/recettes.json", output);
-  console.log("📖 recettes.json généré via Groq");
+  console.log("📖 recettes.json généré");
 }
 
-// --------- 3) Générer la liste des courses ---------
+// --------- 3) Courses ---------
 async function generateCourses() {
   const recettes = JSON.parse(fs.readFileSync("data/recettes.json", "utf8"));
-
+  
   let list = [];
   recettes.forEach(day => {
     list.push(...day.brunch.ingredients);
@@ -79,30 +82,29 @@ async function generateCourses() {
   });
 
   const unique = [...new Set(list.map(i => i.trim()))];
-
   fs.writeFileSync("data/courses.json", JSON.stringify(unique, null, 2));
-  console.log("🛒 courses.json généré !");
+  console.log("🛒 courses.json généré");
 }
 
-// --------- 4) Générer le sport ---------
+// --------- 4) Sport ---------
 async function generateSport() {
   const prompt = `
-Génère un planning de sport pour 7 jours :
+Plan sport 7 jours :
 - 4 séances maison (45 min)
 - 1 séance bachata mercredi
 - 2 jours repos actif
-
 Format JSON strict :
 [
   { "jour": "Lundi", "exercice": "..." }
 ]
-  `;
+`;
+
   const output = await askGroq(prompt);
   fs.writeFileSync("data/sport.json", output);
-  console.log("💪 sport.json généré !");
+  console.log("💪 sport.json généré");
 }
 
-// --------- Lancer ---------
+// --------- Main ---------
 async function main() {
   await generateMenu();
   await generateRecettes();
