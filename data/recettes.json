@@ -24,12 +24,13 @@
     "jour": "Jour 2",
     "brunch": {
       "ingredients": [
-        "2 galettes sarrasin",
-        "1 œuf",
-        "30g chèvre",
+        "2 œufs",
+        "1/2 avocat",
+        "100g patate douce",
+        "sel",
         "poivre"
       ],
-      "instructions": "Garnir la galette avec œuf au plat et chèvre."
+      "instructions": "Cuire l’omelette, rôtir la patate douce, servir avec l’avocat."
     },
     "collation": {
       "ingredients": [
@@ -69,12 +70,9 @@
     "jour": "Jour 4",
     "brunch": {
       "ingredients": [
-        "2 galettes sarrasin",
-        "1 œuf",
-        "30g chèvre",
-        "poivre"
+        "Ingrédients à définir"
       ],
-      "instructions": "Garnir la galette avec œuf au plat et chèvre."
+      "instructions": "Instructions à définir"
     },
     "collation": {
       "ingredients": [
@@ -135,13 +133,9 @@
     "jour": "Jour 7",
     "brunch": {
       "ingredients": [
-        "2 œufs",
-        "1/2 avocat",
-        "100g patate douce",
-        "sel",
-        "poivre"
+        "Ingrédients à définir"
       ],
-      "instructions": "Cuire l’omelette, rôtir la patate douce, servir avec l’avocat."
+      "instructions": "Instructions à définir"
     },
     "collation": {
       "ingredients": [

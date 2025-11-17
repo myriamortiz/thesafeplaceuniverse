@@ -1,44 +1,44 @@
 [
   {
     "jour": "Jour 1",
-    "brunch": "Bowl sarrasin + chèvre + poire",
+    "brunch": "Bowl quinoa + poulet + crudités",
     "collation": "Yaourt brebis + myrtilles",
-    "diner": "Saumon + riz + brocoli"
+    "diner": "Cabillaud + lentilles corail + courgettes"
   },
   {
     "jour": "Jour 2",
-    "brunch": "Galettes sarrasin + œuf + chèvre",
-    "collation": "Banane",
-    "diner": "Truite + riz basmati + légumes verts"
+    "brunch": "Omelette + avocat + patate douce",
+    "collation": "Amandes + tisane",
+    "diner": "Dinde grillée + ratatouille + riz"
   },
   {
     "jour": "Jour 3",
-    "brunch": "Smoothie bowl coco + granola sans gluten",
-    "collation": "Fruits rouges + lait amande",
+    "brunch": "Pancakes avoine sans gluten + fruits rouges",
+    "collation": "Amandes + tisane",
     "diner": "Cabillaud + lentilles corail + courgettes"
   },
   {
     "jour": "Jour 4",
-    "brunch": "Galettes sarrasin + œuf + chèvre",
+    "brunch": "Bowl sarrasin + chèvre + poire",
     "collation": "Barre protéinée sans gluten",
-    "diner": "Poulet + patate douce + haricots verts"
+    "diner": "Truite + riz basmati + légumes verts"
   },
   {
     "jour": "Jour 5",
     "brunch": "Bowl sarrasin + chèvre + poire",
-    "collation": "Fruits rouges + lait amande",
-    "diner": "Cabillaud + lentilles corail + courgettes"
+    "collation": "Barre protéinée sans gluten",
+    "diner": "Crevettes wok + légumes + riz"
   },
   {
     "jour": "Jour 6",
-    "brunch": "Pancakes avoine sans gluten + fruits rouges",
-    "collation": "Fruits rouges + lait amande",
-    "diner": "Truite + riz basmati + légumes verts"
+    "brunch": "Tofu sauté + riz + légumes vapeur",
+    "collation": "Yaourt brebis + myrtilles",
+    "diner": "Tofu grillé + riz + légumes vapeur"
   },
   {
     "jour": "Jour 7",
-    "brunch": "Omelette + avocat + patate douce",
-    "collation": "Amandes + tisane",
-    "diner": "Truite + riz basmati + légumes verts"
+    "brunch": "Pancakes avoine sans gluten + fruits rouges",
+    "collation": "Fruits rouges + lait amande",
+    "diner": "Cabillaud + lentilles corail + courgettes"
   }
 ]
