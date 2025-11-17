@@ -5,7 +5,7 @@ async function loadMenu() {
   if (!container) return;
 
   try {
-    const response = await fetch("/data/menu.json?cache=" + Date.now());
+    const response = await fetch("https://myriamortiz.github.io/thesafeplaceuniverse/data/menu.json?cache=" + Date.now());
     if (!response.ok) throw new Error("Impossible de charger le menu");
 
     const menu = await response.json();
