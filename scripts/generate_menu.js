@@ -1,15 +1,20 @@
-// Génération automatique d’un menu simple pour Safe Place
+// Génère automatiquement un menu de la semaine pour Safe Place
 
 const fs = require("fs");
 
-// Liste de repas simples — tu pourras me demander de les personnaliser
+// S'assure que le dossier data existe
+if (!fs.existsSync("data")) {
+  fs.mkdirSync("data");
+}
+
+// Liste de repas simples (on pourra personnaliser ensuite)
 const meals = [
   "Salade quinoa & poulet",
-  "Pâtes complètes légumes grillés",
-  "Saumon + riz + brocoli",
+  "Pâtes complètes aux légumes grillés",
+  "Saumon + riz complet + brocoli",
   "Buddha bowl veggie",
   "Wrap thon & crudités",
-  "Soupe légumes & lentilles",
+  "Soupe de légumes & lentilles",
   "Poulet au four + patates douces"
 ];
 
@@ -21,7 +26,7 @@ const snacks = [
   "Banane"
 ];
 
-// Génération automatique
+// Génération automatique du menu sur 7 jours
 const menu = [];
 
 for (let i = 0; i < 7; i++) {
@@ -32,13 +37,7 @@ for (let i = 0; i < 7; i++) {
   });
 }
 
-// Conversion en HTML (ton app lit du HTML)
-let html = `<h2>Menu de la semaine</h2>`;
-menu.forEach((m) => {
-  html += `<p><strong>${m.jour}</strong><br>Repas : ${m.repas}<br>Collation : ${m.collation}</p>`;
-});
+// Écriture dans data/menu.json
+fs.writeFileSync("data/menu.json", JSON.stringify(menu, null, 2), "utf8");
 
-// Écriture dans ton fichier `alimentation.html`
-fs.writeFileSync("alimentation.html", html, "utf8");
-
-console.log("Menu généré ✔️");
+console.log("✅ Menu de la semaine généré dans data/menu.json");
