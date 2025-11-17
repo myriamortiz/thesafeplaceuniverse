@@ -1,0 +1,11 @@
+{
+  "name": "thesafeplaceuniverse",
+  "version": "1.0.0",
+  "description": "Auto-update weekly SafePlace data",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate_menu.js && node scripts/generate_recettes.js && node scripts/generate_courses.js && node scripts/generate_sport.js"
+  },
+  "author": "myriamortiz",
+  "license": "MIT"
+}
