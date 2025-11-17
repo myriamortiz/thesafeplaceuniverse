@@ -3,7 +3,7 @@ name: Generate Weekly SafePlace Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 2 * * 1"   # Tous les lundis à 02:00
+    - cron: "0 2 * * 1"
 
 jobs:
   build:
@@ -28,15 +28,4 @@ jobs:
           node scripts/generate_courses.js
           node scripts/generate_sport.js
 
-      - name: Commit updated data
-        run: |
-          git config --global user.email "bot@sfu.com"
-          git config --global user.name "SFU Bot"
-          git add data/*.json || echo "No JSON to add"
-          git commit -m "Update weekly SafePlace data" || echo "No changes"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+      - name: C
