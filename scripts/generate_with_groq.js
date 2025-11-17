@@ -11,31 +11,43 @@ const apiKey = process.env.GROQ_API_KEY;
 // Fonction d'appel Groq
 // ---------------------------
 async function askGroq(prompt) {
-  const response = await fetch(
-    "https://api.groq.com/openai/v1/chat/completions",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [{ role: "user", content: prompt }]
-      })
-    }
-  );
+  const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: "llama-3.3-70b-versatile",
+      messages: [{ role: "user", content: prompt }],
+      max_tokens: 1024
+    })
+  });
 
-  const json = await response.json();
+  // Si Groq renvoie pas un JSON valide
+  if (!response.ok) {
+    const text = await response.text();
+    console.error("❌ ERREUR HTTP GROQ :", response.status, text);
+    throw new Error("Requête Groq échouée.");
+  }
 
-  // ---- Debug si erreur ----
+  let json = {};
+  try {
+    json = await response.json();
+  } catch (e) {
+    console.error("❌ Impossible de décoder JSON :", e);
+    throw new Error("Groq a renvoyé une réponse illisible.");
+  }
+
+  // Si aucune réponse modèle
   if (!json.choices || !json.choices[0]) {
-    console.error("❌ Réponse Groq invalide :", json);
-    throw new Error("Groq n'a pas renvoyé de résultat.");
+    console.error("❌ Groq n’a rien renvoyé :", json);
+    throw new Error("Groq n’a pas généré de texte.");
   }
 
   return json.choices[0].message.content;
 }
+
 
 // ---------------------------
 // 1) MENU
