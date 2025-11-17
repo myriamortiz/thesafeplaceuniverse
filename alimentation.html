@@ -24,7 +24,6 @@
       <h2>🕒 Organisation alimentaire</h2>
       <p class="subtitle">Adaptée à ton rythme de travail et ton jeûne intermittent 🌙</p>
 
-      <!-- ✅ Correction : ajout de la balise <table> -->
       <table class="schedule-table">
         <thead>
           <tr>
@@ -37,25 +36,25 @@
         </thead>
         <tbody>
           <tr>
-            <td data-label="Poste"><strong>Matin (8h–16h15)</strong></td>
-            <td data-label="Fenêtre">12h–19h</td>
-            <td data-label="Brunch">12h00</td>
-            <td data-label="Collation">16h30</td>
-            <td data-label="Dîner">18h30</td>
+            <td><strong>Matin (8h–16h15)</strong></td>
+            <td>12h–19h</td>
+            <td>12h00</td>
+            <td>16h30</td>
+            <td>18h30</td>
           </tr>
           <tr>
-            <td data-label="Poste"><strong>Après-midi (16h–00h15)</strong></td>
-            <td data-label="Fenêtre">17h30–00h30</td>
-            <td data-label="Brunch">17h30</td>
-            <td data-label="Collation">21h00</td>
-            <td data-label="Dîner">23h30</td>
+            <td><strong>Après-midi (16h–00h15)</strong></td>
+            <td>17h30–00h30</td>
+            <td>17h30</td>
+            <td>21h00</td>
+            <td>23h30</td>
           </tr>
           <tr>
-            <td data-label="Poste"><strong>Nuit (00h–8h15)</strong></td>
-            <td data-label="Fenêtre">15h30–22h30</td>
-            <td data-label="Brunch">15h30</td>
-            <td data-label="Collation">19h00</td>
-            <td data-label="Dîner">22h00</td>
+            <td><strong>Nuit (00h–8h15)</strong></td>
+            <td>15h30–22h30</td>
+            <td>15h30</td>
+            <td>19h00</td>
+            <td>22h00</td>
           </tr>
         </tbody>
       </table>
@@ -85,56 +84,52 @@
   </main>
 
   <script>
-  // 🌸 Charge le menu généré automatiquement
-  fetch("data/menu.json")
-    .then(r => r.json())
-    .then(menu => {
-      const planContainer = document.getElementById("weeklyPlan");
-      planContainer.innerHTML = ""; // On vide le contenu actuel
+    // 🌸 Charge le menu généré automatiquement (data/menu.json)
+    fetch("data/menu.json")
+      .then(r => r.json())
+      .then(menu => {
+        const planContainer = document.getElementById("weeklyPlan");
+        planContainer.innerHTML = "";
 
-      menu.forEach((day, index) => {
-        // Chaque "day" = { jour, repas, collation }
-        const card = document.createElement("div");
-        card.className = "day-card";
-
-        card.innerHTML = `
-          <h3>🌸 ${day.jour}</h3>
-          <p><strong>Repas :</strong> ${day.repas}</p>
-          <p><strong>Collation :</strong> ${day.collation}</p>
-        `;
-
-        planContainer.appendChild(card);
+        menu.forEach(day => {
+          const card = document.createElement("div");
+          card.className = "day-card";
+          card.innerHTML = `
+            <h3>🌸 ${day.jour}</h3>
+            <p><strong>Repas :</strong> ${day.repas}</p>
+            <p><strong>Collation :</strong> ${day.collation}</p>
+          `;
+          planContainer.appendChild(card);
+        });
+      })
+      .catch(() => {
+        document.getElementById("weeklyPlan").innerHTML =
+          "<p>Impossible de charger ton plan alimentaire 🌧️</p>";
       });
-    })
-    .catch(() => {
-      document.getElementById("weeklyPlan").innerHTML =
-        "<p>Impossible de charger ton plan alimentaire 🌧️</p>";
+
+    // 💭 Sauvegarde du ressenti
+    const mood = document.getElementById("foodMood");
+    const msg = document.getElementById("moodMsg");
+
+    if (localStorage.getItem("foodMood")) {
+      mood.value = localStorage.getItem("foodMood");
+    }
+
+    mood.addEventListener("input", () => {
+      localStorage.setItem("foodMood", mood.value);
+      msg.style.display = "block";
+      msg.style.opacity = "1";
+      setTimeout(() => {
+        msg.style.opacity = "0";
+        setTimeout(() => (msg.style.display = "none"), 400);
+      }, 1500);
     });
+  </script>
 
-  // 💭 Sauvegarde du ressenti (inchangé)
-  const mood = document.getElementById("foodMood");
-  const msg = document.getElementById("moodMsg");
-
-  if (localStorage.getItem("foodMood")) {
-    mood.value = localStorage.getItem("foodMood");
-  }
-
-  mood.addEventListener("input", () => {
-    localStorage.setItem("foodMood", mood.value);
-    msg.style.display = "block";
-    msg.style.opacity = "1";
-    setTimeout(() => {
-      msg.style.opacity = "0";
-      setTimeout(() => (msg.style.display = "none"), 400);
-    }, 1500);
-  });
-</script>
-
-
-  <!-- 🌸 Ajout du script automatique -->
+  <!-- Script auto Lundi -->
   <script defer src="autoUpdate.js"></script>
 
-  <!-- 🌸 Bannière de notification automatique -->
+  <!-- Bannière -->
   <div id="autoBanner" class="auto-banner" style="display:none;">
     ✨ Ta nouvelle semaine a été générée automatiquement 🌸
   </div>
