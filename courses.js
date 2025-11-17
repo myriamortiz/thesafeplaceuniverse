@@ -1,13 +1,9 @@
-// 🛒 Chargement des courses depuis data/courses.json
-
 async function loadCourses() {
   const container = document.getElementById("coursesList");
   if (!container) return;
 
   try {
-   const response = await fetch("data/courses.json?cache=" + Date.now());
-
-    );
+    const response = await fetch("data/courses.json?cache=" + Date.now());
 
     if (!response.ok) throw new Error("Erreur");
 
