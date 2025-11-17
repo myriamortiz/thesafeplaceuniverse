@@ -1,13 +1,9 @@
-// 🏋️ Affichage du programme sport depuis data/sport.json
-
 async function loadSport() {
   const container = document.getElementById("sportPlan");
   if (!container) return;
 
   try {
-   const response = await fetch("data/sport.json?cache=" + Date.now());
-
-    );
+    const response = await fetch("data/sport.json?cache=" + Date.now());
 
     if (!response.ok) throw new Error("Erreur");
 
