@@ -1,37 +1,23 @@
-// Génère une liste de courses simple basée sur les repas "type"
+import fs from "fs";
 
-const fs = require("fs");
+// Lire recettes
+const recettes = JSON.parse(fs.readFileSync("data/recettes.json", "utf8"));
 
-// S'assure que le dossier data existe
-if (!fs.existsSync("data")) {
-  fs.mkdirSync("data");
-}
+let ingredients = [];
 
-// Liste de base – on pourra la rendre plus intelligente plus tard
-const courses = [
-  "Quinoa",
-  "Riz complet",
-  "Pâtes complètes",
-  "Poulet",
-  "Saumon",
-  "Thon en boîte",
-  "Lentilles",
-  "Patates douces",
-  "Brocoli",
-  "Carottes",
-  "Tomates",
-  "Salade verte / roquette",
-  "Concombre",
-  "Poivrons",
-  "Oignons",
-  "Yaourt grec",
-  "Fromage blanc",
-  "Fruits (pommes, bananes)",
-  "Amandes / oléagineux",
-  "Huile d'olive",
-  "Épices (paprika, curry, herbes de Provence)"
-];
+// Chaque jour contient brunch, collation, diner
+recettes.forEach(day => {
+  if (day.brunch?.ingredients) ingredients.push(...day.brunch.ingredients);
+  if (day.collation?.ingredients) ingredients.push(...day.collation.ingredients);
+  if (day.diner?.ingredients) ingredients.push(...day.diner.ingredients);
+});
 
-fs.writeFileSync("data/courses.json", JSON.stringify(courses, null, 2), "utf8");
+// Nettoyer les ingrédients
+const clean = ingredients.map(i => i.trim());
 
-console.log("✅ Liste de courses générée dans data/courses.json");
+// Supprimer les doublons
+const unique = [...new Set(clean)];
+
+fs.writeFileSync("data/courses.json", JSON.stringify(unique, null, 2), "utf8");
+
+console.log("🛒 Liste de courses générée automatiquement !");
