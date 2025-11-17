@@ -1,1 +1,37 @@
-[]
+[
+  {
+    "jour": "Jour 1",
+    "repas": "Pâtes complètes aux légumes grillés",
+    "collation": "Fromage blanc"
+  },
+  {
+    "jour": "Jour 2",
+    "repas": "Salade quinoa & poulet",
+    "collation": "Amandes"
+  },
+  {
+    "jour": "Jour 3",
+    "repas": "Poulet au four + patates douces",
+    "collation": "Amandes"
+  },
+  {
+    "jour": "Jour 4",
+    "repas": "Saumon + riz complet + brocoli",
+    "collation": "Fromage blanc"
+  },
+  {
+    "jour": "Jour 5",
+    "repas": "Salade quinoa & poulet",
+    "collation": "Banane"
+  },
+  {
+    "jour": "Jour 6",
+    "repas": "Buddha bowl veggie",
+    "collation": "Yaourt grec"
+  },
+  {
+    "jour": "Jour 7",
+    "repas": "Wrap thon & crudités",
+    "collation": "Fromage blanc"
+  }
+]

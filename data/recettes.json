@@ -1,1 +1,28 @@
-[]
+[
+  {
+    "nom": "Salade quinoa & poulet",
+    "etapes": [
+      "Cuire le quinoa dans de l'eau salée.",
+      "Cuire le poulet à la poêle avec un peu d'huile d'olive.",
+      "Mélanger quinoa, poulet, tomates, concombre, salade verte.",
+      "Assaisonner avec huile d'olive, jus de citron, sel, poivre."
+    ]
+  },
+  {
+    "nom": "Pâtes complètes aux légumes grillés",
+    "etapes": [
+      "Cuire les pâtes complètes.",
+      "Couper courgettes, poivrons, oignons et les faire griller au four ou à la poêle.",
+      "Mélanger pâtes + légumes, ajouter un filet d'huile d'olive et des herbes."
+    ]
+  },
+  {
+    "nom": "Saumon + riz complet + brocoli",
+    "etapes": [
+      "Cuire le riz complet.",
+      "Cuire le saumon au four ou à la poêle.",
+      "Cuire le brocoli à la vapeur.",
+      "Servir le tout avec un filet de citron."
+    ]
+  }
+]

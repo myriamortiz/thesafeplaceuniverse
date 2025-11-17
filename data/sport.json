@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "jour": "Lundi",
+    "exercice": "Full body doux (45 min)"
+  },
+  {
+    "jour": "Mardi",
+    "exercice": "Bas du corps + fessiers (45 min)"
+  },
+  {
+    "jour": "Mercredi",
+    "exercice": "Repos actif / marche / étirements légers"
+  },
+  {
+    "jour": "Jeudi",
+    "exercice": "Cardio doux + mobility (30 min)"
+  },
+  {
+    "jour": "Vendredi",
+    "exercice": "Core & gainage (30 min)"
+  },
+  {
+    "jour": "Samedi",
+    "exercice": "Repos actif / marche / étirements légers"
+  },
+  {
+    "jour": "Dimanche",
+    "exercice": "Repos actif / marche / étirements légers"
+  }
+]
