@@ -13,6 +13,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Create /data folder if missing
+        run: mkdir -p data
+
       - name: Generate weekly data
         run: |
           node scripts/generate_menu.js
