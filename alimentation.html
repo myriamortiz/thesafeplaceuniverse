@@ -85,7 +85,7 @@
 
   <script>
     // 🌸 Charge le menu généré automatiquement (data/menu.json)
-    fetch("data/menu.json")
+    fetch("/thesafeplaceuniverse/data/menu.json")
       .then(r => r.json())
       .then(menu => {
         const planContainer = document.getElementById("weeklyPlan");
