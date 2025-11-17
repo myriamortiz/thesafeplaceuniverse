@@ -4,55 +4,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🧁 Recettes – The Safe Place Universe</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <script defer src="autoUpdate.js"></script>
 </head>
 
 <body>
-
   <section class="splash">
-    <h1>🧁 Recettes de la semaine</h1>
-    <p class="subtitle">Des plats sains, simples et pleins de douceur 🌷</p>
+    <h1>🧁 Recettes complètes</h1>
+    <p class="subtitle">21 recettes – brunch, collation, dîner 🌸</p>
   </section>
 
   <main class="content">
-
     <div class="card">
-      <p class="mantra">“Je cuisine avec amour, et chaque bouchée nourrit mon bien-être.” 💫</p>
-
-      <!-- Zone où l’on affichera les recettes -->
-      <div id="recettes-container"></div>
+      <div id="recettes-container">Chargement...</div>
     </div>
 
     <nav class="menu">
-      <a href="courses.html">🛒 Voir ma liste de courses</a>
-      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
+      <a href="courses.html">🛒 Liste de courses</a>
+      <a href="alimentation.html">🍱 Retour alimentation</a>
     </nav>
-
   </main>
 
-  <!-- ⭐ SCRIPT AUTO : charge data/recettes.json -->
   <script>
-    fetch("/thesafeplaceuniverse/data/recettes.json?cache=" + Date.now())
-      .then(r => r.json())
-      .then(recettes => {
-        const container = document.getElementById("recettes-container");
-        container.innerHTML = "<h2>Recettes de la semaine</h2>";
+    async function loadRecettes() {
+      const container = document.getElementById("recettes-container");
 
-        recettes.forEach(r => {
+      try {
+        const response = await fetch("data/recettes.json?cache=" + Date.now());
+        const recettes = await response.json();
+
+        container.innerHTML = "";
+
+        recettes.forEach(day => {
           container.innerHTML += `
             <div class="day-card">
-              <h3>${r.nom}</h3>
-              <p>${r.details}</p>
+              <h2>🌸 ${day.jour}</h2>
+
+              <h3>${day.brunch.titre}</h3>
+              <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+              <p>${day.brunch.instructions}</p>
+
+              <h3>${day.collation.titre}</h3>
+              <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+              <p>${day.collation.instructions}</p>
+
+              <h3>${day.diner.titre}</h3>
+              <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+              <p>${day.diner.instructions}</p>
             </div>
           `;
         });
-      })
-      .catch(() => {
-        document.getElementById("recettes-container").innerHTML =
-          "<p>Impossible de charger les recettes 🌧️</p>";
-      });
-  </script>
+      } catch {
+        container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
+      }
+    }
 
+    document.addEventListener("DOMContentLoaded", loadRecettes);
+  </script>
 </body>
 </html>
+
