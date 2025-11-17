@@ -33,7 +33,7 @@
 
   <!-- ⭐ SCRIPT AUTO : charge data/recettes.json -->
   <script>
-    fetch("data/recettes.json")
+    fetch("/thesafeplaceuniverse/data/recettes.json?cache=" + Date.now())
       .then(r => r.json())
       .then(recettes => {
         const container = document.getElementById("recettes-container");
@@ -43,10 +43,7 @@
           container.innerHTML += `
             <div class="day-card">
               <h3>${r.nom}</h3>
-              <p><strong>Ingrédients :</strong></p>
-              <ul>
-                ${r.etapes.map(etape => `<li>${etape}</li>`).join("")}
-              </ul>
+              <p>${r.details}</p>
             </div>
           `;
         });
