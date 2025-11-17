@@ -20,6 +20,7 @@ jobs:
 
       - name: Generate weekly data (menu, recettes, sport, courses)
         run: |
+          mkdir -p data
           node scripts/generate_menu.js
           node scripts/generate_recettes.js
           node scripts/generate_courses.js
@@ -29,7 +30,7 @@ jobs:
         run: |
           git config --global user.email "bot@sfu.com"
           git config --global user.name "SFU Bot"
-          git add data/*.json || echo "No JSON to add"
+          git add data/ || echo "Nothing to add"
           git commit -m "Update weekly SafePlace data" || echo "No changes"
 
       - name: Push changes
