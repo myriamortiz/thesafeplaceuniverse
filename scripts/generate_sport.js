@@ -7,7 +7,6 @@ if (!fs.existsSync("data")) {
   fs.mkdirSync("data");
 }
 
-// Types de séances possibles (on ajustera selon ce que tu aimes)
 const sessions = [
   "Full body doux (45 min)",
   "Bas du corps + fessiers (45 min)",
@@ -18,22 +17,20 @@ const sessions = [
 
 const days = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 
-// On génère 4 séances dans la semaine, comme ton objectif
 const sportWeek = days.map((jour, index) => {
   if (["Lundi", "Mardi", "Jeudi", "Vendredi"].includes(jour)) {
     return {
       jour,
-      seance: sessions[index % sessions.length]
+      exercice: sessions[index % sessions.length]
     };
   } else {
     return {
       jour,
-      seance: "Repos actif / marche / étirements légers"
+      exercice: "Repos actif / marche / étirements légers"
     };
   }
 });
 
-// Écriture dans data/sport.json
 fs.writeFileSync("data/sport.json", JSON.stringify(sportWeek, null, 2), "utf8");
 
 console.log("✅ Programme sport généré dans data/sport.json");
