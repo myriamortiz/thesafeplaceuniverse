@@ -1,9 +1,9 @@
 name: Generate Weekly SafePlace Data
 
 on:
-  schedule:
-    - cron: "0 6 * * 1"  # Lundi à 6h
   workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * 1"   # Tous les lundis à 02:00
 
 jobs:
   build:
@@ -13,39 +13,27 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: 18
 
-      - name: Install dependencies
-        run: npm install || true
-
-      - name: Generate menu
-        run: node scripts/generate_menu.js
-
-      - name: Generate courses
-        run: node scripts/generate_courses.js
-
-      - name: Generate recipes
-        run: node scripts/generate_recettes.js
-
-      - name: Generate sport
-        run: node scripts/generate_sport.js
-
-      - name: Commit generated data
+      - name: Generate weekly data (menu, recettes, sport, courses)
         run: |
-          git config --global user.name "Github Actions"
-          git config --global user.email "actions@github.com"
-          git add data/*.json
-          git commit -m "📅 Auto-update weekly data" || echo "Nothing to commit"
+          node scripts/generate_menu.js
+          node scripts/generate_recettes.js
+          node scripts/generate_courses.js
+          node scripts/generate_sport.js
+
+      - name: Commit updated data
+        run: |
+          git config --global user.email "bot@sfu.com"
+          git config --global user.name "SFU Bot"
+          git add data/*.json || echo "No JSON to add"
+          git commit -m "Update weekly SafePlace data" || echo "No changes"
 
       - name: Push changes
-        uses: ad-m/github-push-action@v0.8.0
+        uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy to GitHub Pages
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: .
+          branch: main
