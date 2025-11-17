@@ -1,7 +1,7 @@
 [
   {
     "jour": "Lundi",
-    "exercice": "Full body doux (45 min)"
+    "exercice": "Full body (45 min)"
   },
   {
     "jour": "Mardi",
@@ -9,22 +9,22 @@
   },
   {
     "jour": "Mercredi",
-    "exercice": "Repos actif / marche / étirements légers"
+    "exercice": "Repos actif / marche / étirements"
   },
   {
     "jour": "Jeudi",
-    "exercice": "Cardio doux + mobility (30 min)"
+    "exercice": "Cardio doux + mobilité (30 min)"
   },
   {
     "jour": "Vendredi",
-    "exercice": "Core & gainage (30 min)"
+    "exercice": "Full body (45 min)"
   },
   {
     "jour": "Samedi",
-    "exercice": "Repos actif / marche / étirements légers"
+    "exercice": "Repos actif / marche / étirements"
   },
   {
     "jour": "Dimanche",
-    "exercice": "Repos actif / marche / étirements légers"
+    "exercice": "Repos actif / marche / étirements"
   }
 ]

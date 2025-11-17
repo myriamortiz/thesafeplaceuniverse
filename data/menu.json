@@ -1,37 +1,44 @@
 [
   {
     "jour": "Jour 1",
-    "repas": "Saumon + riz complet + brocoli",
-    "collation": "Yaourt grec"
+    "brunch": "Bowl sarrasin + chèvre + poire",
+    "collation": "Yaourt brebis + myrtilles",
+    "diner": "Saumon + riz + brocoli"
   },
   {
     "jour": "Jour 2",
-    "repas": "Salade quinoa & poulet",
-    "collation": "Amandes"
+    "brunch": "Galettes sarrasin + œuf + chèvre",
+    "collation": "Banane",
+    "diner": "Truite + riz basmati + légumes verts"
   },
   {
     "jour": "Jour 3",
-    "repas": "Poulet au four + patates douces",
-    "collation": "1 pomme"
+    "brunch": "Smoothie bowl coco + granola sans gluten",
+    "collation": "Fruits rouges + lait amande",
+    "diner": "Cabillaud + lentilles corail + courgettes"
   },
   {
     "jour": "Jour 4",
-    "repas": "Soupe de légumes & lentilles",
-    "collation": "1 pomme"
+    "brunch": "Galettes sarrasin + œuf + chèvre",
+    "collation": "Barre protéinée sans gluten",
+    "diner": "Poulet + patate douce + haricots verts"
   },
   {
     "jour": "Jour 5",
-    "repas": "Buddha bowl veggie",
-    "collation": "Amandes"
+    "brunch": "Bowl sarrasin + chèvre + poire",
+    "collation": "Fruits rouges + lait amande",
+    "diner": "Cabillaud + lentilles corail + courgettes"
   },
   {
     "jour": "Jour 6",
-    "repas": "Saumon + riz complet + brocoli",
-    "collation": "Banane"
+    "brunch": "Pancakes avoine sans gluten + fruits rouges",
+    "collation": "Fruits rouges + lait amande",
+    "diner": "Truite + riz basmati + légumes verts"
   },
   {
     "jour": "Jour 7",
-    "repas": "Buddha bowl veggie",
-    "collation": "Banane"
+    "brunch": "Omelette + avocat + patate douce",
+    "collation": "Amandes + tisane",
+    "diner": "Truite + riz basmati + légumes verts"
   }
 ]
