@@ -4,12 +4,16 @@ const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fet
 
 const apiKey = process.env.GROQ_API_KEY;
 
+// ---------------------------------------------
+// FONCTION QUI PARLE À GROQ
+// ---------------------------------------------
 async function askGroq(prompt) {
   const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`
+      "Authorization": `Bearer ${apiKey}`,
+      "X-Request-Origin": "groq-node"
     },
     body: JSON.stringify({
       model: "mixtral-8x7b-32768",
@@ -27,7 +31,9 @@ async function askGroq(prompt) {
   return json.choices[0].message.content;
 }
 
-// --------- 1) Menu ---------
+// ---------------------------------------------
+// 1) MENU
+// ---------------------------------------------
 async function generateMenu() {
   const prompt = `
 Tu génères un menu de 7 jours :
@@ -40,13 +46,14 @@ Format JSON strict :
   { "jour": "Jour 1", "brunch": "...", "collation": "...", "diner": "..." }
 ]
 `;
-
   const output = await askGroq(prompt);
   fs.writeFileSync("data/menu.json", output);
   console.log("🍽️ menu.json généré");
 }
 
-// --------- 2) Recettes ---------
+// ---------------------------------------------
+// 2) RECETTES
+// ---------------------------------------------
 async function generateRecettes() {
   const menu = JSON.parse(fs.readFileSync("data/menu.json", "utf8"));
 
@@ -64,13 +71,14 @@ Format JSON strict :
   }
 ]
 `;
-
   const output = await askGroq(prompt);
   fs.writeFileSync("data/recettes.json", output);
   console.log("📖 recettes.json généré");
 }
 
-// --------- 3) Courses ---------
+// ---------------------------------------------
+// 3) COURSES
+// ---------------------------------------------
 async function generateCourses() {
   const recettes = JSON.parse(fs.readFileSync("data/recettes.json", "utf8"));
   
@@ -86,7 +94,9 @@ async function generateCourses() {
   console.log("🛒 courses.json généré");
 }
 
-// --------- 4) Sport ---------
+// ---------------------------------------------
+// 4) SPORT
+// ---------------------------------------------
 async function generateSport() {
   const prompt = `
 Plan sport 7 jours :
@@ -98,13 +108,14 @@ Format JSON strict :
   { "jour": "Lundi", "exercice": "..." }
 ]
 `;
-
   const output = await askGroq(prompt);
   fs.writeFileSync("data/sport.json", output);
   console.log("💪 sport.json généré");
 }
 
-// --------- Main ---------
+// ---------------------------------------------
+// MAIN
+// ---------------------------------------------
 async function main() {
   await generateMenu();
   await generateRecettes();
