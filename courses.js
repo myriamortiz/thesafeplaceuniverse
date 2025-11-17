@@ -5,8 +5,8 @@ async function loadCourses() {
   if (!container) return;
 
   try {
-    const response = await fetch(
-      "https://myriamortiz.github.io/thesafeplaceuniverse/data/courses.json?cache=" + Date.now()
+   const response = await fetch("data/courses.json?cache=" + Date.now());
+
     );
 
     if (!response.ok) throw new Error("Erreur");
