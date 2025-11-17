@@ -1,88 +1,131 @@
 import fs from "fs";
 import path from "path";
 
-const recettes = [
+// --- Recettes compatibles Myriam --- //
+const RECIPES = [
   {
-    titre: "Salade quinoa & poulet",
+    titre: "Bowl quinoa + poulet citronné",
+    kcal: 430,
+    glutenFree: true,
+    dairyFree: true,
     ingredients: [
       "120 g de quinoa",
-      "1 blanc de poulet grillé",
+      "1 blanc de poulet",
       "1/2 avocat",
-      "1 poignée de tomates cerises",
-      "1 cuillère à café d’huile d’olive",
-      "Sel, poivre, citron"
-    ],
-    instructions: 
-      "1. Cuire le quinoa selon les indications.\n" +
-      "2. Griller le poulet puis le couper en lamelles.\n" +
-      "3. Mélanger quinoa, poulet, avocat et tomates.\n" +
-      "4. Assaisonner avec huile d’olive, citron, sel et poivre."
-  },
-  {
-    titre: "Pâtes complètes aux légumes grillés",
-    ingredients: [
-      "120 g de pâtes complètes",
-      "1 courgette",
-      "1 poivron",
-      "1 oignon",
-      "1 cuillère à café d’huile d’olive",
-      "Sel, ail, herbes aromatiques"
+      "1 poignée de roquette",
+      "Jus de citron",
+      "1 c. café huile d’olive",
+      "Sel, poivre"
     ],
     instructions:
-      "1. Cuire les pâtes.\n" +
-      "2. Couper les légumes et les faire griller à la poêle.\n" +
-      "3. Mélanger pâtes + légumes.\n" +
-      "4. Assaisonner avec ail, sel et herbes."
+      "1. Cuire le quinoa.\n2. Griller le poulet.\n3. Mélanger quinoa + poulet + avocat.\n4. Assaisonner citron + huile d’olive."
   },
   {
-    titre: "Saumon + riz complet + brocoli",
+    titre: "Saumon + riz complet + brocoli vapeur",
+    kcal: 480,
+    glutenFree: true,
+    dairyFree: true,
     ingredients: [
       "1 pavé de saumon",
       "120 g de riz complet",
       "1 bol de brocoli",
-      "1 cuillère à café d’huile d’olive",
       "Citron, sel, poivre"
     ],
     instructions:
-      "1. Cuire le riz.\n" +
-      "2. Cuire le saumon au four 12 min à 180°C.\n" +
-      "3. Cuire le brocoli à la vapeur.\n" +
-      "4. Servir avec un filet de citron."
+      "1. Cuire le riz.\n2. Cuire le saumon au four 12 min.\n3. Cuire le brocoli vapeur."
   },
   {
-    titre: "Buddha Bowl veggie",
+    titre: "Curry coco veggie rapide",
+    kcal: 400,
+    glutenFree: true,
+    dairyFree: true,
     ingredients: [
-      "80 g de pois chiches",
-      "1 petite patate douce",
-      "1 poignée d'épinards",
-      "1/2 avocat",
-      "Graines de sésame",
-      "Huile d’olive, sel, poivre"
+      "1 courgette",
+      "1 carotte",
+      "1/2 boîte pois chiches",
+      "100 ml lait de coco",
+      "1 c. café pâte curry",
+      "Sel"
     ],
     instructions:
-      "1. Rôtir la patate douce au four 20 min.\n" +
-      "2. Réchauffer les pois chiches.\n" +
-      "3. Composer le bol avec épinards + avocat.\n" +
-      "4. Ajouter sésame et assaisonnement."
+      "1. Faire revenir les légumes.\n2. Ajouter pois chiches + coco + curry.\n3. Servir chaud."
   },
   {
-    titre: "Wok de crevettes & légumes",
+    titre: "Wok crevettes + légumes",
+    kcal: 390,
+    glutenFree: true,
+    dairyFree: true,
     ingredients: [
       "150 g de crevettes",
       "Carottes, poivrons, brocoli",
-      "1 cuillère à soupe de sauce soja",
-      "1 cuillère à café d’huile",
+      "1 c. soupe sauce soja sans gluten",
       "Ail, gingembre"
     ],
     instructions:
-      "1. Faire revenir les crevettes.\n" +
-      "2. Ajouter les légumes coupés.\n" +
-      "3. Ajouter la sauce soja + ail + gingembre."
+      "1. Faire sauter les crevettes.\n2. Ajouter légumes et assaisonnement."
+  },
+  {
+    titre: "Buddha bowl patate douce & pois chiches",
+    kcal: 410,
+    glutenFree: true,
+    dairyFree: true,
+    ingredients: [
+      "1 petite patate douce",
+      "80 g pois chiches",
+      "Épinards",
+      "1/2 avocat",
+      "Sésame",
+      "Citron"
+    ],
+    instructions:
+      "1. Rôtir la patate douce.\n2. Réchauffer les pois chiches.\n3. Composer le bol + citron."
+  },
+  {
+    titre: "Pâtes sans gluten + légumes grillés",
+    kcal: 430,
+    glutenFree: true,
+    dairyFree: true,
+    ingredients: [
+      "120 g pâtes sans gluten (riz/maïs/lentilles)",
+      "1 courgette",
+      "1 poivron",
+      "Huile d’olive",
+      "Ail, herbes"
+    ],
+    instructions:
+      "1. Cuire les pâtes.\n2. Griller les légumes.\n3. Mélanger et assaisonner."
+  },
+  {
+    titre: "Poulet miel & moutarde + légumes",
+    kcal: 450,
+    glutenFree: true,
+    dairyFree: true,
+    ingredients: [
+      "1 blanc de poulet",
+      "1 c. café miel",
+      "1 c. café moutarde",
+      "Courgette, carottes"
+    ],
+    instructions:
+      "1. Mélanger miel + moutarde.\n2. Cuire le poulet.\n3. Ajouter légumes."
   }
 ];
 
+// --- Génération aléatoire --- //
+function pickRandomRecipes(count) {
+  const selected = [];
+  const pool = [...RECIPES];
+
+  while (selected.length < count && pool.length > 0) {
+    const index = Math.floor(Math.random() * pool.length);
+    selected.push(pool[index]);
+    pool.splice(index, 1);
+  }
+  return selected;
+}
+
+const output = pickRandomRecipes(5);
+
 const outPath = path.join("data", "recettes.json");
 
-fs.writeFileSync(outPath, JSON.stringify(recettes, null, 2), "utf-8");
-
-console.log("Recettes de la semaine générées !");
+fs.writeFileSync(outPath, JSON.stringif
