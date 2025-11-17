@@ -40,4 +40,44 @@
     <div class="card">
       <h2>📈 Suivi progression</h2>
       <ul id="progressList" class="checklist">
-        <li><in
+        <li><input type="checkbox" id="p-lundi"><label for="p-lundi"> Séance du lundi</label></li>
+        <li><input type="checkbox" id="p-mardi"><label for="p-mardi"> Séance du mardi</label></li>
+        <li><input type="checkbox" id="p-jeudi"><label for="p-jeudi"> Séance du jeudi</label></li>
+        <li><input type="checkbox" id="p-vendredi"><label for="p-vendredi"> Séance du vendredi</label></li>
+      </ul>
+    </div>
+
+    <nav class="menu">
+      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
+    </nav>
+
+  </main>
+
+  <!-- ⭐ Script qui charge sport.json automatiquement -->
+  <script>
+    fetch("/thesafeplaceuniverse/data/sport.json?cache=" + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        const container = document.getElementById("sport-container");
+        container.innerHTML = "";
+
+        data.forEach(day => {
+          const div = document.createElement("div");
+          div.className = "day-card";
+
+          div.innerHTML = `
+            <h3>${day.jour}</h3>
+            <p>${day.exercice}</p>
+          `;
+
+          container.appendChild(div);
+        });
+      })
+      .catch(() => {
+        document.getElementById("sport-container").innerHTML =
+          "<p>Impossible de charger ton planning sport 🌧</p>";
+      });
+  </script>
+
+</body>
+</html>
