@@ -1,6 +1,8 @@
 // ----- generate_with_groq.js -----
-const fetch = require("node-fetch");
 const fs = require("fs");
+
+// --- Node 18+ inclut déjà fetch nativement ---
+const fetch = global.fetch;
 
 const apiKey = process.env.GROQ_API_KEY;
 
@@ -18,6 +20,7 @@ async function askGroq(prompt) {
   });
 
   const json = await response.json();
+
   return json.choices[0].message.content;
 }
 
@@ -30,15 +33,10 @@ Règles :
 - Sans blé (alternatives sans gluten OK)
 - Sans lactose (OK végétal / brebis / chèvre)
 - Jeûne 17:7
-- 2 repas + 1 collation par jour : brunch, collation, dîner
+- 2 repas + 1 collation : brunch, collation, dîner
 Format JSON strict :
 [
-  {
-    "jour": "Jour X",
-    "brunch": "...",
-    "collation": "...",
-    "diner": "..."
-  }
+  { "jour": "Jour X", "brunch": "...", "collation": "...", "diner": "..." }
 ]
   `;
 
@@ -91,7 +89,7 @@ async function generateSport() {
   const prompt = `
 Génère un planning de sport pour 7 jours :
 - 4 séances maison (45 min)
-- 1 séance de bachata mercredi
+- 1 séance bachata mercredi
 - 2 jours repos actif
 
 Format JSON strict :
@@ -104,7 +102,7 @@ Format JSON strict :
   console.log("💪 sport.json généré !");
 }
 
-// --------- Lance tout ---------
+// --------- Lancer ---------
 async function main() {
   await generateMenu();
   await generateRecettes();
