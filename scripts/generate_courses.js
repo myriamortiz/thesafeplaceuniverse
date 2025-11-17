@@ -1,4 +1,4 @@
-import fs from "fs";
+const fs = require("fs");
 
 // Lire recettes
 const recettes = JSON.parse(fs.readFileSync("data/recettes.json", "utf8"));
