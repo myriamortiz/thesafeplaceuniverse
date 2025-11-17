@@ -3,7 +3,7 @@ name: Generate Weekly SafePlace Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 2 * * 1"
+    - cron: "0 2 * * 1"   # Tous les lundis à 02:00
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       - name: Create data folder if missing
         run: mkdir -p data
 
-      - name: Run weekly generators
+      - name: Generate weekly data
         run: |
           node scripts/generate_menu.js
           node scripts/generate_recettes.js
@@ -32,8 +32,8 @@ jobs:
         run: |
           git config --global user.email "bot@sfu.com"
           git config --global user.name "SFU Bot"
-          git add data/*.json || echo "No JSON changes"
-          git commit -m "Auto-update weekly SafePlace data" || echo "No changes to commit"
+          git add data/*.json || echo "No JSON to add"
+          git commit -m "Update weekly SafePlace data" || echo "No changes"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
