@@ -1,6 +1,6 @@
 // ----- generate_with_groq.js -----
-import fetch from "node-fetch";
-import fs from "fs";
+const fetch = require("node-fetch");
+const fs = require("fs");
 
 const apiKey = process.env.GROQ_API_KEY;
 
@@ -31,7 +31,7 @@ Règles :
 - Sans lactose (OK végétal / brebis / chèvre)
 - Jeûne 17:7
 - 2 repas + 1 collation par jour : brunch, collation, dîner
-Format :
+Format JSON strict :
 [
   {
     "jour": "Jour X",
@@ -54,7 +54,7 @@ async function generateRecettes() {
 Génère toutes les recettes du MENU suivant :
 ${JSON.stringify(menu)}
 
-Format :
+FORMAT JSON STRICT :
 [
   {
     "jour": "Jour X",
@@ -94,7 +94,7 @@ Génère un planning de sport pour 7 jours :
 - 1 séance de bachata mercredi
 - 2 jours repos actif
 
-Format :
+Format JSON strict :
 [
   { "jour": "Lundi", "exercice": "..." }
 ]
