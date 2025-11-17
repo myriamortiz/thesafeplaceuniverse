@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 Évolution corporelle – The Safe Place Universe</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* 🎀 Harmonisation du tableau */
+    #progressTable {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--blanc);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      margin-top: 1.2rem;
+    }
+
+    #progressTable th {
+      background-color: var(--pêche);
+      color: var(--texte);
+      font-weight: 600;
+      padding: 0.8rem;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    #progressTable td {
+      padding: 0.6rem;
+      text-align: center;
+      border-bottom: 1px solid #f3e7f5;
+    }
+
+    #progressTable tr:last-child td {
+      border-bottom: none;
+    }
+
+    #progressTable input {
+      width: 85%;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--lavande);
+      border-radius: 10px;
+      background: #fff9fb;
+      text-align: center;
+      font-family: 'Quicksand', sans-serif;
+      transition: all 0.2s ease;
+    }
+
+    #progressTable input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 5px rgba(240,184,202,0.4);
+    }
+
+    /* 🌸 Courbe centrée et harmonieuse */
+    canvas {
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 600px;
+    }
+
+    .mantra {
+      font-style: italic;
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="splash">
+    <h1>📊 Évolution corporelle</h1>
+    <p class="subtitle">Suis ton évolution en douceur, mois après mois 🌷</p>
+  </section>
+
+  <main class="content">
+    <div class="card">
+      <h2>🌸 Suivi mensuel</h2>
+      <p class="mantra">“Chaque progrès, même minime, est une victoire.” 💪</p>
+
+      <table id="progressTable">
+        <thead>
+          <tr>
+            <th>Mois</th>
+            <th>Poids (kg)</th>
+            <th>Taille (cm)</th>
+            <th>Hanche (cm)</th>
+            <th>Bras (cm)</th>
+            <th>Cuisse (cm)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Janvier</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Février</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Mars</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Avril</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Mai</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Juin</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Juillet</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Août</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Septembre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Octobre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Novembre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Décembre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>📈 Courbe d’évolution du poids</h2>
+      <canvas id="weightChart"></canvas>
+    </div>
+
+    <nav class="menu">
+      <a href="index.html">🏡 Retour à l’accueil</a>
+    </nav>
+  </main>
+
+  <script>
+    const inputs = document.querySelectorAll("#progressTable input");
+    const chartCtx = document.getElementById("weightChart");
+
+    // Charger les données sauvegardées
+    const savedData = JSON.parse(localStorage.getItem("bodyProgress")) || {};
+
+    inputs.forEach((input, i) => {
+      input.value = savedData[i] || "";
+      input.addEventListener("input", () => {
+        savedData[i] = input.value;
+        localStorage.setItem("bodyProgress", JSON.stringify(savedData));
+        updateChart();
+      });
+    });
+
+    function updateChart() {
+      const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+      const weights = [];
+      document.querySelectorAll("#progressTable tbody tr").forEach(row => {
+        const weight = parseFloat(row.cells[1].querySelector("input").value);
+        weights.push(isNaN(weight) ? null : weight);
+      });
+
+      if (window.weightChart) window.weightChart.destroy();
+
+      window.weightChart = new Chart(chartCtx, {
+        type: "line",
+        data: {
+          labels: months,
+          datasets: [{
+            label: "Poids (kg)",
+            data: weights,
+            fill: false,
+            borderColor: "#f0b8ca",
+            tension: 0.3,
+            pointBackgroundColor: "#d16ba5"
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: false,
+              ticks: { color: "#514b52" },
+              grid: { color: "#f5e6f0" }
+            },
+            x: {
+              ticks: { color: "#514b52" },
+              grid: { color: "transparent" }
+            }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    }
+
+    updateChart();
+  </script>
+</body>
+</html>

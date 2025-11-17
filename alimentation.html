@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍱 Alimentation – The Safe Place Universe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <section class="splash">
+    <h1>🍱 Alimentation</h1>
+    <p class="subtitle">Ton espace de nutrition douce et consciente 🌿</p>
+  </section>
+
+  <div class="mantra">
+    “Je nourris mon corps avec amour, douceur et équilibre.” 💫
+  </div>
+
+  <main class="content">
+
+    <!-- 🕒 Organisation alimentaire -->
+    <div class="card schedule-card">
+      <h2>🕒 Organisation alimentaire</h2>
+      <p class="subtitle">Adaptée à ton rythme de travail et ton jeûne intermittent 🌙</p>
+
+      <!-- ✅ Correction : ajout de la balise <table> -->
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>Poste</th>
+            <th>Fenêtre alimentaire</th>
+            <th>Brunch</th>
+            <th>Collation</th>
+            <th>Dîner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Poste"><strong>Matin (8h–16h15)</strong></td>
+            <td data-label="Fenêtre">12h–19h</td>
+            <td data-label="Brunch">12h00</td>
+            <td data-label="Collation">16h30</td>
+            <td data-label="Dîner">18h30</td>
+          </tr>
+          <tr>
+            <td data-label="Poste"><strong>Après-midi (16h–00h15)</strong></td>
+            <td data-label="Fenêtre">17h30–00h30</td>
+            <td data-label="Brunch">17h30</td>
+            <td data-label="Collation">21h00</td>
+            <td data-label="Dîner">23h30</td>
+          </tr>
+          <tr>
+            <td data-label="Poste"><strong>Nuit (00h–8h15)</strong></td>
+            <td data-label="Fenêtre">15h30–22h30</td>
+            <td data-label="Brunch">15h30</td>
+            <td data-label="Collation">19h00</td>
+            <td data-label="Dîner">22h00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 🌸 Plan automatique de la semaine -->
+    <div class="card">
+      <h2>🌸 Ton plan alimentaire de la semaine</h2>
+      <p class="subtitle">Mise à jour automatique chaque lundi matin 🌙</p>
+      <div id="weeklyPlan" class="week-grid"></div>
+    </div>
+
+    <!-- 💭 Ressenti -->
+    <div class="card mood-card">
+      <h2>💭 Mon ressenti du jour</h2>
+      <textarea id="foodMood" rows="3" placeholder="Comment te sens-tu aujourd’hui ? 💬"></textarea>
+      <p id="moodMsg" class="fade-msg">✨ C’est noté avec douceur 🌸</p>
+    </div>
+
+    <!-- 🌸 Navigation -->
+    <nav class="menu">
+      <a href="recettes.html">🧁 Voir mes recettes</a>
+      <a href="courses.html">🛒 Voir ma liste de courses</a>
+      <a href="complements.html">🌿 Compléments saisonniers</a>
+      <a href="index.html">🏡 Retour à l’accueil</a>
+    </nav>
+  </main>
+
+  <script>
+    // 🌸 Données de base du plan (exemple de structure auto)
+    const plans = [
+      { brunch: "Omelette, avocat, patate douce rôtie, kiwi", collation: "Yaourt brebis, amandes, banane", diner: "Saumon, riz basmati, légumes vapeur" },
+      { brunch: "Tofu grillé, quinoa, légumes croquants", collation: "Smoothie amande-banane", diner: "Poulet au four, pommes grenaille, haricots verts" },
+      { brunch: "Galettes sarrasin maison, œuf, jambon, chèvre", collation: "Pomme + purée d’amandes", diner: "Cabillaud, lentilles corail, légumes rôtis" },
+      { brunch: "Porridge avoine + miel, œuf dur", collation: "Yaourt coco + fruits rouges", diner: "Dinde, riz complet, ratatouille maison" },
+      { brunch: "Tartines sarrasin avocat-thon, poire", collation: "Noix de cajou + compote", diner: "Crevettes sautées, riz basmati, wok de légumes" },
+      { brunch: "Œufs brouillés, pain SG, orange", collation: "Yaourt brebis + granola", diner: "Poulet grillé, patate douce, courgettes rôties" },
+      { brunch: "Pancakes protéinés, fruits rouges, yaourt", collation: "Barre protéinée ou amandes", diner: "Saumon ou truite, riz, légumes verts vapeur" }
+    ];
+
+    // 🕰 Vérifie le lundi pour régénérer
+    const today = new Date();
+    const weekNumber = Math.ceil(today.getDate() / 7);
+    const savedWeek = localStorage.getItem("weekGenerated");
+
+    if (!savedWeek || savedWeek != weekNumber) {
+      localStorage.setItem("weekGenerated", weekNumber);
+      localStorage.setItem("weeklyPlan", JSON.stringify(plans));
+    }
+
+    const plan = JSON.parse(localStorage.getItem("weeklyPlan"));
+    const planContainer = document.getElementById("weeklyPlan");
+
+    plan.forEach((day, index) => {
+      const card = document.createElement("div");
+      card.className = "day-card";
+      card.innerHTML = `
+        <h3>🌸 Jour ${index + 1}</h3>
+        <p><strong>Brunch :</strong> ${day.brunch}</p>
+        <p><strong>Collation :</strong> ${day.collation}</p>
+        <p><strong>Dîner :</strong> ${day.diner}</p>
+      `;
+      planContainer.appendChild(card);
+    });
+
+    // 💭 Sauvegarde du ressenti
+    const mood = document.getElementById("foodMood");
+    const msg = document.getElementById("moodMsg");
+    if (localStorage.getItem("foodMood")) mood.value = localStorage.getItem("foodMood");
+
+    mood.addEventListener("input", () => {
+      localStorage.setItem("foodMood", mood.value);
+      msg.style.display = "block";
+      msg.style.opacity = "1";
+      setTimeout(() => {
+        msg.style.opacity = "0";
+        setTimeout(() => (msg.style.display = "none"), 400);
+      }, 1500);
+    });
+  </script>
+
+  <!-- 🌸 Ajout du script automatique -->
+  <script defer src="autoUpdate.js"></script>
+
+  <!-- 🌸 Bannière de notification automatique -->
+  <div id="autoBanner" class="auto-banner" style="display:none;">
+    ✨ Ta nouvelle semaine a été générée automatiquement 🌸
+  </div>
+</body>
+</html>

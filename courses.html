@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛒 Liste de courses – The Safe Place Universe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <section class="splash">
+    <h1>🛒 Liste de courses</h1>
+    <p class="subtitle">Ta semaine, prête à cuisiner en douceur 🌷</p>
+  </section>
+
+  <main class="content">
+    <div class="card">
+      <p class="mantra">“Je prépare mes repas avec légèreté, bienveillance et plaisir.” 💫</p>
+
+      <div id="shoppingListContainer"></div>
+    </div>
+
+    <nav class="menu">
+      <a href="recettes.html">🧁 Voir mes recettes</a>
+      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
+    </nav>
+  </main>
+
+  <script>
+    // 🌸 Ingrédients regroupés par catégories (automatiquement mis à jour)
+    const ingredients = {
+      "🥦 Fruits & Légumes": [
+        "Avocat",
+        "Patate douce",
+        "Kiwi",
+        "Banane",
+        "Brocolis",
+        "Carottes",
+        "Courgettes",
+        "Poivron",
+        "Concombre",
+        "Aubergine",
+        "Myrtilles",
+        "Fruits rouges",
+        "Orange",
+        "Poire",
+        "Pomme",
+        "Mandarine",
+        "Roquette",
+        "Légumes verts vapeur"
+      ],
+      "🍗 Protéines": [
+        "Œufs",
+        "Blancs d’œuf",
+        "Tofu grillé",
+        "Poulet",
+        "Dinde",
+        "Saumon",
+        "Truite",
+        "Crevettes",
+        "Cabillaud",
+        "Thon",
+        "Jambon blanc"
+      ],
+      "🌾 Féculents & Céréales": [
+        "Quinoa",
+        "Riz basmati",
+        "Riz complet",
+        "Flocons d’avoine",
+        "Pain sarrasin",
+        "Pain sans gluten",
+        "Lentilles corail",
+        "Pommes de terre grenaille"
+      ],
+      "🥛 Produits laitiers & substituts": [
+        "Yaourt brebis",
+        "Yaourt végétal",
+        "Lait d’amande",
+        "Lait d’avoine",
+        "Fromage de chèvre",
+        "Yaourt coco"
+      ],
+      "🌸 Autres / Condiments": [
+        "Huile d’olive",
+        "Huile de sésame",
+        "Huile de coco",
+        "Graines de chia",
+        "Graines de lin moulues",
+        "Miel",
+        "Citron",
+        "Herbes fraîches",
+        "Cannelle",
+        "Amandes",
+        "Noix de cajou",
+        "Purée d’amandes",
+        "Purée de noisettes",
+        "Purée de cacahuète",
+        "Poudre protéinée végétale",
+        "Granola maison",
+        "Chocolat noir 85 %",
+        "Tisane"
+      ]
+    };
+
+    const container = document.getElementById("shoppingListContainer");
+
+    Object.keys(ingredients).forEach(category => {
+      const categoryCard = document.createElement("div");
+      categoryCard.className = "day-card";
+
+      const title = document.createElement("h3");
+      title.textContent = category;
+      categoryCard.appendChild(title);
+
+      const list = document.createElement("ul");
+
+      ingredients[category].forEach(item => {
+        const li = document.createElement("li");
+        const id = `chk-${item.replace(/\s+/g, '-')}`;
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = id;
+
+        // Vérifie si déjà coché
+        if (localStorage.getItem(id) === "true") checkbox.checked = true;
+
+        checkbox.addEventListener("change", () => {
+          localStorage.setItem(id, checkbox.checked);
+        });
+
+        const label = document.createElement("label");
+        label.setAttribute("for", id);
+        label.textContent = " " + item;
+
+        li.appendChild(checkbox);
+        li.appendChild(label);
+        list.appendChild(li);
+      });
+
+      categoryCard.appendChild(list);
+      container.appendChild(categoryCard);
+    });
+  </script>
+
+  <!-- 🌸 Ajout du script automatique -->
+  <script defer src="autoUpdate.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧘‍♀️ Mindset – The Safe Place Universe</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="mindset.js"></script>
+</head>
+
+<body>
+  <section class="splash">
+    <h1>🧘‍♀️ Mindset</h1>
+    <p class="subtitle">Ralentis, écris, respire. C’est ton moment intérieur 🌷</p>
+  </section>
+
+  <main class="content">
+
+    <!-- 🌙 Rituel d’entrée -->
+    <div class="card">
+      <h2>🌙 Rituel d’entrée</h2>
+      <p class="mantra">Ferme les yeux, inspire profondément 🌬</p>
+      <p class="quote centered-quote">“Cette semaine, je choisis la douceur plutôt que la dureté,<br>la présence plutôt que la perfection.”</p>
+    </div>
+
+    <!-- 💬 Bilan doux -->
+    <div class="card">
+      <h2>💬 Bilan doux</h2>
+      <div class="form-block">
+        <label>Cette semaine, j’ai ressenti…</label>
+        <textarea id="ressenti" rows="2" placeholder="Une émotion, un mot-clé, un moment fort..."></textarea>
+
+        <label>Ce qui m’a le plus pesé…</label>
+        <textarea id="poids" rows="2" placeholder="Et ce que je peux relâcher maintenant..."></textarea>
+
+        <label>Ce que j’ai appris ou compris sur moi :</label>
+        <textarea id="appris" rows="2" placeholder="Même une micro-prise de conscience..."></textarea>
+      </div>
+    </div>
+
+    <!-- 🌷 Gratitude -->
+    <div class="card">
+      <h2>🌷 Gratitude & petites lueurs</h2>
+      <label>💖 Trois choses pour lesquelles je me sens reconnaissante :</label>
+      <ul class="gratitude-list">
+        <li><input type="text" id="grat1" placeholder="1." /></li>
+        <li><input type="text" id="grat2" placeholder="2." /></li>
+        <li><input type="text" id="grat3" placeholder="3." /></li>
+      </ul>
+
+      <label>✨ Une mini-victoire de la semaine :</label>
+      <textarea id="victoire" rows="2" placeholder="Cette fois, j’ai réussi à..."></textarea>
+    </div>
+
+    <!-- 🌸 Intentions -->
+    <div class="card">
+      <h2>🌸 Intentions de la semaine à venir</h2>
+      <div class="mini-grid">
+        <div class="mini-card">
+          <label>🌿 Mon mot-clé :</label>
+          <input type="text" id="motcle" placeholder="Ex : sérénité, équilibre, joie..." />
+        </div>
+        <div class="mini-card">
+          <label>🌙 Mon intention :</label>
+          <input type="text" id="intention" placeholder="Ex : ralentir, écouter, oser..." />
+        </div>
+      </div>
+
+      <label>💫 Mes trois mini-objectifs bien-être :</label>
+      <ul class="objectifs-list">
+        <li><input type="text" id="obj1" placeholder="Corps :" /></li>
+        <li><input type="text" id="obj2" placeholder="Mental :" /></li>
+        <li><input type="text" id="obj3" placeholder="Énergie / Self-love :" /></li>
+      </ul>
+    </div>
+
+    <!-- 💎 Affirmation -->
+    <div class="card affirmation-card">
+      <h2>💎 Affirmation de la semaine</h2>
+      <p id="affirmationText" class="quote">Chargement...</p>
+    </div>
+
+    <!-- 🕊 Note à soi-même -->
+    <div class="card mood-card">
+      <h2>🕊 Note à moi-même</h2>
+      <textarea id="note" rows="4" placeholder="Écris ici un message d’amour à ton toi intérieur 💌"></textarea>
+      <p id="noteMsg" class="fade-msg">✨ Ton message a été enregistré avec douceur 🌿</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="menu">
+      <a href="index.html">🏡 Retour à l’accueil</a>
+    </nav>
+  </main>
+</body>
+</html>
+

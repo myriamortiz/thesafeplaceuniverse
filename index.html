@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌸 The Safe Place Universe – Project Me</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <section class="splash">
+    <h1>🌸 The Safe Place Universe</h1>
+    <p class="subtitle">Project Me — ton espace vivant, doux et évolutif 🌙</p>
+  </section>
+
+  <main class="content">
+    <!-- 💫 Citation du jour -->
+    <div class="card">
+      <h2>💫 Citation du jour</h2>
+      <p id="quote">Chargement...</p>
+    </div>
+
+    <!-- 🕯️ Ton espace personnel -->
+    <div class="card personal-space">
+      <h2>🕯️ Ton espace personnel</h2>
+      <p class="subtitle">Prends une minute pour te reconnecter à toi-même 🌙</p>
+
+      <div class="mini-grid">
+        <div class="mini-card">
+          <h3>💭 Ton humeur du jour</h3>
+          <textarea rows="2" placeholder="Comment te sens-tu aujourd’hui ? 💬"></textarea>
+        </div>
+
+        <div class="mini-card">
+          <h3>🌷 Tes 3 gratitudes</h3>
+          <ul>
+            <li><input type="text" placeholder="Gratitude n°1 💖"></li>
+            <li><input type="text" placeholder="Gratitude n°2 🌸"></li>
+            <li><input type="text" placeholder="Gratitude n°3 🌿"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 📅 Petits rituels du jour (automatique) -->
+    <div class="card">
+      <h2>📅 Petits rituels du jour</h2>
+      <ul class="checklist" id="dailyRituals"></ul>
+    </div>
+
+    <!-- 🌸 Explorer ton univers -->
+    <div class="card">
+      <h2>🌸 Explorer ton univers</h2>
+      <nav class="menu">
+        <div class="home-grid">
+          <a href="alimentation.html" class="home-card">🍱 <span>Alimentation</span></a>
+          <a href="sport.html" class="home-card">💪 <span>Sport</span></a>
+          <a href="evolution.html" class="home-card">📊 <span>Évolution</span></a>
+          <a href="bien-etre.html" class="home-card">🕯 <span>Bien-être</span></a>
+          <a href="mindset.html" class="home-card">🧘‍♀️ <span>Mindset</span></a>
+          <a href="vision-board.html" class="home-card">🌷 <span>Vision Board</span></a>
+        </div>
+      </nav>
+    </div>
+  </main>
+
+  <!-- 🌿 Script pour rituels automatiques -->
+  <script>
+  // 🌸 Rituels variés pour chaque jour
+  const ritualsList = [
+    "💧 Boire 1L d’eau",
+    "🌬 Respirer en conscience 3x",
+    "💪 Faire bouger ton corps",
+    "🕯 Prendre 5 min de calme",
+    "🍵 Boire une tisane ou un matcha en pleine présence",
+    "📖 Lire 2 pages d’un livre apaisant",
+    "🌷 Noter 1 chose dont tu es fière aujourd’hui",
+    "💖 Dire quelque chose de doux à ton reflet",
+    "🎧 Écouter une musique qui t’élève",
+    "🌸 Ranger un petit espace pour clarifier ton esprit",
+    "🪞Respirer profondément en te regardant avec bienveillance",
+    "🌙 Étendre la gratitude à quelqu’un autour de toi",
+    "💌 Écrire une phrase d’amour à toi-même",
+    "☀️ T’exposer à la lumière naturelle au réveil",
+    "🧘‍♀️ Fermer les yeux et relâcher tes épaules 30 sec",
+    "🪴 Faire un geste lent et conscient (verser ton thé, plier un vêtement...)"
+  ];
+
+  const ritualContainer = document.getElementById("dailyRituals");
+
+  // 🕰 Change automatiquement chaque jour
+  const today = new Date();
+  const dayKey = today.toISOString().split("T")[0];
+
+  // Si déjà généré aujourd’hui → le garder
+  let todayRituals = JSON.parse(localStorage.getItem("rituals")) || {};
+  if (todayRituals.date !== dayKey) {
+    const shuffled = ritualsList.sort(() => 0.5 - Math.random());
+    todayRituals = { date: dayKey, rituals: shuffled.slice(0, 4) };
+    localStorage.setItem("rituals", JSON.stringify(todayRituals));
+  }
+
+  // 🌿 Affiche les 4 rituels du jour avec effet doux
+  todayRituals.rituals.forEach((r, i) => {
+    const li = document.createElement("li");
+    li.classList.add("fade-in");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = `ritual-${i}`;
+
+    const label = document.createElement("label");
+    label.setAttribute("for", checkbox.id);
+    label.textContent = " " + r;
+
+    li.appendChild(checkbox);
+    li.appendChild(label);
+    ritualContainer.appendChild(li);
+  });
+  </script>
+</body>
+</html>
