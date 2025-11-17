@@ -1,14 +1,9 @@
-
-// 🌸 Chargement auto depuis data/recettes.json
-
 async function loadRecettes() {
   const container = document.getElementById("recettesList");
   if (!container) return;
 
   try {
     const response = await fetch("data/recettes.json?cache=" + Date.now());
-
-    );
 
     if (!response.ok) throw new Error("Erreur");
 
@@ -24,6 +19,7 @@ async function loadRecettes() {
       `;
       container.appendChild(block);
     });
+
   } catch (e) {
     container.innerHTML = "<p style='text-align:center;'>🍃 Impossible de charger les recettes</p>";
   }
