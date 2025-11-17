@@ -1,8 +1,8 @@
 [
   {
     "jour": "Jour 1",
-    "repas": "Pâtes complètes aux légumes grillés",
-    "collation": "Fromage blanc"
+    "repas": "Saumon + riz complet + brocoli",
+    "collation": "Yaourt grec"
   },
   {
     "jour": "Jour 2",
@@ -12,26 +12,26 @@
   {
     "jour": "Jour 3",
     "repas": "Poulet au four + patates douces",
-    "collation": "Amandes"
+    "collation": "1 pomme"
   },
   {
     "jour": "Jour 4",
-    "repas": "Saumon + riz complet + brocoli",
-    "collation": "Fromage blanc"
+    "repas": "Soupe de légumes & lentilles",
+    "collation": "1 pomme"
   },
   {
     "jour": "Jour 5",
-    "repas": "Salade quinoa & poulet",
-    "collation": "Banane"
+    "repas": "Buddha bowl veggie",
+    "collation": "Amandes"
   },
   {
     "jour": "Jour 6",
-    "repas": "Buddha bowl veggie",
-    "collation": "Yaourt grec"
+    "repas": "Saumon + riz complet + brocoli",
+    "collation": "Banane"
   },
   {
     "jour": "Jour 7",
-    "repas": "Wrap thon & crudités",
-    "collation": "Fromage blanc"
+    "repas": "Buddha bowl veggie",
+    "collation": "Banane"
   }
 ]
