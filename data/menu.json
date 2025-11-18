@@ -1,44 +1,44 @@
 [
   {
     "jour": "Jour 1",
-    "brunch": "Oeufs brouillés avec épinards et tomates (300 kcal)",
-    "collation": "Fruits frais (150 kcal) et noix de macadamia (100 kcal)",
-    "diner": "Poulet grillé avec légumes sautés (400 kcal) et salade verte (50 kcal)"
+    "brunch": "Omelette aux herbes (2 œufs, 1/4 tasse de fromage de chèvre) avec salade verte et fruits (300 kcal)",
+    "collation": "Pomme et 1 cuillère à soupe de beurre de cacahuète (150 kcal)",
+    "diner": "Poulet grillé avec légumes sautés (poivrons, courgettes, aubergines) et quinoa (500 kcal)"
   },
   {
     "jour": "Jour 2",
-    "brunch": "Avocat avec oeufs durs et tomates (350 kcal)",
-    "collation": "Carottes crues avec hummus (100 kcal) et fruits secs (50 kcal)",
-    "diner": "Saumon grillé avec quinoa et légumes (500 kcal)"
+    "brunch": "Smoothie bowle au chia, banane, framboises et lait de brebis (350 kcal)",
+    "collation": "Carottes crues avec hummus (100 kcal)",
+    "diner": "Saumon grillé avec salade de betteraves et avocat (550 kcal)"
   },
   {
     "jour": "Jour 3",
-    "brunch": "Smoothie aux fruits et légumes (250 kcal) avec lait de chèvre (100 kcal)",
-    "collation": "Noix de grenoble et raisins secs (120 kcal)",
-    "diner": "Boeuf grillé avec légumes et salade (450 kcal)"
+    "brunch": "Tartine de pain de riz aux amandes et fromage de chèvre, avec fruits (320 kcal)",
+    "collation": "Yaourt de brebis avec noix et baies (150 kcal)",
+    "diner": "Boeuf grillé avec haricots verts et patates douces (520 kcal)"
   },
   {
     "jour": "Jour 4",
-    "brunch": "Tofu avec légumes sautés et riz brun (400 kcal)",
-    "collation": "Fruits frais (150 kcal) et amandes (100 kcal)",
-    "diner": "Poulet au curry avec légumes et riz (500 kcal)"
+    "brunch": "Omelette aux champignons et fromage de brebis, avec salade verte (280 kcal)",
+    "collation": "Poivron cru avec guacamole (120 kcal)",
+    "diner": "Poulet cuit au four avec légumes et quinoa (480 kcal)"
   },
   {
     "jour": "Jour 5",
-    "brunch": "Omelette aux légumes avec salade verte (300 kcal)",
-    "collation": "Carottes crues avec hummus (100 kcal) et noix de macadamia (100 kcal)",
-    "diner": "Saumon grillé avec quinoa et légumes (500 kcal)"
+    "brunch": "Salade de crevettes avec laitue, tomates et vinaigre de citron (300 kcal)",
+    "collation": "Raisins secs et noix (130 kcal)",
+    "diner": "Dinde grillée avec salade de chou et carottes (500 kcal)"
   },
   {
     "jour": "Jour 6",
-    "brunch": "Avocat avec oeufs durs et tomates (350 kcal)",
-    "collation": "Fruits frais (150 kcal) et noix de grenoble (120 kcal)",
-    "diner": "Boeuf grillé avec légumes et salade (450 kcal)"
+    "brunch": "Smoothie au kiwi, épinards et lait de brebis (330 kcal)",
+    "collation": "Betterave crue avec beurre de cacahuète (140 kcal)",
+    "diner": "Saumon cuit au four avec asperges et quinoa (540 kcal)"
   },
   {
     "jour": "Jour 7",
-    "brunch": "Smoothie aux fruits et légumes (250 kcal) avec lait de brebis (100 kcal)",
-    "collation": "Noix de macadamia et raisins secs (120 kcal)",
-    "diner": "Poulet au curry avec légumes et riz (500 kcal)"
+    "brunch": "Tartine de pain de riz aux noix et fromage de chèvre, avec fruits (300 kcal)",
+    "collation": "Pomme et 1 cuillère à soupe de beurre de cacahuète (150 kcal)",
+    "diner": "Poulet grillé avec salade de betteraves et avocat (520 kcal)"
   }
 ]

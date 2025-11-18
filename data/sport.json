@@ -26,5 +26,9 @@
   {
     "jour": "Dimanche",
     "exercice": "Repos actif"
+  },
+  {
+    "jour": "Un autre jour",
+    "exercice": "Repos actif"
   }
 ]
