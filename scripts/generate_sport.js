@@ -4,48 +4,78 @@ const fs = require("fs");
 
 if (!fs.existsSync("data")) fs.mkdirSync("data");
 
-// Séances définies automatiquement
-const sessions = [
+const fullBody = [
+  "Squats — 40 sec",
+  "Pompes — 40 sec",
+  "Fentes alternées — 40 sec",
+  "Planche — 40 sec",
+  "Hip Thrust — 40 sec",
+];
+
+const upper = [
+  "Row élastique — 15 reps",
+  "Élévations latérales — 12 reps",
+  "Curl biceps — 15 reps",
+  "Extensions triceps — 12 reps",
+  "Pompes murales — 12 reps"
+];
+
+const lower = [
+  "Squats — 15 reps",
+  "Kickbacks élastique — 15 reps/jambe",
+  "Hip Thrust — 20 reps",
+  "Fentes arrière — 12 reps/jambe",
+  "Abduction élastique — 20 reps"
+];
+
+const abs = [
+  "Crunchs — 15 reps",
+  "Planche — 30 sec",
+  "Relevés de jambes — 12 reps",
+  "Russian twists — 20 reps",
+  "Planche latérale — 20 sec/côté"
+];
+
+const shuffle = (arr) => arr.sort(() => 0.5 - Math.random());
+
+// --- Construction du programme ---
+const sport = [
   {
-    type: "Séance maison full body",
-    details: "squats, pompes, planches, lunges"
+    jour: "Lundi",
+    type: "Full Body — 3 tours (40\" / 20\")",
+    details: [...shuffle(fullBody), "⏳ Repos : 1 min entre chaque tour"]
   },
   {
-    type: "Séance maison dos et bras",
-    details: "tractions, extensions, rows, biceps"
+    jour: "Mardi",
+    type: "Haut du corps — 3 séries",
+    details: [...shuffle(upper), "⏳ Repos : 1 min entre les séries"]
   },
   {
-    type: "Séance maison jambes",
-    details: "squats, lunges, fentes, extensions"
+    jour: "Mercredi",
+    type: "Bachata",
+    details: ["Cours + rythme", "Pas de base", "Impro 5 min"]
   },
   {
-    type: "Séance maison abdominaux",
-    details: "planches, crunchs, Russian twists, leg raises"
+    jour: "Jeudi",
+    type: "Bas du corps — 3 séries",
+    details: [...shuffle(lower), "🔥 Finisher : pont fessier — 45 sec"]
+  },
+  {
+    jour: "Vendredi",
+    type: "Abdos — 3 tours",
+    details: [...shuffle(abs), "⏳ Repos : 45 sec entre les tours"]
+  },
+  {
+    jour: "Samedi",
+    type: "Repos actif",
+    details: ["Marche 30 min", "Stretching doux"]
+  },
+  {
+    jour: "Dimanche",
+    type: "Repos actif",
+    details: ["Yoga doux 10 min", "Étirements"]
   }
 ];
 
-const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
-
-let sport = jours.map((j, i) => {
-  // Séances pour lundi, mardi, jeudi, vendredi
-  if (["Lundi", "Mardi", "Jeudi", "Vendredi"].includes(j)) {
-    let index = i % sessions.length;
-    return {
-      jour: j,
-      type: sessions[index].type,
-      details: sessions[index].details
-    };
-  }
-
-  // Repos actif
-  return {
-    jour: j,
-    type: "Repos actif",
-    details: j === "Dimanche"
-      ? "yoga doux, étirements de base"
-      : "marche de 30 minutes, stretching doux"
-  };
-});
-
 fs.writeFileSync("data/sport.json", JSON.stringify(sport, null, 2));
-console.log("✅ sport.json généré avec succès !");
+console.log("✅ sport.json généré automatiquement !");
