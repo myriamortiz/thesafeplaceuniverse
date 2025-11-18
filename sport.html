@@ -60,12 +60,16 @@
         div.innerHTML = `
           <h3>${day.jour}</h3>
           <p><strong>${day.type}</strong></p>
-          <p><strong>Séries :</strong> ${day.series}</p>
-          <p><strong>Répétitions :</strong> ${day.repetitions}</p>
-          <p><strong>Repos :</strong> ${day.repos}</p>
-          <p><strong>Tours :</strong> ${day.tours}</p>
+
+          <p><strong>Séries :</strong> ${day.series || "—"}</p>
+          <p><strong>Répétitions :</strong> ${day.repetitions || "—"}</p>
+          <p><strong>Tours :</strong> ${day.tours || "—"}</p>
+          <p><strong>Repos :</strong> ${day.repos || "—"}</p>
+
           <p><strong>Exercices :</strong></p>
-          <ul>${day.exercices.map(e => `<li>${e}</li>`).join("")}</ul>
+          <ul>
+            ${day.exercices ? day.exercices.map(e => `<li>${e}</li>`).join("") : "<li>—</li>"}
+          </ul>
         `;
 
         container.appendChild(div);
