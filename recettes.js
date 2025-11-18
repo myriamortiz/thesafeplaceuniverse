@@ -1,27 +1,33 @@
 async function loadRecettes() {
-  const container = document.getElementById("recettesList");
-  if (!container) return;
+  const container = document.getElementById("recettes-container");
 
   try {
     const response = await fetch("data/recettes.json?cache=" + Date.now());
-
-    if (!response.ok) throw new Error("Erreur");
-
     const recettes = await response.json();
+
     container.innerHTML = "";
 
-    recettes.forEach(item => {
-      const block = document.createElement("div");
-      block.className = "recette-card";
-      block.innerHTML = `
-        <h3>${item.nom}</h3>
-        <p>${item.details}</p>
-      `;
-      container.appendChild(block);
-    });
+    recettes.forEach(day => {
+      container.innerHTML += `
+        <div class="day-card">
+          <h2>🌸 ${day.jour}</h2>
 
+          <h3>${day.brunch.titre}</h3>
+          <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+          <p>${day.brunch.instructions}</p>
+
+          <h3>${day.collation.titre}</h3>
+          <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+          <p>${day.collation.instructions}</p>
+
+          <h3>${day.diner.titre}</h3>
+          <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+          <p>${day.diner.instructions}</p>
+        </div>
+      `;
+    });
   } catch (e) {
-    container.innerHTML = "<p style='text-align:center;'>🍃 Impossible de charger les recettes</p>";
+    container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
   }
 }
 
