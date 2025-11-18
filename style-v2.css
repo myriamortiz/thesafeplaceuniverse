@@ -240,3 +240,10 @@ li {
   color: var(--texte);
 }
 
+.sport-quote {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1rem 0;
+  display: block;
+  width: 100%;
+}
