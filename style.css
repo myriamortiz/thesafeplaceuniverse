@@ -26,80 +26,50 @@ body {
   font-family: 'Quicksand', sans-serif;
   padding: 2rem;
   line-height: 1.6;
+  animation: fadeIn 1.5s ease;
 }
 
-/* TITRES */
+/* Apparition douce */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 h1, h2 {
   font-family: 'Playfair Display', serif;
   color: var(--texte);
   text-align: center;
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 0.3em; }
-.subtitle { text-align: center; font-size: 1.1rem; margin-bottom: 2rem; }
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.3em;
+}
 
-/* CARTES */
-.card,
-.personal-space,
-.mood-card,
-.gratitude-card {
+.subtitle {
+  text-align: center;
+  color: var(--texte);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Cartes pastel */
+.card {
   background: var(--blanc);
   border-radius: 25px;
   padding: 1.5rem 2rem;
   margin: 1.5rem auto;
   max-width: 700px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* INPUTS & TEXTAREAS */
-textarea, input[type="text"], input[type="number"] {
-  width: 100%;
-  padding: 0.7rem;
-  border-radius: 12px;
-  border: 1px solid var(--lavande);
-  background: #fff;
-  margin-top: 6px;
-  font-size: 0.95rem;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-textarea:focus, input:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: #fff9fb;
-}
-
-/* CHECKLIST */
-input[type="checkbox"] {
-  transform: scale(1.2);
-  accent-color: var(--accent);
-  margin-right: 8px;
-}
-
-/* MENU */
-.menu {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.menu a {
-  background: var(--pêche);
-  color: var(--texte);
-  padding: 0.7rem 1.4rem;
-  border-radius: 14px;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.menu a:hover {
-  background: var(--accent);
-  color: white;
-}
-
-/* PAGE ALIMENTATION */
+/* Table Harmonieux */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -107,35 +77,32 @@ table {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin-top: 1rem;
 }
 
 th {
   background-color: var(--pêche);
-  padding: 0.8rem;
+  color: var(--texte);
   font-weight: 600;
+  padding: 0.8rem;
+  text-align: center;
 }
 
-td { padding: 0.6rem; }
-
-/* PAGE COURSES */
-.course-item {
-  padding: 14px 20px;
-  background: #fffafc;
-  border-radius: 14px;
-  margin: 12px 0;
-  box-shadow: 0 3px 8px rgba(255, 180, 220, 0.25);
-  display: flex;
-  gap: 12px;
-  font-size: 18px;
-  align-items: center;
+td {
+  padding: 0.6rem;
+  text-align: center;
 }
 
-.course-item:hover {
-  transform: translateX(4px);
-  background: #fff5f9;
+.meal-input {
+  width: 90%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--lavande);
+  border-radius: 10px;
+  background: var(--blanc);
+  text-align: center;
 }
 
-/* PAGE RECETTES — HARMONISÉE */
+/* --- RECETTES --- */
 #recettes-container {
   display: flex;
   flex-direction: column;
@@ -147,6 +114,7 @@ td { padding: 0.6rem; }
   padding: 25px;
   border-radius: 25px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
 }
 
 .day-title {
@@ -173,19 +141,20 @@ td { padding: 0.6rem; }
 }
 
 .recette-bloc h4 {
+  font-size: 16px;
   text-align: center;
   color: #a84e78;
   margin-bottom: 10px;
 }
 
 .recette-bloc ul {
-  margin: 0 auto;
-  padding-left: 0;
-  text-align: center;
+  padding-left: 22px;
+  margin-top: 8px;
 }
 
 .recette-bloc li {
-  margin: 5px 0;
+  margin: 4px 0;
+  font-size: 15px;
 }
 
 .recette-bloc p {
@@ -197,4 +166,28 @@ td { padding: 0.6rem; }
   color: #444;
   margin-top: 10px;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+}
+
+/* PAGE COURSES */
+.course-item {
+  padding: 14px 20px;
+  background: #fffafc;
+  border-radius: 14px;
+  margin: 12px 0;
+  box-shadow: 0 3px 8px rgba(255, 180, 220, 0.25);
+  display: flex;
+  gap: 12px;
+  font-size: 18px;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.course-item:hover {
+  transform: translateX(4px);
+  background: #fff5f9;
+}
+
+.course-item input {
+  width: 22px;
+  height: 22px;
 }
