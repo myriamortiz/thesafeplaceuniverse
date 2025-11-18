@@ -847,3 +847,11 @@ html { -webkit-text-size-adjust: 100%; }
   width: 100%;
   margin: 20px 0 10px 0;
 }
+/* --- FIX ALIGNEMENT INGREDIENTS & INSTRUCTIONS --- */
+.meal-card h4,
+.recette-bloc h4 {
+  text-align: center !important;
+  width: 100%;
+  margin: 20px 0 10px 0;
+  color: #a84e78;
+}
