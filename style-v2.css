@@ -229,11 +229,14 @@ li {
   transform: translateY(-3px);
 }
 
-/* Centrer la citation de la page alimentation */
+/* 🌸 Centrage parfait de la citation sur la page Alimentation */
 .alimentation-quote {
   text-align: center;
+  font-size: 1.15rem;
   display: block;
   width: 100%;
   margin: 0 auto 1.5rem auto;
-  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--texte);
 }
+
