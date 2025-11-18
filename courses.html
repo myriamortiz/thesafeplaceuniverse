@@ -1,42 +1,43 @@
 <script>
   function getCategory(item) {
-    item = item.toLowerCase().trim();
+    const i = item.toLowerCase().trim();
 
-    // --- Fruits ---
-    if ([
-      "pomme","banane","framboise","kiwi","raisin","raisins secs","mangue","mandarine",
-      "baies","fruits"
-    ].some(w => item.includes(w)))
-      return "🍎 Fruits";
+    // 🍎 Fruits
+    const fruits = [
+      "pomme","banane","framboise","kiwi","raisin","raisins secs",
+      "mangue","mandarine","baies","fruit","fruits"
+    ];
+    if (fruits.some(w => i.includes(w))) return "🍎 Fruits";
 
-    // --- Légumes ---
-    if ([
-      "carotte","carottes","courgette","courgettes","poivron","poivrons","betterave",
-      "betteraves","salade","laitue","avocat","aubergine","aubergines","épinard","épinards",
-      "haricot","haricots","chou","asperges","légumes","tomate","tomates","patate douce","patates douces",
-      "champignon","champignons"
-    ].some(w => item.includes(w)))
-      return "🥬 Légumes";
+    // 🥬 Légumes
+    const legumes = [
+      "carotte","carottes","courgette","courgettes","poivron","poivrons",
+      "betterave","betteraves","salade","laitue","avocat","aubergine",
+      "aubergines","epinard","epinards","haricot","haricots","chou",
+      "asperge","asperges","legume","legumes","tomate","tomates",
+      "patate douce","patates douces","champignon","champignons"
+    ];
+    if (legumes.some(w => i.includes(w))) return "🥬 Légumes";
 
-    // --- Protéines ---
-    if ([
-      "poulet","saumon","crevette","crevettes","boeuf","bœuf","dinde","œuf","oeuf","œufs","oeufs",
-      "yaourt de brebis","yaourt","tofu"
-    ].some(w => item.includes(w)))
-      return "🍗 Protéines";
+    // 🍗 Protéines
+    const proteines = [
+      "poulet","saumon","crevette","crevettes","boeuf","dinde",
+      "oeuf","oeufs","yaourt","tofu"
+    ];
+    if (proteines.some(w => i.includes(w))) return "🍗 Protéines";
 
-    // --- Laitages chèvre / brebis ---
-    if ([
-      "chèvre","brebis","fromage"
-    ].some(w => item.includes(w)))
-      return "🥛 Laitages chèvre/brebis";
+    // 🥛 Laitages chèvre/brebis
+    const laitages = [
+      "chevre","brebis","fromage"
+    ];
+    if (laitages.some(w => i.includes(w))) return "🥛 Laitages chèvre/brebis";
 
-    // --- Placard ---
-    if ([
-      "riz","quinoa","chia","amandes","noix","beurre","pain","huile","vinaigre","vinaigre de citron",
-      "hummus","guacamole"
-    ].some(w => item.includes(w)))
-      return "🥣 Placard";
+    // 🥣 Placard
+    const placard = [
+      "riz","quinoa","chia","amandes","noix","beurre","pain",
+      "huile","vinaigre","hummus","guacamole"
+    ];
+    if (placard.some(w => i.includes(w))) return "🥣 Placard";
 
     return "🧂 Divers";
   }
@@ -62,13 +63,13 @@
             <div class="item">
               <input type="checkbox" id="${item}">
               <label for="${item}">${item}</label>
-            </div>
-          `;
+            </div>`;
         });
       }
     })
-    .catch(() => {
+    .catch(err => {
       document.getElementById("courses-container").innerHTML =
-        "❌ Impossible de charger la liste.";
+        "<p>Impossible de charger la liste.</p>";
+      console.error(err);
     });
 </script>
