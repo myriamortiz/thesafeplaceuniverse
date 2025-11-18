@@ -1,71 +1,43 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🧁 Recettes – The Safe Place Universe</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="autoUpdate.js"></script>
-</head>
+<script>
+  async function loadRecettes() {
+    const container = document.getElementById("recettes-container");
 
-<body>
-  <section class="splash">
-    <h1>🧁 Recettes complètes</h1>
-    <p class="subtitle">21 recettes – brunch, collation, dîner 🌸</p>
-  </section>
+    try {
+      const response = await fetch("data/recettes.json?cache=" + Date.now());
+      const recettes = await response.json();
 
-  <main class="content">
-    <div class="card">
-      <div id="recettes-container">Chargement...</div>
-    </div>
+      container.innerHTML = "";
 
-    <nav class="menu">
-      <a href="courses.html">🛒 Liste de courses</a>
-      <a href="alimentation.html">🍱 Retour alimentation</a>
-    </nav>
-  </main>
+      recettes.forEach(day => {
 
-  <script>
-    async function loadRecettes() {
-      const container = document.getElementById("recettes-container");
+        const brunchTitle = day.brunch.nom || "Brunch";
+        const collationTitle = day.collation.nom || "Collation";
+        const dinerTitle = day.diner.nom || "Dîner";
 
-      try {
-        const response = await fetch("data/recettes.json?cache=" + Date.now());
-        const recettes = await response.json();
+        container.innerHTML += `
+          <div class="day-card">
+            <h2>🌸 ${day.jour}</h2>
 
-        container.innerHTML = "";
+            <h3>${brunchTitle}</h3>
+            <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+            <p>${day.brunch.instructions}</p>
 
-        recettes.forEach(day => {
-  const brunchTitle = day.brunch.titre || day.brunch.nom || "Brunch";
-  const collationTitle = day.collation.titre || day.collation.nom || "Collation";
-  const dinerTitle = day.diner.titre || day.diner.nom || "Dîner";
+            <h3>${collationTitle}</h3>
+            <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+            <p>${day.collation.instructions}</p>
 
-  container.innerHTML += `
-    <div class="day-card">
-      <h2>🌸 ${day.jour}</h2>
+            <h3>${dinerTitle}</h3>
+            <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+            <p>${day.diner.instructions}</p>
+          </div>
+        `;
+      });
 
-      <h3>${brunchTitle}</h3>
-      <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-      <p>${day.brunch.instructions}</p>
-
-      <h3>${collationTitle}</h3>
-      <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-      <p>${day.collation.instructions}</p>
-
-      <h3>${dinerTitle}</h3>
-      <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-      <p>${day.diner.instructions}</p>
-    </div>
-  `;
-});
-
-      } catch {
-        container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
-      }
+    } catch (e) {
+      container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
     }
+  }
 
-    document.addEventListener("DOMContentLoaded", loadRecettes);
-  </script>
-</body>
-</html>
+  document.addEventListener("DOMContentLoaded", loadRecettes);
+</script>
 
