@@ -4,7 +4,6 @@ async function loadSport() {
 
   try {
     const response = await fetch("data/sport.json?cache=" + Date.now());
-
     if (!response.ok) throw new Error("Erreur");
 
     const data = await response.json();
@@ -13,10 +12,13 @@ async function loadSport() {
     data.forEach(day => {
       const div = document.createElement("div");
       div.className = "sport-card";
+
       div.innerHTML = `
-        <h3>${day.jour}</h3>
-        <p>${day.exercice}</p>
+        <h3>🔥 ${day.jour}</h3>
+        <p><strong>${day.type}</strong></p>
+        <p>${day.details}</p>
       `;
+
       container.appendChild(div);
     });
 
