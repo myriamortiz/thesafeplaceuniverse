@@ -1,38 +1,73 @@
-<div id="recettes-container"></div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧁 Recettes – The Safe Place Universe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-<script>
-async function loadRecettes() {
-  const container = document.getElementById("recettes-container");
+<body>
 
-  try {
-    const response = await fetch("data/recettes.json?cache=" + Date.now());
-    const recettes = await response.json();
+  <section class="splash">
+    <h1>🧁 Recettes complètes</h1>
+    <p class="subtitle">21 recettes – brunch, collation, dîner 🌸</p>
+  </section>
 
-    container.innerHTML = "";
+  <main class="content">
 
-    recettes.forEach(day => {
-      container.innerHTML += `
-        <div class="day-card">
-          <h2>🌸 ${day.jour}</h2>
+    <div id="recettes-container">
+      <p>Chargement des recettes…</p>
+    </div>
 
-          <h3>${day.brunch.nom}</h3>
-          <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-          <p>${day.brunch.instructions}</p>
+    <nav class="menu">
+      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
+    </nav>
 
-          <h3>${day.collation.nom}</h3>
-          <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-          <p>${day.collation.instructions}</p>
+  </main>
 
-          <h3>${day.diner.nom}</h3>
-          <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-          <p>${day.diner.instructions}</p>
-        </div>
-      `;
-    });
-  } catch (e) {
-    container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
-  }
-}
 
-document.addEventListener("DOMContentLoaded", loadRecettes);
-</script>
+  <!-- ⭐ Script pour charger les recettes -->
+  <script>
+    async function loadRecettes() {
+      const container = document.getElementById("recettes-container");
+
+      try {
+
+        // ⭐⭐ CORRECTION CRUCIALE : chemin complet GitHub Pages ⭐⭐
+        const response = await fetch("/thesafeplaceuniverse/data/recettes.json?cache=" + Date.now());
+        const recettes = await response.json();
+
+        container.innerHTML = "";
+
+        recettes.forEach(day => {
+          container.innerHTML += `
+            <div class="day-card">
+              <h2>🌸 ${day.jour}</h2>
+
+              <h3>${day.brunch.nom}</h3>
+              <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+              <p>${day.brunch.instructions}</p>
+
+              <h3>${day.collation.nom}</h3>
+              <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+              <p>${day.collation.instructions}</p>
+
+              <h3>${day.diner.nom}</h3>
+              <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+              <p>${day.diner.instructions}</p>
+            </div>
+          `;
+        });
+
+      } catch (e) {
+        console.error(e);
+        container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadRecettes);
+  </script>
+
+</body>
+</html>
