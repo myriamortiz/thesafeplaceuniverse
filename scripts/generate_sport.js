@@ -4,21 +4,48 @@ const fs = require("fs");
 
 if (!fs.existsSync("data")) fs.mkdirSync("data");
 
+// Séances définies automatiquement
 const sessions = [
-  "Full body (45 min)",
-  "Bas du corps + fessiers (45 min)",
-  "Haut du corps + bras (40 min)",
-  "Cardio doux + mobilité (30 min)"
+  {
+    type: "Séance maison full body",
+    details: "squats, pompes, planches, lunges"
+  },
+  {
+    type: "Séance maison dos et bras",
+    details: "tractions, extensions, rows, biceps"
+  },
+  {
+    type: "Séance maison jambes",
+    details: "squats, lunges, fentes, extensions"
+  },
+  {
+    type: "Séance maison abdominaux",
+    details: "planches, crunchs, Russian twists, leg raises"
+  }
 ];
 
 const jours = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
 
 let sport = jours.map((j, i) => {
+  // Séances pour lundi, mardi, jeudi, vendredi
   if (["Lundi", "Mardi", "Jeudi", "Vendredi"].includes(j)) {
-    return { jour: j, exercice: sessions[i % sessions.length] };
+    let index = i % sessions.length;
+    return {
+      jour: j,
+      type: sessions[index].type,
+      details: sessions[index].details
+    };
   }
-  return { jour: j, exercice: "Repos actif / marche / étirements" };
+
+  // Repos actif
+  return {
+    jour: j,
+    type: "Repos actif",
+    details: j === "Dimanche"
+      ? "yoga doux, étirements de base"
+      : "marche de 30 minutes, stretching doux"
+  };
 });
 
 fs.writeFileSync("data/sport.json", JSON.stringify(sport, null, 2));
-console.log("✅ sport.json généré");
+console.log("✅ sport.json généré avec succès !");
