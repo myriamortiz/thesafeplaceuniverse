@@ -1,65 +1,96 @@
 [
   {
     "jour": "Lundi",
-    "type": "Séance maison full body",
+    "type": "Séance full body",
     "series": "3 séries",
-    "repetitions": "12 répétitions par exercice",
-    "temps": "30 sec de repos entre exercices",
-    "tours": "2 tours complets",
-    "details": "squats, pompes, planches, lunges"
+    "repetitions": "12 répétitions / exercice",
+    "repos": "30 sec entre chaque exercice",
+    "tours": "2 tours",
+    "exercices": [
+      "Squats",
+      "Pompes (adaptées si besoin)",
+      "Gainage 30 sec",
+      "Lunges",
+      "Pont fessier"
+    ]
   },
   {
     "jour": "Mardi",
-    "type": "Séance maison dos et bras",
-    "series": "4 séries",
-    "repetitions": "10 à 12 répétitions",
-    "temps": "45 sec de repos",
+    "type": "Dos & bras (haut du corps)",
+    "series": "3 séries",
+    "repetitions": "10 répétitions",
+    "repos": "40 sec",
     "tours": "2 tours",
-    "details": "tractions (ou tirage élastique), extensions triceps, rows, biceps curls"
+    "exercices": [
+      "Tirage élastiques (ou row)",
+      "Extensions triceps",
+      "Curl biceps",
+      "Gainage bras tendus 20 sec"
+    ]
   },
   {
     "jour": "Mercredi",
     "type": "Bachata",
-    "series": "1 cours",
+    "series": "1 séance complète",
     "repetitions": "—",
-    "temps": "60 minutes",
+    "repos": "—",
     "tours": "—",
-    "details": "pas de base, guidage, musicalité, enchaînements"
+    "exercices": [
+      "Pas de base",
+      "Guidage & musicalité",
+      "Enchaînements doux"
+    ]
   },
   {
     "jour": "Jeudi",
-    "type": "Séance maison jambes",
+    "type": "Séance jambes & fessiers",
     "series": "3 séries",
-    "repetitions": "15 répétitions",
-    "temps": "45 sec de repos",
+    "repetitions": "12 répétitions",
+    "repos": "30 sec",
     "tours": "2 tours",
-    "details": "squats, lunges, fentes arrière, extensions fessiers"
+    "exercices": [
+      "Squats sumo",
+      "Fentes arrière",
+      "Kickback élastique",
+      "Pont fessier 20 sec"
+    ]
   },
   {
     "jour": "Vendredi",
-    "type": "Séance maison abdominaux",
-    "series": "4 séries",
-    "repetitions": "20 répétitions",
-    "temps": "30 sec de repos",
+    "type": "Séance abdos",
+    "series": "3 séries",
+    "repetitions": "15 répétitions",
+    "repos": "30 sec",
     "tours": "2 tours",
-    "details": "planches, crunchs, Russian twists, leg raises"
+    "exercices": [
+      "Crunchs",
+      "Russian twists",
+      "Leg raises",
+      "Gainage 20 sec"
+    ]
   },
   {
     "jour": "Samedi",
     "type": "Repos actif",
     "series": "—",
     "repetitions": "—",
-    "temps": "30 minutes",
-    "tours": "1",
-    "details": "marche douce + stretching"
+    "repos": "—",
+    "tours": "—",
+    "exercices": [
+      "Marche douce 30 min",
+      "Étirements 10 min"
+    ]
   },
   {
     "jour": "Dimanche",
     "type": "Repos actif",
     "series": "—",
     "repetitions": "—",
-    "temps": "20 minutes",
-    "tours": "1",
-    "details": "yoga doux, étirements de base"
+    "repos": "—",
+    "tours": "—",
+    "exercices": [
+      "Yoga doux 15 min",
+      "Respirations 5 min"
+    ]
   }
 ]
