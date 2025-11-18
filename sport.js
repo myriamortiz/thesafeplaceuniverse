@@ -1,5 +1,5 @@
 async function loadSport() {
-  const container = document.getElementById("sportPlan");
+  const container = document.getElementById("sport-container");  // ✅ CORRECTION ICI
   if (!container) return;
 
   try {
