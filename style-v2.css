@@ -186,3 +186,12 @@ li {
   color: white;
   transform: scale(1.05);
 }
+/* 🌙 Citation du jour */
+.citation-box {
+  text-align: center;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--texte);
+  padding: 1rem 1.4rem;
+  line-height: 1.5;
+}
