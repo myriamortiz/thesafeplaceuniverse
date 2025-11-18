@@ -1,6 +1,6 @@
 /* 🌸 THE SAFE PLACE UNIVERSE – STYLE GLOBAL */
 
-/* Fonts */
+/* Font & ambiance */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Playfair+Display:wght@500&display=swap');
 
 :root {
@@ -13,82 +13,129 @@
   --accent: #f0b8ca;
 }
 
-/* Global reset */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  background: radial-gradient(circle at top left,
-    var(--rose) 0%, var(--lavande) 35%, var(--menthe) 70%, var(--pêche) 100%);
+  background: radial-gradient(circle at top left, var(--rose) 0%, var(--lavande) 40%, var(--menthe) 80%, var(--pêche) 100%);
   background-attachment: fixed;
-  font-family: 'Quicksand', sans-serif;
   color: var(--texte);
+  font-family: 'Quicksand', sans-serif;
   padding: 2rem;
   line-height: 1.6;
 }
 
-/* TITLES */
-h1, h2, h3 {
+/* TITRES */
+h1, h2 {
   font-family: 'Playfair Display', serif;
-  text-align: center;
   color: var(--texte);
-}
-
-h1 {
-  font-size: 2.3rem;
-  margin-bottom: 0.3rem;
-}
-
-.subtitle {
   text-align: center;
-  opacity: 0.8;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
 }
 
-/* PASTEL CARDS */
-.card {
+h1 { font-size: 2.5rem; margin-bottom: 0.3em; }
+.subtitle { text-align: center; font-size: 1.1rem; margin-bottom: 2rem; }
+
+/* CARTES */
+.card,
+.personal-space,
+.mood-card,
+.gratitude-card {
   background: var(--blanc);
-  padding: 1.8rem;
   border-radius: 25px;
-  max-width: 780px;
-  margin: 1.8rem auto;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem auto;
+  max-width: 700px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* INPUTS & TEXTAREAS */
+textarea, input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 12px;
+  border: 1px solid var(--lavande);
+  background: #fff;
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff9fb;
+}
+
+/* CHECKLIST */
+input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: var(--accent);
+  margin-right: 8px;
 }
 
 /* MENU */
 .menu {
-  margin-top: 2.5rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-top: 2rem;
 }
 
 .menu a {
-  background: var(--blanc);
-  padding: 0.8rem 1.4rem;
-  border-radius: 30px;
+  background: var(--pêche);
   color: var(--texte);
+  padding: 0.7rem 1.4rem;
+  border-radius: 14px;
   text-decoration: none;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  transition: 0.3s ease;
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
 
 .menu a:hover {
   background: var(--accent);
   color: white;
-  transform: scale(1.05);
 }
 
-/* ============================= */
-/* 🌸 RECETTES – JOURNAL DE BORD */
-/* ============================= */
+/* PAGE ALIMENTATION */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--blanc);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
 
+th {
+  background-color: var(--pêche);
+  padding: 0.8rem;
+  font-weight: 600;
+}
+
+td { padding: 0.6rem; }
+
+/* PAGE COURSES */
+.course-item {
+  padding: 14px 20px;
+  background: #fffafc;
+  border-radius: 14px;
+  margin: 12px 0;
+  box-shadow: 0 3px 8px rgba(255, 180, 220, 0.25);
+  display: flex;
+  gap: 12px;
+  font-size: 18px;
+  align-items: center;
+}
+
+.course-item:hover {
+  transform: translateX(4px);
+  background: #fff5f9;
+}
+
+/* PAGE RECETTES — HARMONISÉE */
 #recettes-container {
   display: flex;
   flex-direction: column;
@@ -96,132 +143,58 @@ h1 {
 }
 
 .recette-day {
-  background: rgba(255,255,255,0.85);
-  padding: 28px;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 25px;
   border-radius: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .day-title {
+  text-align: center;
   font-size: 26px;
   font-weight: 700;
   color: #d45593;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-/* BLOCS BRUNCH / COLLATION / DINER */
 .recette-bloc {
-  background: #fff0f6;
-  border-radius: 18px;
-  padding: 22px;
-  margin-top: 22px;
+  background: #ffeef6;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 25px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-
-  /* RETIRE LA BORDE ROSE */
-  border-left: none !important;
 }
 
 .recette-bloc h3 {
-  color: #d85c8a;
   font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  color: #d85c8a;
   text-align: center;
+  margin-bottom: 15px;
 }
 
 .recette-bloc h4 {
   text-align: center;
   color: #a84e78;
-  margin: 12px 0 8px;
-  font-size: 16px;
+  margin-bottom: 10px;
 }
 
-/* Ingredients */
 .recette-bloc ul {
-  list-style: none;
+  margin: 0 auto;
   padding-left: 0;
-  margin-bottom: 12px;
+  text-align: center;
 }
 
 .recette-bloc li {
-  padding: 4px 0;
-  font-size: 15px;
-  text-align: center;
+  margin: 5px 0;
 }
 
-/* Instructions */
 .recette-bloc p {
-  background: white;
-  padding: 14px 16px;
+  background: #fff;
+  padding: 12px 15px;
   border-radius: 12px;
-  line-height: 1.55;
   font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+  margin-top: 10px;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-  text-align: center;
 }
-
-/* ============================= */
-/* 🛒 PAGE COURSES */
-/* ============================= */
-
-.category {
-  margin-top: 28px;
-  font-size: 22px;
-  color: #e58ab2;
-  font-weight: 700;
-  text-align: center;
-}
-
-.item {
-  background: #fffafc;
-  padding: 14px 20px;
-  margin: 12px auto;
-  max-width: 650px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 3px 10px rgba(255, 180, 220, 0.25);
-}
-
-.item:hover {
-  background: #fff5f9;
-  transform: translateX(3px);
-}
-
-.item input {
-  transform: scale(1.3);
-  accent-color: #ea9ab7;
-}
-
-/* ============================= */
-/* 💪 PAGE SPORT */
-/* ============================= */
-
-.day-card {
-  background: rgba(255,255,255,0.85);
-  padding: 22px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.07);
-}
-
-.day-card h3 {
-  font-weight: 700;
-  font-size: 20px;
-  color: #d16ba5;
-}
-
-.day-card p {
-  text-align: center;
-  margin-top: 8px;
-}
-
-/* CHECKLIST SPORT */
-.checklist input {
-  transform: scale(1.2);
-  accent-color: var(--accent);
-}
-
-/* FIN CSS */
