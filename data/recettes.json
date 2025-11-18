@@ -4,30 +4,30 @@
     "brunch": {
       "ingredients": [
         "2 œufs",
-        "1/4 tasse de fromage de chèvre",
-        "salade verte",
-        "fruits"
+        "30 g de fromage de chèvre",
+        "1 poignée de salade verte",
+        "1 portion de fruits (100 g)"
       ],
-      "instructions": "Préparer une omelette aux herbes avec les œufs et le fromage de chèvre, servir avec une salade verte et des fruits",
+      "instructions": "Préparer une omelette aux herbes avec les œufs et le fromage de chèvre, servir avec une salade verte et des fruits.",
       "nom": "Brunch"
     },
     "collation": {
       "ingredients": [
-        "Pomme",
-        "1 cuillère à soupe de beurre de cacahuète"
+        "1 pomme",
+        "1 cuillère à soupe de beurre de cacahuète (15 g)"
       ],
-      "instructions": "Servir une pomme avec du beurre de cacahuète",
+      "instructions": "Servir une pomme avec du beurre de cacahuète.",
       "nom": "Collation"
     },
     "diner": {
       "ingredients": [
-        "Poulet",
-        "poivrons",
-        "courgettes",
-        "aubergines",
-        "quinoa"
+        "120 g de poulet",
+        "1/2 poivron",
+        "1/2 courgette",
+        "1/4 aubergine",
+        "80 g de quinoa cuit"
       ],
-      "instructions": "Griller le poulet et les légumes, servir avec du quinoa",
+      "instructions": "Griller le poulet et les légumes, servir avec du quinoa.",
       "nom": "Dîner"
     }
   },
@@ -35,29 +35,29 @@
     "jour": "Jour 2",
     "brunch": {
       "ingredients": [
-        "chia",
-        "banane",
-        "framboises",
-        "lait de brebis"
+        "2 cuillères à soupe de graines de chia",
+        "1 banane",
+        "1 poignée de framboises",
+        "150 ml de lait de brebis"
       ],
-      "instructions": "Préparer un smoothie bowle avec les ingrédients, servir dans un bol",
+      "instructions": "Préparer un smoothie bowl avec les ingrédients et servir dans un bol.",
       "nom": "Brunch"
     },
     "collation": {
       "ingredients": [
-        "Carottes crues",
-        "hummus"
+        "80 g de carottes crues",
+        "2 cuillères à soupe de houmous (30 g)"
       ],
-      "instructions": "Servir des carottes crues avec de l'hummus",
+      "instructions": "Servir des carottes crues avec du houmous.",
       "nom": "Collation"
     },
     "diner": {
       "ingredients": [
-        "Saumon",
-        "betteraves",
-        "avocat"
+        "120 g de saumon",
+        "100 g de betteraves",
+        "1/2 avocat"
       ],
-      "instructions": "Griller le saumon, servir avec une salade de betteraves et d'avocat",
+      "instructions": "Griller le saumon et servir avec une salade de betteraves et d'avocat.",
       "nom": "Dîner"
     }
   },
@@ -65,30 +65,30 @@
     "jour": "Jour 3",
     "brunch": {
       "ingredients": [
-        "Pain de riz",
-        "amandes",
-        "fromage de chèvre",
-        "fruits"
+        "1 tranche de pain de riz",
+        "10 g d’amandes",
+        "30 g de fromage de chèvre",
+        "1 portion de fruits (100 g)"
       ],
-      "instructions": "Préparer une tartine de pain de riz avec les ingrédients, servir avec des fruits",
+      "instructions": "Préparer une tartine de pain de riz avec les ingrédients, servir avec des fruits.",
       "nom": "Brunch"
     },
     "collation": {
       "ingredients": [
-        "Yaourt de brebis",
-        "noix",
-        "baies"
+        "1 yaourt de brebis (125 g)",
+        "10 g de noix",
+        "1 poignée de baies"
       ],
-      "instructions": "Servir un yaourt de brebis avec des noix et des baies",
+      "instructions": "Servir un yaourt de brebis avec des noix et des baies.",
       "nom": "Collation"
     },
     "diner": {
       "ingredients": [
-        "Boeuf",
-        "haricots verts",
-        "patates douces"
+        "120 g de bœuf",
+        "100 g de haricots verts",
+        "150 g de patate douce"
       ],
-      "instructions": "Griller le boeuf, servir avec des haricots verts et des patates douces",
+      "instructions": "Griller le bœuf et servir avec des haricots verts et des patates douces.",
       "nom": "Dîner"
     }
   },
@@ -97,28 +97,28 @@
     "brunch": {
       "ingredients": [
         "2 œufs",
-        "champignons",
-        "fromage de brebis",
-        "salade verte"
+        "4 champignons",
+        "30 g de fromage de brebis",
+        "1 poignée de salade verte"
       ],
-      "instructions": "Préparer une omelette aux champignons avec les œufs et le fromage de brebis, servir avec une salade verte",
+      "instructions": "Préparer une omelette aux champignons avec les œufs et le fromage de brebis, servir avec une salade verte.",
       "nom": "Brunch"
     },
     "collation": {
       "ingredients": [
-        "Poivron cru",
-        "guacamole"
+        "1 poivron cru",
+        "2 cuillères à soupe de guacamole (30 g)"
       ],
-      "instructions": "Servir un poivron cru avec du guacamole",
+      "instructions": "Servir un poivron cru avec du guacamole.",
       "nom": "Collation"
     },
     "diner": {
       "ingredients": [
-        "Poulet",
-        "légumes",
-        "quinoa"
+        "120 g de poulet",
+        "150 g de légumes variés",
+        "80 g de quinoa cuit"
       ],
-      "instructions": "Cuisiner le poulet au four avec des légumes et servir avec du quinoa",
+      "instructions": "Cuisiner le poulet au four avec des légumes et servir avec du quinoa.",
       "nom": "Dîner"
     }
   },
@@ -126,29 +126,29 @@
     "jour": "Jour 5",
     "brunch": {
       "ingredients": [
-        "Crevettes",
-        "laitue",
-        "tomates",
-        "vinaigre de citron"
+        "120 g de crevettes",
+        "1 grosse poignée de laitue",
+        "4 tomates cerises",
+        "1 c. à soupe de vinaigre citronné"
       ],
-      "instructions": "Préparer une salade de crevettes avec les ingrédients",
+      "instructions": "Préparer une salade de crevettes avec les ingrédients.",
       "nom": "Brunch"
     },
     "collation": {
       "ingredients": [
-        "Raisins secs",
-        "noix"
+        "20 g de raisins secs",
+        "10 g de noix"
       ],
-      "instructions": "Servir des raisins secs avec des noix",
+      "instructions": "Servir des raisins secs avec des noix.",
       "nom": "Collation"
     },
     "diner": {
       "ingredients": [
-        "Dinde",
-        "chou",
-        "carottes"
+        "120 g de dinde",
+        "100 g de chou",
+        "1 carotte"
       ],
-      "instructions": "Griller la dinde, servir avec une salade de chou et de carottes",
+      "instructions": "Griller la dinde, servir avec une salade de chou et de carottes.",
       "nom": "Dîner"
     }
   },
@@ -156,28 +156,28 @@
     "jour": "Jour 6",
     "brunch": {
       "ingredients": [
-        "Kiwi",
-        "épinards",
-        "lait de brebis"
+        "1 kiwi",
+        "1 poignée d’épinards",
+        "150 ml de lait de brebis"
       ],
-      "instructions": "Préparer un smoothie avec les ingrédients",
+      "instructions": "Préparer un smoothie avec les ingrédients.",
       "nom": "Brunch"
     },
     "collation": {
       "ingredients": [
-        "Betterave crue",
-        "beurre de cacahuète"
+        "1 petite betterave crue",
+        "1 cuillère à soupe de beurre de cacahuète (15 g)"
       ],
-      "instructions": "Servir une betterave crue avec du beurre de cacahuète",
+      "instructions": "Servir une betterave crue avec du beurre de cacahuète.",
       "nom": "Collation"
     },
     "diner": {
       "ingredients": [
-        "Saumon",
-        "asperges",
-        "quinoa"
+        "120 g de saumon",
+        "6 asperges",
+        "80 g de quinoa cuit"
       ],
-      "instructions": "Cuisiner le saumon au four avec des asperges et servir avec du quinoa",
+      "instructions": "Cuisiner le saumon au four avec des asperges et servir avec du quinoa.",
       "nom": "Dîner"
     }
   },
@@ -185,29 +185,29 @@
     "jour": "Jour 7",
     "brunch": {
       "ingredients": [
-        "Pain de riz",
-        "noix",
-        "fromage de chèvre",
-        "fruits"
+        "1 tranche de pain de riz",
+        "10 g de noix",
+        "30 g de fromage de chèvre",
+        "1 portion de fruits (100 g)"
       ],
-      "instructions": "Préparer une tartine de pain de riz avec les ingrédients, servir avec des fruits",
+      "instructions": "Préparer une tartine de pain de riz avec les ingrédients, servir avec des fruits.",
       "nom": "Brunch"
     },
     "collation": {
       "ingredients": [
-        "Pomme",
-        "1 cuillère à soupe de beurre de cacahuète"
+        "1 pomme",
+        "1 cuillère à soupe de beurre de cacahuète (15 g)"
       ],
-      "instructions": "Servir une pomme avec du beurre de cacahuète",
+      "instructions": "Servir une pomme avec du beurre de cacahuète.",
       "nom": "Collation"
     },
     "diner": {
       "ingredients": [
-        "Poulet",
-        "betteraves",
-        "avocat"
+        "120 g de poulet",
+        "100 g de betteraves",
+        "1/2 avocat"
       ],
-      "instructions": "Griller le poulet, servir avec une salade de betteraves et d'avocat",
+      "instructions": "Griller le poulet, servir avec une salade de betteraves et d'avocat.",
       "nom": "Dîner"
     }
   }
