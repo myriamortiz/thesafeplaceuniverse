@@ -1,44 +1,44 @@
 [
   {
     "jour": "Jour 1",
-    "brunch": "Bowl quinoa + poulet + crudités",
-    "collation": "Yaourt brebis + myrtilles",
-    "diner": "Cabillaud + lentilles corail + courgettes"
+    "brunch": "Oeufs brouillés avec épinards et tomates (300 kcal)",
+    "collation": "Fruits frais (150 kcal) et noix de macadamia (100 kcal)",
+    "diner": "Poulet grillé avec légumes sautés (400 kcal) et salade verte (50 kcal)"
   },
   {
     "jour": "Jour 2",
-    "brunch": "Omelette + avocat + patate douce",
-    "collation": "Amandes + tisane",
-    "diner": "Dinde grillée + ratatouille + riz"
+    "brunch": "Avocat avec oeufs durs et tomates (350 kcal)",
+    "collation": "Carottes crues avec hummus (100 kcal) et fruits secs (50 kcal)",
+    "diner": "Saumon grillé avec quinoa et légumes (500 kcal)"
   },
   {
     "jour": "Jour 3",
-    "brunch": "Pancakes avoine sans gluten + fruits rouges",
-    "collation": "Amandes + tisane",
-    "diner": "Cabillaud + lentilles corail + courgettes"
+    "brunch": "Smoothie aux fruits et légumes (250 kcal) avec lait de chèvre (100 kcal)",
+    "collation": "Noix de grenoble et raisins secs (120 kcal)",
+    "diner": "Boeuf grillé avec légumes et salade (450 kcal)"
   },
   {
     "jour": "Jour 4",
-    "brunch": "Bowl sarrasin + chèvre + poire",
-    "collation": "Barre protéinée sans gluten",
-    "diner": "Truite + riz basmati + légumes verts"
+    "brunch": "Tofu avec légumes sautés et riz brun (400 kcal)",
+    "collation": "Fruits frais (150 kcal) et amandes (100 kcal)",
+    "diner": "Poulet au curry avec légumes et riz (500 kcal)"
   },
   {
     "jour": "Jour 5",
-    "brunch": "Bowl sarrasin + chèvre + poire",
-    "collation": "Barre protéinée sans gluten",
-    "diner": "Crevettes wok + légumes + riz"
+    "brunch": "Omelette aux légumes avec salade verte (300 kcal)",
+    "collation": "Carottes crues avec hummus (100 kcal) et noix de macadamia (100 kcal)",
+    "diner": "Saumon grillé avec quinoa et légumes (500 kcal)"
   },
   {
     "jour": "Jour 6",
-    "brunch": "Tofu sauté + riz + légumes vapeur",
-    "collation": "Yaourt brebis + myrtilles",
-    "diner": "Tofu grillé + riz + légumes vapeur"
+    "brunch": "Avocat avec oeufs durs et tomates (350 kcal)",
+    "collation": "Fruits frais (150 kcal) et noix de grenoble (120 kcal)",
+    "diner": "Boeuf grillé avec légumes et salade (450 kcal)"
   },
   {
     "jour": "Jour 7",
-    "brunch": "Pancakes avoine sans gluten + fruits rouges",
-    "collation": "Fruits rouges + lait amande",
-    "diner": "Cabillaud + lentilles corail + courgettes"
+    "brunch": "Smoothie aux fruits et légumes (250 kcal) avec lait de brebis (100 kcal)",
+    "collation": "Noix de macadamia et raisins secs (120 kcal)",
+    "diner": "Poulet au curry avec légumes et riz (500 kcal)"
   }
 ]

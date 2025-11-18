@@ -1,153 +1,107 @@
 [
   {
     "jour": "Jour 1",
-    "brunch": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "brunch": { 
+      "ingredients": ["oeufs", "épinards", "tomates"], 
+      "instructions": "Faire bouillir les oeufs, cuire les épinards et les tomates dans une poêle avec un peu d'huile, puis mélanger tous les ingrédients" 
     },
-    "collation": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "collation": { 
+      "ingredients": ["fruits frais", "noix de macadamia"], 
+      "instructions": "Laver les fruits frais et les couper en morceaux, servir avec des noix de macadamia" 
     },
-    "diner": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "diner": { 
+      "ingredients": ["poulet", "légumes", "salade verte"], 
+      "instructions": "Faire griller le poulet, cuire les légumes dans une poêle avec un peu d'huile, puis servir avec une salade verte" 
     }
   },
   {
     "jour": "Jour 2",
-    "brunch": {
-      "ingredients": [
-        "2 œufs",
-        "1/2 avocat",
-        "100g patate douce",
-        "sel",
-        "poivre"
-      ],
-      "instructions": "Cuire l’omelette, rôtir la patate douce, servir avec l’avocat."
+    "brunch": { 
+      "ingredients": ["avocat", "oeufs durs", "tomates"], 
+      "instructions": "Écraser l'avocat et le mélanger avec des oeufs durs émincés et des tomates coupées en dés" 
     },
-    "collation": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "collation": { 
+      "ingredients": ["carottes crues", "hummus", "fruits secs"], 
+      "instructions": "Laver les carottes crues et les couper en bâtonnets, servir avec du hummus et des fruits secs" 
     },
-    "diner": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "diner": { 
+      "ingredients": ["saumon", "quinoa", "légumes"], 
+      "instructions": "Faire griller le saumon, cuire le quinoa et les légumes dans une poêle avec un peu d'huile, puis servir" 
     }
   },
   {
     "jour": "Jour 3",
-    "brunch": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "brunch": { 
+      "ingredients": ["fruits", "légumes", "lait de chèvre"], 
+      "instructions": "Mélanger les fruits et les légumes dans un blender, ajouter du lait de chèvre et mixer jusqu'à obtenir un smoothie lisse" 
     },
-    "collation": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "collation": { 
+      "ingredients": ["noix de grenoble", "raisins secs"], 
+      "instructions": "Servir les noix de grenoble et les raisins secs" 
     },
-    "diner": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "diner": { 
+      "ingredients": ["boeuf", "légumes", "salade"], 
+      "instructions": "Faire griller le boeuf, cuire les légumes dans une poêle avec un peu d'huile, puis servir avec une salade" 
     }
   },
   {
     "jour": "Jour 4",
-    "brunch": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "brunch": { 
+      "ingredients": ["tofu", "légumes", "riz brun"], 
+      "instructions": "Faire sauter le tofu et les légumes dans une poêle avec un peu d'huile, servir avec du riz brun" 
     },
-    "collation": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "collation": { 
+      "ingredients": ["fruits frais", "amandes"], 
+      "instructions": "Laver les fruits frais et les couper en morceaux, servir avec des amandes" 
     },
-    "diner": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "diner": { 
+      "ingredients": ["poulet", "curry", "légumes", "riz"], 
+      "instructions": "Faire cuire le poulet et les légumes dans une poêle avec du curry et un peu d'huile, servir avec du riz" 
     }
   },
   {
     "jour": "Jour 5",
-    "brunch": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "brunch": { 
+      "ingredients": ["oeufs", "légumes", "salade verte"], 
+      "instructions": "Faire une omelette avec les oeufs et les légumes, servir avec une salade verte" 
     },
-    "collation": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "collation": { 
+      "ingredients": ["carottes crues", "hummus", "noix de macadamia"], 
+      "instructions": "Laver les carottes crues et les couper en bâtonnets, servir avec du hummus et des noix de macadamia" 
     },
-    "diner": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "diner": { 
+      "ingredients": ["saumon", "quinoa", "légumes"], 
+      "instructions": "Faire griller le saumon, cuire le quinoa et les légumes dans une poêle avec un peu d'huile, puis servir" 
     }
   },
   {
     "jour": "Jour 6",
-    "brunch": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "brunch": { 
+      "ingredients": ["avocat", "oeufs durs", "tomates"], 
+      "instructions": "Écraser l'avocat et le mélanger avec des oeufs durs émincés et des tomates coupées en dés" 
     },
-    "collation": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "collation": { 
+      "ingredients": ["fruits frais", "noix de grenoble"], 
+      "instructions": "Laver les fruits frais et les couper en morceaux, servir avec des noix de grenoble" 
     },
-    "diner": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "diner": { 
+      "ingredients": ["boeuf", "légumes", "salade"], 
+      "instructions": "Faire griller le boeuf, cuire les légumes dans une poêle avec un peu d'huile, puis servir avec une salade" 
     }
   },
   {
     "jour": "Jour 7",
-    "brunch": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "brunch": { 
+      "ingredients": ["fruits", "légumes", "lait de brebis"], 
+      "instructions": "Mélanger les fruits et les légumes dans un blender, ajouter du lait de brebis et mixer jusqu'à obtenir un smoothie lisse" 
     },
-    "collation": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "collation": { 
+      "ingredients": ["noix de macadamia", "raisins secs"], 
+      "instructions": "Servir les noix de macadamia et les raisins secs" 
     },
-    "diner": {
-      "ingredients": [
-        "Ingrédients à définir"
-      ],
-      "instructions": "Instructions à définir"
+    "diner": { 
+      "ingredients": ["poulet", "curry", "légumes", "riz"], 
+      "instructions": "Faire cuire le poulet et les légumes dans une poêle avec du curry et un peu d'huile, servir avec du riz" 
     }
   }
 ]
