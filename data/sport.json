@@ -1,80 +1,75 @@
 [
   {
     "jour": "Lundi",
-    "type": "Full Body Challenge (45 min)",
+    "type": "Full Body — 3 tours (40\" / 20\")",
     "details": [
-      "✨ Circuit 1 — 3 tours",
-      "• Squats : 15 répétitions",
-      "• Pompes (genoux si besoin) : 10 répétitions",
-      "• Planche : 30 secondes",
-      "• Fentes alternées : 12 par jambe",
-      "",
-      "🌿 Repos : 1 min entre les tours"
+      "Squats — 40 sec",
+      "Pompes (sur genoux si besoin) — 40 sec",
+      "Fentes alternées — 40 sec",
+      "Planche — 40 sec",
+      "Hip Thrust — 40 sec",
+      "⏳ Repos : 1 min entre chaque tour"
     ]
   },
   {
     "jour": "Mardi",
-    "type": "Upper Body Sculpt (40 min)",
+    "type": "Haut du corps — 3 séries",
     "details": [
-      "✨ Circuit — 3 tours",
-      "• Row élastique / haltères : 15 répétitions",
-      "• Extensions triceps : 12 répétitions",
-      "• Curl biceps : 12 répétitions",
-      "• Planche bras tendus : 30 sec",
-      "",
-      "🌿 Repos : 1 min entre les tours"
+      "Row élastique — 15 reps",
+      "Élévations latérales — 12 reps",
+      "Curl biceps — 15 reps",
+      "Extensions triceps — 12 reps",
+      "Pompes murales — 12 reps",
+      "⏳ Repos : 1 min entre chaque série"
     ]
   },
   {
     "jour": "Mercredi",
-    "type": "Cours de Bachata",
+    "type": "Bachata",
     "details": [
-      "• Pas de base : 5 min",
-      "• Variations : 10 min",
-      "• Isolements du bassin : 5 min",
-      "• Petite routine / improvisation : 10–15 min"
+      "Cours + travail du rythme",
+      "Pas de base / tours",
+      "Impro 5 min"
     ]
   },
   {
     "jour": "Jeudi",
-    "type": "Legs & Booty Sculpt (45 min)",
+    "type": "Bas du corps / Fessiers — 3 séries",
     "details": [
-      "✨ Circuit — 3 tours",
-      "• Squats sumo : 15 répétitions",
-      "• Fentes arrière : 12 par jambe",
-      "• Hip Thrust : 15 répétitions",
-      "• Abduction élastique : 20 répétitions",
-      "",
-      "🌿 Repos : 1 min entre les tours"
+      "Squats — 15 reps",
+      "Kickbacks élastique — 15 reps/jambe",
+      "Hip Thrust — 20 reps",
+      "Fentes arrière — 12 reps/jambe",
+      "Abduction élastique — 20 reps",
+      "🔥 Finisher : pont fessier — 45 sec"
     ]
   },
   {
     "jour": "Vendredi",
-    "type": "Core & Waistline (30 min)",
+    "type": "Abdos — 3 tours",
     "details": [
-      "✨ Circuit — 3 tours",
-      "• Crunchs : 20 répétitions",
-      "• Russian twists : 20 répétitions",
-      "• Leg raises : 12 répétitions",
-      "• Planche latérale : 20 sec par côté",
-      "",
-      "🌿 Repos : 1 min entre les tours"
+      "Crunchs — 15 reps",
+      "Planche — 30 sec",
+      "Relevés de jambes — 12 reps",
+      "Russian twists — 20 reps",
+      "Planche latérale — 20 sec/ côté",
+      "⏳ Repos : 45 sec entre les tours"
     ]
   },
   {
     "jour": "Samedi",
     "type": "Repos actif",
     "details": [
-      "• Marche douce 20–30 min",
-      "• Étirements 10 min"
+      "Marche 30 min",
+      "5 min d’étirements"
     ]
   },
   {
     "jour": "Dimanche",
     "type": "Repos actif",
     "details": [
-      "• Yoga doux 15 min",
-      "• Respiration / détente 5 min"
+      "Yoga doux 10 min",
+      "Étirements guidés"
     ]
   }
 ]
