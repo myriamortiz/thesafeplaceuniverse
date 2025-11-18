@@ -1,9 +1,8 @@
 /* 🌸 THE SAFE PLACE UNIVERSE – STYLE GLOBAL */
 
-/* Import font */
+/* Font & ambiance */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Playfair+Display:wght@500&display=swap');
 
-/* — Variables — */
 :root {
   --rose: #f8d8e7;
   --lavande: #e7d7f7;
@@ -14,107 +13,92 @@
   --accent: #f0b8ca;
 }
 
-/* — RESET — */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* — GLOBAL — */
 body {
   background: radial-gradient(circle at top left, var(--rose) 0%, var(--lavande) 40%, var(--menthe) 80%, var(--pêche) 100%);
-  background-attachment: fixed;
-  font-family: 'Quicksand', sans-serif;
+background-attachment: fixed;
   color: var(--texte);
+  font-family: 'Quicksand', sans-serif;
   padding: 2rem;
   line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
+  animation: fadeIn 1.5s ease;
+}
+
+/* Apparition douce */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1, h2 {
   font-family: 'Playfair Display', serif;
-  text-align: center;
   color: var(--texte);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.3em;
 }
 
 .subtitle {
   text-align: center;
+  color: var(--texte);
   font-size: 1.1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* — CITATION / TEXTE EN HAUT — */
-.citation-box, 
-.card > p:first-of-type {
-  text-align: center !important;
+.mantra {
+  background: var(--blanc);
+  border-radius: 20px;
+  text-align: center;
+  font-style: italic;
+  padding: 1rem 2rem;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  animation: fadeIn 2s ease;
 }
 
-/* — CARTES — */
+/* Cartes pastel */
 .card {
   background: var(--blanc);
   border-radius: 25px;
-  padding: 1.6rem 2rem;
-  margin: 1.8rem auto;
-  max-width: 750px;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem auto;
+  max-width: 700px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .card h2 {
-  font-size: 1.6rem;
   color: var(--accent);
-  text-align: center;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
-/* — LISTES — */
 ul {
   list-style: none;
+  padding-left: 0;
 }
 
 li {
-  margin: 0.4rem 0;
+  padding: 0.5rem 0;
+  text-align: left;
 }
 
-/* — EXPLORE TON UNIVERS (ACCUEIL) — */
+/* Menu principal */
 .menu {
-  display: flex;
-  flex-direction: column;      /* ← 1 bulle par ligne */
-  justify-content: center;
-  align-items: center;
-  gap: 1.1rem;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-.menu a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 85%;
-  padding: 0.9rem 1.4rem;
-  background: var(--blanc);
-  border-radius: 30px;
-  text-decoration: none;
-  text-align: center;
-  font-weight: 600;
-  font-size: 1.05rem;
-  color: var(--texte);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  transition: 0.2s;
-}
-
-.menu a:hover {
-  background: var(--accent);
-  color: white;
-  transform: translateY(-3px);
-}
-
-/* — BOTTOM BUTTONS — */
-.bottom-buttons,
-.nav-buttons,
-footer .menu {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -122,86 +106,578 @@ footer .menu {
   margin-top: 2.5rem;
 }
 
-.bottom-buttons a,
-.nav-buttons a {
+.menu a {
   background: var(--blanc);
-  padding: 0.9rem 1.3rem;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
   color: var(--texte);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 30px;
+  font-weight: 500;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.bottom-buttons a:hover {
+.menu a:hover {
   background: var(--accent);
-  color: #fff;
+  color: white;
   transform: scale(1.05);
 }
 
-/* — RECETTES PAGE — */
-#recettes-container {
+/* Vision board grid */
+.vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.vision-item {
+  background: var(--pêche);
+  border-radius: 15px;
+  text-align: center;
+  padding: 1.2rem;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.vision-item:hover {
+  transform: scale(1.05);
+  background: var(--lavande);
+}
+/* 🍱 Table Harmonieux */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--blanc);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+}
+
+th {
+  background-color: var(--pêche);
+  color: var(--texte);
+  font-weight: 600;
+  padding: 0.8rem;
+  text-align: center;
+}
+
+td {
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.meal-input {
+  width: 90%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--lavande);
+  border-radius: 10px;
+  background: var(--blanc);
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+
+.meal-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff9fb;
+}
+/* 💭 Bloc Ressenti harmonieux */
+.mood-card {
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border: 1px solid var(--lavande);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.mood-box {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-}
-
-.recette-day {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 25px;
-  border-radius: 25px;
-  margin: 0 auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-}
-
-.day-title {
-  text-align: center;
-  font-size: 26px;
-  font-weight: bold;
-  color: #d45593;
-  margin-bottom: 20px;
-}
-
-.recette-bloc {
-  background: #ffeef6;
-  border-radius: 15px;
-  padding: 18px;
-  margin-top: 20px;
-}
-
-/* — COURSES PAGE — */
-.category {
-  margin-top: 25px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #e58ab2;
-}
-
-.item {
-  padding: 12px 18px;
-  background: var(--blanc);
-  border-radius: 14px;
-  margin: 10px 0;
-  display: flex;
   align-items: center;
-  gap: 12px;
-  box-shadow: 0 3px 8px rgba(255, 180, 220, 0.25);
+  gap: 0.6rem;
 }
 
-.item input {
-  transform: scale(1.3);
+.mood-box textarea {
+  width: 90%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid var(--lavande);
+  background: var(--blanc);
+  resize: none;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all 0.2s ease;
 }
 
-/* — RESPONSIVE — */
-@media (max-width: 600px) {
-  body {
-    padding: 1.2rem;
+.mood-box textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff9fb;
+}
+
+.mood-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.mood-actions button {
+  background: var(--pêche);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.mood-actions button:hover {
+  background: var(--lavande);
+  color: white;
+}
+
+.fade-msg {
+  display: none;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+/* 🌸 Grille d'accueil harmonieuse */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border: 1px solid var(--lavande);
+  border-radius: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  padding: 1.5rem 1rem;
+  transition: all 0.25s ease;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--texte);
+}
+
+.home-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  background: linear-gradient(135deg, #fef5ff, #fff9fb);
+}
+
+.home-card span {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+/* 🕯️ Espace personnel harmonieux */
+.mood-card, .gratitude-card {
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border: 1px solid var(--lavande);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+textarea, input[type="text"] {
+  width: 90%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid var(--lavande);
+  background: var(--blanc);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+textarea:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff9fb;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+
+.save-msg {
+  display: none;
+  text-align: center;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+/* 🕯️ Bloc "Ton espace personnel" */
+.personal-space {
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border: 1px solid var(--lavande);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+
+.personal-space .mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.personal-space .mini-card {
+  background: var(--blanc);
+  border: 1px solid var(--lavande);
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+}
+
+.personal-space textarea, 
+.personal-space input {
+  width: 100%;
+  border: 1px solid var(--lavande);
+  border-radius: 10px;
+  padding: 0.6rem;
+  background: #fff;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem;
+}
+
+.personal-space textarea:focus, 
+.personal-space input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff9fb;
+}
+/* 🔙 Bouton Retour à l'accueil */
+.menu {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.menu a {
+  background: var(--pêche);
+  color: var(--texte);
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.menu a:hover {
+  background: var(--lavande);
+  color: white;
+}
+/* ✨ Message de sauvegarde fade */
+.fade-msg {
+  display: none;
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+  transition: opacity 0.4s ease;
+}
+/* 🍓 Recette du moment */
+.recipe-card {
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border: 1px solid var(--lavande);
+  border-radius: 20px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.recipe-card h3 {
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+.recipe-card ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.recipe-card ul li::before {
+  content: "🌸 ";
+}
+
+.recipe-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+/* 🌸 Cartes journalières */
+.week-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.day-card {
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.day-card:hover {
+  transform: scale(1.01);
+}
+
+.day-card h3 {
+  margin-bottom: 0.5rem;
+  color: #d16ba5;
+}
+
+.day-card p {
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.recipe-block {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  transition: all 0.2s ease;
+}
+.recipe-block:hover {
+  transform: scale(1.01);
+}
+.recipe-block h4 {
+  color: #d16ba5;
+  margin-bottom: 0.3rem;
+}
+.recipe-block ul, .recipe-block ol {
+  margin-left: 1.2rem;
+  line-height: 1.5;
+}
+.day-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.day-card li {
+  padding: 4px 0;
+}
+
+.day-card input[type="checkbox"] {
+  transform: scale(1.1);
+  accent-color: #d16ba5;
+  margin-right: 0.5rem;
+}
+/* 🌸 Bannière automatique */
+.auto-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, #fbd3e9 0%, #bb377d 100%);
+  color: white;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  animation: slideDown 0.6s ease forwards;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-out {
+  animation: fadeOut 1.5s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+.centered-quote {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.form-block label {
+  display: block;
+  font-weight: 500;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.form-block textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #f2cde4;
+  padding: 10px;
+  font-size: 0.95rem;
+  resize: none;
+  background: #fff8fb;
+  margin-bottom: 10px;
+}
+.quote {
+  font-style: italic;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.objectifs-list input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #f2cde4;
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #fff8fb;
+  font-size: 0.95rem;
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeInRitual 1.2s ease forwards;
+}
+
+@keyframes fadeInRitual {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
-  .menu a {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.checklist input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: var(--accent);
+  margin-right: 0.5rem;
+}
+/* 📱 Tables responsives */
+.responsive-table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* éviter le zoom/agrandissement auto sur Android */
+html { -webkit-text-size-adjust: 100%; }
+
+/* largeur mini pour garder la mise en page quand on scrolle horizontalement */
+.responsive-table table {
+  min-width: 640px; /* ajuste à 560–720 si besoin */
+}
+
+/* 💫 Option "stack-on-mobile" : transforme le tableau en cartes lisibles < 480px */
+@media (max-width: 480px) {
+  table.stack-on-mobile,
+  table.stack-on-mobile thead,
+  table.stack-on-mobile tbody,
+  table.stack-on-mobile th,
+  table.stack-on-mobile td,
+  table.stack-on-mobile tr {
+    display: block;
     width: 100%;
   }
-  .card {
-    padding: 1.2rem 1.4rem;
+
+  table.stack-on-mobile thead {
+    /* on cache l’en-tête, on utilise data-label sur chaque cellule */
+    position: absolute;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  table.stack-on-mobile tr {
+    background: linear-gradient(135deg, #fff9fb, #fef5ff);
+    border: 1px solid var(--lavande);
+    border-radius: 16px;
+    margin-bottom: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  }
+
+  table.stack-on-mobile td {
+    border: none;
+    padding: 0.35rem 0.2rem;
+    text-align: left;
+    position: relative;
+    font-size: 0.98rem;
+  }
+
+  table.stack-on-mobile td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+}
+/* 📋 Tables pastel — version fluide (même look, meilleur mobile) */
+.schedule-table,
+.table-compact {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;            /* colonnes stables sur petit écran */
+}
+
+.schedule-table th,
+.schedule-table td,
+.table-compact th,
+.table-compact td {
+  padding: 0.7rem 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  word-break: normal;
+  overflow-wrap: anywhere;        /* force le retour ligne au besoin */
+}
+
+/* En-têtes inchangés, juste plus lisibles si texte long */
+.schedule-table th,
+.table-compact th {
+  line-height: 1.25;
+}
+
+/* Compactage doux sous 480px (sans dénaturer) */
+@media (max-width: 480px) {
+  .schedule-table th,
+  .schedule-table td,
+  .table-compact th,
+  .table-compact td {
+    padding: 0.5rem 0.35rem;
+    font-size: 0.95rem;
   }
 }
