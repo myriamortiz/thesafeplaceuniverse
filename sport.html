@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💪 Sport – The Safe Place Universe</title>
-  <link rel="stylesheet" href="style-v2.css">
+  <link rel="stylesheet" href="style-v2.css" />
 </head>
 
 <body>
@@ -15,7 +15,6 @@
     <p class="subtitle">4 séances maison – équilibre, tonus & douceur 🌷</p>
   </section>
 
-  <!-- Citation centrée -->
   <div class="mantra">
     <p class="sport-quote">“Je me renforce avec bienveillance, pas avec pression.” 🕯</p>
   </div>
@@ -26,32 +25,28 @@
     <div class="card">
       <h2>🔥 Ton planning sportif</h2>
 
-      <div id="sport-container">
-        Chargement du planning sportif…
-      </div>
+      <!-- 👉 Ici s’affiche ton sport.json -->
+      <div id="sport-container">Chargement…</div>
     </div>
 
     <!-- 📈 Suivi progression -->
     <div class="card">
       <h2>📈 Suivi progression</h2>
-      <ul class="checklist">
+      <ul id="progressList" class="checklist">
         <li><input type="checkbox" id="p-lundi"><label for="p-lundi"> Séance du lundi</label></li>
         <li><input type="checkbox" id="p-mardi"><label for="p-mardi"> Séance du mardi</label></li>
-        <li><input type="checkbox" id="p-mercredi"><label for="p-mercredi"> Séance du mercredi</label></li>
         <li><input type="checkbox" id="p-jeudi"><label for="p-jeudi"> Séance du jeudi</label></li>
         <li><input type="checkbox" id="p-vendredi"><label for="p-vendredi"> Séance du vendredi</label></li>
       </ul>
     </div>
 
-    <!-- Navigation -->
     <nav class="menu">
-      <a href="alimentation.html">🍱 Retour alimentation</a>
-      <a href="index.html">🏡 Accueil</a>
+      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
     </nav>
 
   </main>
 
-  <!-- ⭐ Script sport -->
+  <!-- Script dynamique -->
   <script>
     fetch("data/sport.json?cache=" + Date.now())
       .then(r => r.json())
@@ -63,14 +58,10 @@
           const div = document.createElement("div");
           div.className = "day-card";
 
-          // Gestion des deux formats possibles : type/details OU exercice
-          const label = day.type || day.exercice || "Séance";
-          const details = day.details || "";
-
           div.innerHTML = `
             <h3>${day.jour}</h3>
-            <p><strong>${label}</strong></p>
-            ${details ? `<p>${details}</p>` : ""}
+            <p><strong>${day.type}</strong></p>
+            <p>${day.details}</p>
           `;
 
           container.appendChild(div);
