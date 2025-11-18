@@ -1,75 +1,65 @@
 [
   {
     "jour": "Lundi",
-    "type": "Full Body — 3 tours (40\" / 20\")",
-    "details": [
-      "Squats — 40 sec",
-      "Pompes (sur genoux si besoin) — 40 sec",
-      "Fentes alternées — 40 sec",
-      "Planche — 40 sec",
-      "Hip Thrust — 40 sec",
-      "⏳ Repos : 1 min entre chaque tour"
-    ]
+    "type": "Séance maison full body",
+    "series": "3 séries",
+    "repetitions": "12 répétitions par exercice",
+    "temps": "30 sec de repos entre exercices",
+    "tours": "2 tours complets",
+    "details": "squats, pompes, planches, lunges"
   },
   {
     "jour": "Mardi",
-    "type": "Haut du corps — 3 séries",
-    "details": [
-      "Row élastique — 15 reps",
-      "Élévations latérales — 12 reps",
-      "Curl biceps — 15 reps",
-      "Extensions triceps — 12 reps",
-      "Pompes murales — 12 reps",
-      "⏳ Repos : 1 min entre chaque série"
-    ]
+    "type": "Séance maison dos et bras",
+    "series": "4 séries",
+    "repetitions": "10 à 12 répétitions",
+    "temps": "45 sec de repos",
+    "tours": "2 tours",
+    "details": "tractions (ou tirage élastique), extensions triceps, rows, biceps curls"
   },
   {
     "jour": "Mercredi",
     "type": "Bachata",
-    "details": [
-      "Cours + travail du rythme",
-      "Pas de base / tours",
-      "Impro 5 min"
-    ]
+    "series": "1 cours",
+    "repetitions": "—",
+    "temps": "60 minutes",
+    "tours": "—",
+    "details": "pas de base, guidage, musicalité, enchaînements"
   },
   {
     "jour": "Jeudi",
-    "type": "Bas du corps / Fessiers — 3 séries",
-    "details": [
-      "Squats — 15 reps",
-      "Kickbacks élastique — 15 reps/jambe",
-      "Hip Thrust — 20 reps",
-      "Fentes arrière — 12 reps/jambe",
-      "Abduction élastique — 20 reps",
-      "🔥 Finisher : pont fessier — 45 sec"
-    ]
+    "type": "Séance maison jambes",
+    "series": "3 séries",
+    "repetitions": "15 répétitions",
+    "temps": "45 sec de repos",
+    "tours": "2 tours",
+    "details": "squats, lunges, fentes arrière, extensions fessiers"
   },
   {
     "jour": "Vendredi",
-    "type": "Abdos — 3 tours",
-    "details": [
-      "Crunchs — 15 reps",
-      "Planche — 30 sec",
-      "Relevés de jambes — 12 reps",
-      "Russian twists — 20 reps",
-      "Planche latérale — 20 sec/ côté",
-      "⏳ Repos : 45 sec entre les tours"
-    ]
+    "type": "Séance maison abdominaux",
+    "series": "4 séries",
+    "repetitions": "20 répétitions",
+    "temps": "30 sec de repos",
+    "tours": "2 tours",
+    "details": "planches, crunchs, Russian twists, leg raises"
   },
   {
     "jour": "Samedi",
     "type": "Repos actif",
-    "details": [
-      "Marche 30 min",
-      "5 min d’étirements"
-    ]
+    "series": "—",
+    "repetitions": "—",
+    "temps": "30 minutes",
+    "tours": "1",
+    "details": "marche douce + stretching"
   },
   {
     "jour": "Dimanche",
     "type": "Repos actif",
-    "details": [
-      "Yoga doux 10 min",
-      "Étirements guidés"
-    ]
+    "series": "—",
+    "repetitions": "—",
+    "temps": "20 minutes",
+    "tours": "1",
+    "details": "yoga doux, étirements de base"
   }
 ]
