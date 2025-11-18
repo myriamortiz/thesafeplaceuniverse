@@ -1,102 +1,59 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🛒 Liste de courses</title>
-  <link rel="stylesheet" href="style.css">
+<script>
+  function getCategory(item) {
+    item = item.toLowerCase().trim();
 
-  <style>
-    .category {
-      margin-top: 25px;
-      font-size: 20px;
-      font-weight: 600;
-      color: #e58ab2;
-    }
-    .item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 15px;
-      margin: 8px 0;
-      border-radius: 15px;
-      background: rgba(255,255,255,0.8);
-      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-    }
-    .item input {
-      transform: scale(1.3);
-      accent-color: #ffb4d0;
-    }
-  </style>
-</head>
+    // Fruits
+    if (["pomme","banane","framboise","kiwi","raisin","mandarine","mangue","baies"].some(w => item.includes(w)))
+      return "🍎 Fruits";
 
-<body>
+    // Légumes
+    if (["carotte","courgette","poivron","betterave","salade","avocat","aubergine","épinard","haricot"].some(w => item.includes(w)))
+      return "🥬 Légumes";
 
-  <section class="splash">
-    <h1>🛒 Liste de courses</h1>
-    <p class="subtitle">Générée automatiquement selon tes recettes 🌸</p>
-  </section>
+    // Protéines
+    if (["poulet","saumon","crevette","boeuf","dinde","œuf","oeuf","yaourt","tofu"].some(w => item.includes(w)))
+      return "🍗 Protéines";
 
-  <main class="content">
-    <div class="card">
-      <div id="courses-container">Chargement...</div>
-    </div>
+    // Laitages ok
+    if (["chèvre","brebis","fromage"].some(w => item.includes(w)))
+      return "🥛 Laitages chèvre/brebis";
 
-    <nav class="menu">
-      <a href="recettes.html">🧁 Recettes</a>
-      <a href="alimentation.html">🍱 Retour alimentation</a>
-    </nav>
-  </main>
+    // Placard
+    if (["riz","quinoa","chia","amandes","noix","beurre","pain","huile","vinaigre"].some(w => item.includes(w)))
+      return "🥣 Placard";
 
-  <script>
-    function getCategory(item) {
-      item = item.toLowerCase();
+    return "🧂 Divers";
+  }
 
-      if (["pomme","banane","framboise","kiwi","mangue"].some(w => item.includes(w)))
-        return "🍎 Fruits";
-      if (["carotte","courgette","poivron","betterave","salade","avocat","aubergine","épinard"].some(w => item.includes(w)))
-        return "🥬 Légumes";
-      if (["poulet","saumon","crevette","boeuf","dinde","œufs","oeufs"].some(w => item.includes(w)))
-        return "🍗 Protéines";
-      if (["chèvre","brebis","yaourt"].some(w => item.includes(w)))
-        return "🥛 Laitages chèvre/brebis";
-      if (["riz","quinoa","chia","amandes","noix","beurre"].some(w => item.includes(w)))
-        return "🥣 Placard";
+  fetch("data/courses.json?cache=" + Date.now())
+    .then(r => r.json())
+    .then(list => {
+      const container = document.getElementById("courses-container");
+      container.innerHTML = "";
 
-      return "🧂 Divers";
-    }
+      const grouped = {};
 
-    fetch("data/courses.json?cache=" + Date.now())
-      .then(r => r.json())
-      .then(list => {
-        const container = document.getElementById("courses-container");
-        container.innerHTML = "";
-
-        const grouped = {};
-
-        list.forEach(item => {
-          const cat = getCategory(item);
-          if (!grouped[cat]) grouped[cat] = [];
-          grouped[cat].push(item);
-        });
-
-        for (const cat in grouped) {
-          container.innerHTML += `<div class="category">${cat}</div>`;
-          grouped[cat].forEach(item => {
-            container.innerHTML += `
-              <div class="item">
-                <input type="checkbox" id="${item}">
-                <label for="${item}">${item}</label>
-              </div>
-            `;
-          });
-        }
-      })
-      .catch(() => {
-        document.getElementById("courses-container").innerHTML =
-          "❌ Impossible de charger la liste.";
+      list.forEach(item => {
+        const cat = getCategory(item);
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(item);
       });
-  </script>
 
-</body>
-</html>
+      for (const cat in grouped) {
+        container.innerHTML += `<div class="category">${cat}</div>`;
+        grouped[cat].forEach(item => {
+          container.innerHTML += `
+            <div class="item">
+              <input type="checkbox" id="${item}">
+              <label for="${item}">${item}</label>
+            </div>
+          `;
+        });
+      }
+    })
+    .catch(() => {
+      document.getElementById("courses-container").innerHTML =
+        "❌ Impossible de charger la liste.";
+    });
+</script>
+
