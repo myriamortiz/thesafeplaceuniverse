@@ -1,83 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>💪 Sport – The Safe Place Universe</title>
-  <link rel="stylesheet" href="style.css" />
- <link rel="stylesheet" href="style-v2.css">
-</head>
+<script>
+  fetch("data/sport.json?cache=" + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const container = document.getElementById("sport-container");
+      container.innerHTML = "";
 
-<body>
+      data.forEach(day => {
+        const div = document.createElement("div");
+        div.className = "day-card";
 
-  <!-- Bannière auto -->
-  <div id="autoBanner" class="auto-banner" style="display:none;">
-    ✨ Ton programme “Reboost & Tonus” est prêt 🌸
-  </div>
+        div.innerHTML = `
+          <h3>${day.jour}</h3>
+          <p><strong>${day.type}</strong></p>
+          <p>${day.details}</p>
+        `;
 
-  <!-- Splash -->
-  <section class="splash">
-    <h1>💪 Programme Sportif</h1>
-    <p class="subtitle">4 séances maison – équilibre, tonus & douceur 🌷</p>
-  </section>
-
-  <div class="mantra">
-   <p class="sport-quote">“Je me renforce avec bienveillance, pas avec pression.” 🕯</p>
-  </div>
-
-  <main class="content">
-
-    <!-- 🔥 Programme auto -->
-    <div class="card">
-      <h2>🔥 Ton planning sportif</h2>
-
-      <div id="sport-container">
-        <p>Chargement du planning sportif…</p>
-      </div>
-    </div>
-
-    <!-- 📈 Suivi progression -->
-    <div class="card">
-      <h2>📈 Suivi progression</h2>
-      <ul id="progressList" class="checklist">
-        <li><input type="checkbox" id="p-lundi"><label for="p-lundi"> Séance du lundi</label></li>
-        <li><input type="checkbox" id="p-mardi"><label for="p-mardi"> Séance du mardi</label></li>
-        <li><input type="checkbox" id="p-jeudi"><label for="p-jeudi"> Séance du jeudi</label></li>
-        <li><input type="checkbox" id="p-vendredi"><label for="p-vendredi"> Séance du vendredi</label></li>
-      </ul>
-    </div>
-
-    <nav class="menu">
-      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
-    </nav>
-
-  </main>
-
-  <!-- ⭐ Script qui charge sport.json automatiquement -->
-  <script>
-    fetch("/thesafeplaceuniverse/data/sport.json?cache=" + Date.now())
-      .then(r => r.json())
-      .then(data => {
-        const container = document.getElementById("sport-container");
-        container.innerHTML = "";
-
-        data.forEach(day => {
-          const div = document.createElement("div");
-          div.className = "day-card";
-
-          div.innerHTML = `
-            <h3>${day.jour}</h3>
-            <p>${day.exercice}</p>
-          `;
-
-          container.appendChild(div);
-        });
-      })
-      .catch(() => {
-        document.getElementById("sport-container").innerHTML =
-          "<p>Impossible de charger ton planning sport 🌧</p>";
+        container.appendChild(div);
       });
-  </script>
-
-</body>
-</html>
+    })
+    .catch(() => {
+      document.getElementById("sport-container").innerHTML =
+        "<p>Impossible de charger ton planning sport 🌧</p>";
+    });
+</script>
