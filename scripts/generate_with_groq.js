@@ -22,19 +22,25 @@ function extractJSON(text) {
   let jsonStr = text.slice(start, end);
 
   // ——————————————————————
-  // SUPER NETTOYAGE JSON
+  // NETTOYAGE JSON AGRESSIF
   // ——————————————————————
   jsonStr = jsonStr
-    .normalize("NFKD")                     // normalise accents
-    .replace(/[\u0300-\u036f]/g, "")       // supprime accents invisibles
-    .replace(/“|”/g, '"')                  // guillemets fancy → "
-    .replace(/‘|’/g, "'")                  // apostrophes fancy → '
-    .replace(/\r?\n/g, "\\n")              // retours ligne JSON-safe
-    .replace(/\t/g, " ")                   // tabulations
-    .replace(/\\(?!["\\/bfnrt])/g, "\\\\") // antislash invalides
-    .replace(/\u00A0/g, " ");              // espace insécable invisible
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/“|”/g, '"')
+    .replace(/‘|’/g, "'")
+    .replace(/\r?\n/g, "\\n")
+    .replace(/\t/g, " ")
+    .replace(/\\(?!["\\/bfnrt])/g, "\\\\")
+    .replace(/\u00A0/g, " ")
+    .replace(/\\u00A0/g, " ")
+    .replace(/\u202F/g, " ")
+    .replace(/\u2009/g, " ")
+    .replace(/\u200B/g, "")
+    .replace(/\uFEFF/g, "")
+    .replace(/[^\x20-\x7E\u00A0-\u00FF]/g, "");
 
-  // Vérifier que c’est valide
+  // Vérifier validité JSON
   try {
     JSON.parse(jsonStr);
   } catch (e) {
