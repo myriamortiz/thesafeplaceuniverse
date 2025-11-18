@@ -13,7 +13,6 @@
   --accent: #f0b8ca;
 }
 
-/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,12 +29,12 @@ body {
   animation: fadeIn 1.5s ease;
 }
 
+/* Apparition douce */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* TITRES */
 h1, h2 {
   font-family: 'Playfair Display', serif;
   color: var(--texte);
@@ -54,7 +53,6 @@ h1 {
   margin-bottom: 2rem;
 }
 
-/* Mantra */
 .mantra {
   background: var(--blanc);
   border-radius: 20px;
@@ -64,6 +62,7 @@ h1 {
   margin: 1.5rem auto;
   max-width: 600px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  animation: fadeIn 2s ease;
 }
 
 /* Cartes pastel */
@@ -74,7 +73,7 @@ h1 {
   margin: 1.5rem auto;
   max-width: 700px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -82,7 +81,23 @@ h1 {
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
-/* Menu */
+.card h2 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  padding: 0.5rem 0;
+  text-align: left;
+}
+
+/* Menu principal */
 .menu {
   display: flex;
   justify-content: center;
@@ -94,79 +109,124 @@ h1 {
 .menu a {
   background: var(--blanc);
   color: var(--texte);
+  text-decoration: none;
   padding: 0.8rem 1.2rem;
   border-radius: 30px;
-  text-decoration: none;
   font-weight: 500;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  transition: 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .menu a:hover {
   background: var(--accent);
   color: white;
+  transform: scale(1.05);
 }
 
-/* 🌸 LISTES — global */
-ul {
-  list-style: none;
-  padding-left: 0;
+/* Vision board grid */
+.vision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-li {
-  padding: 0.5rem 0;
-  text-align: left;
+.vision-item {
+  background: var(--pêche);
+  border-radius: 15px;
+  text-align: center;
+  padding: 1.2rem;
+  font-weight: 600;
+  transition: transform 0.3s ease;
 }
 
-/* 🌸 Bannière */
-.auto-banner {
-  position: fixed;
-  top: 0;
+.vision-item:hover {
+  transform: scale(1.05);
+  background: var(--lavande);
+}
+
+/* 🍱 Table Harmonieux */
+table {
   width: 100%;
-  background: linear-gradient(90deg, #fbd3e9, #bb377d);
-  color: white;
+  border-collapse: collapse;
+  background: var(--blanc);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+}
+
+th {
+  background-color: var(--pêche);
+  color: var(--texte);
+  font-weight: 600;
   padding: 0.8rem;
   text-align: center;
-  font-weight: 500;
-  z-index: 10000;
-  animation: slideDown 0.6s ease forwards;
 }
 
-@keyframes slideDown {
-  from { transform: translateY(-100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+td {
+  padding: 0.6rem;
+  text-align: center;
 }
 
-.fade-out { animation: fadeOut 1s ease forwards; }
-@keyframes fadeOut { to { opacity: 0; } }
+.meal-input {
+  width: 90%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--lavande);
+  border-radius: 10px;
+  background: var(--blanc);
+  text-align: center;
+}
 
-/* 🌸 PAGE COURSES */
-.course-item {
-  padding: 14px 20px;
-  background: #fffafc;
-  border-radius: 14px;
-  margin: 12px 0;
-  box-shadow: 0 3px 8px rgba(255, 180, 220, 0.25);
+.meal-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff9fb;
+}
+
+/* 💭 Bloc Ressenti */
+.mood-card {
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border: 1px solid var(--lavande);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.mood-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  font-size: 18px;
+  gap: 0.6rem;
 }
 
-.course-item:hover {
-  transform: translateX(4px);
-  background: #fff5f9;
+.mood-box textarea {
+  width: 90%;
+  padding: 0.8rem;
+  border-radius: 12px;
+  border: 1px solid var(--lavande);
+  background: var(--blanc);
+  resize: none;
+  font-size: 1rem;
 }
 
-.course-item input {
-  width: 22px;
-  height: 22px;
-  accent-color: var(--accent);
+.mood-box textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff9fb;
 }
 
-/* ------------------------------------------------------------------ */
-/* 🌸 PAGE RECETTES — VERSION FINALE, CENTRÉE, SANS BORDURE GAUCHE */
-/* ------------------------------------------------------------------ */
+/* 🕯️ Espace personnel */
+.personal-space {
+  background: linear-gradient(135deg, #fff9fb, #fef5ff);
+  border: 1px solid var(--lavande);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin-top: 2rem;
+}
+
+/* --- PAGE RECETTES JOURNAL DE BORD --- */
 
 #recettes-container {
   display: flex;
@@ -174,7 +234,6 @@ li {
   gap: 40px;
 }
 
-/* Chaque jour */
 .recette-day {
   background: rgba(255, 255, 255, 0.85);
   padding: 30px;
@@ -183,78 +242,55 @@ li {
   backdrop-filter: blur(6px);
 }
 
-/* Titre du jour */
 .day-title {
   text-align: center;
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
   color: #d45593;
   margin-bottom: 20px;
 }
 
-/* Cartes Brunch / Collation / Dîner */
-.recette-bloc {
+.recette-block {
   background: #ffeef6;
   padding: 20px;
-  border-radius: 18px;
+  border-radius: 15px;
   margin-top: 25px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+  border-left: none !important;
 }
 
-/* Titres (Brunch, Collation, Dîner) */
-.recette-bloc h3 {
+.recette-block h3 {
   font-size: 22px;
-  font-weight: 700;
-  text-align: center;
   color: #d94f89;
-  margin-bottom: 15px;
-}
-
-/* Labels "Ingrédients" et "Instructions" */
-.recette-bloc h4 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #a84e78;
-  text-align: center;
-  margin: 20px 0 10px;
-}
-
-/* Liste ingrédients */
-.recette-bloc ul {
-  padding-left: 0;
   text-align: center;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
-.recette-bloc li {
+.recette-block h4 {
+  font-size: 16px;
+  color: #a84e78;
+  text-align: center;
+  margin: 12px 0 8px 0;
+}
+
+.recette-block ul {
+  padding-left: 0;
+  text-align: center;
+}
+
+.recette-block li {
   margin: 4px 0;
   font-size: 15px;
-  color: #333;
 }
 
-/* Bloc instructions */
-.recette-bloc p {
+.recette-block p {
   background: #fff;
-  padding: 12px 18px;
+  padding: 12px 15px;
   border-radius: 12px;
   font-size: 15px;
   line-height: 1.6;
   color: #444;
   margin-top: 10px;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.06);
-}
-
-/* ------------------------------------------------------------------ */
-/* RESPONSIVE */
-/* ------------------------------------------------------------------ */
-@media (max-width: 600px) {
-  body { padding: 1rem; }
-
-  .recette-day {
-    padding: 20px;
-  }
-
-  .course-item { font-size: 16px; }
-
-  .recette-bloc { padding: 15px; }
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
 }
