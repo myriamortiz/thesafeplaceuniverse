@@ -1,33 +1,30 @@
-async function loadSport() {
-  const container = document.getElementById("sport-container");  // ✅ CORRECTION ICI
-  if (!container) return;
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.getElementById("sport-container");
 
   try {
     const response = await fetch("data/sport.json?cache=" + Date.now());
-    if (!response.ok) throw new Error("Erreur");
-
     const data = await response.json();
+
     container.innerHTML = "";
 
     data.forEach(day => {
       const div = document.createElement("div");
-      div.className = "sport-card";
+      div.className = "day-card";
 
-      const label = day.type || day.exercice || "Séance";
-      const details = day.details || "";
+      const list = day.details
+        .map(i => `<li>${i}</li>`)
+        .join("");
 
       div.innerHTML = `
-        <h3>🔥 ${day.jour}</h3>
-        <p><strong>${label}</strong></p>
-        ${details ? `<p>${details}</p>` : ""}
+        <h3>${day.jour}</h3>
+        <p><strong>${day.type}</strong></p>
+        <ul>${list}</ul>
       `;
 
       container.appendChild(div);
     });
 
-  } catch (e) {
-    container.innerHTML = "<p style='text-align:center;'>💤 Impossible de charger ton planning sport</p>";
+  } catch (err) {
+    container.innerHTML = "<p>🌧 Impossible de charger le planning sport.</p>";
   }
-}
-
-document.addEventListener("DOMContentLoaded", loadSport);
+});
