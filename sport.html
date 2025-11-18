@@ -46,32 +46,33 @@
 
   </main>
 
-  <!-- Script dynamique -->
-  <script>
-    fetch("data/sport.json?cache=" + Date.now())
-      .then(r => r.json())
-      .then(data => {
-        const container = document.getElementById("sport-container");
-        container.innerHTML = "";
+<script>
+  fetch("data/sport.json?cache=" + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const container = document.getElementById("sport-container");
+      container.innerHTML = "";
 
-        data.forEach(day => {
-          const div = document.createElement("div");
-          div.className = "day-card";
+      data.forEach(day => {
+        const div = document.createElement("div");
+        div.className = "day-card";
 
-          div.innerHTML = `
-            <h3>${day.jour}</h3>
-            <p><strong>${day.type}</strong></p>
-            <p>${day.details}</p>
-          `;
+        div.innerHTML = `
+          <h3>${day.jour}</h3>
+          <p><strong>${day.type}</strong></p>
+          <p><strong>Séries :</strong> ${day.series}</p>
+          <p><strong>Répétitions :</strong> ${day.repetitions}</p>
+          <p><strong>Repos :</strong> ${day.repos}</p>
+          <p><strong>Tours :</strong> ${day.tours}</p>
+          <p><strong>Exercices :</strong></p>
+          <ul>${day.exercices.map(e => `<li>${e}</li>`).join("")}</ul>
+        `;
 
-          container.appendChild(div);
-        });
-      })
-      .catch(() => {
-        document.getElementById("sport-container").innerHTML =
-          "<p>Impossible de charger ton planning sport 🌧</p>";
+        container.appendChild(div);
       });
-  </script>
-
-</body>
-</html>
+    })
+    .catch(() => {
+      document.getElementById("sport-container").innerHTML =
+        "<p>Impossible de charger ton planning sport 🌧</p>";
+    });
+</script>
