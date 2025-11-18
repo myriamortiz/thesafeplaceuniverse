@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🧁 Recettes – The Safe Place Universe</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- STYLE -->
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- Splash -->
   <section class="splash">
     <h1>🧁 Recettes complètes</h1>
     <p class="subtitle">21 recettes – brunch, collation, dîner 🌸</p>
@@ -16,8 +19,11 @@
 
   <main class="content">
 
-    <div id="recettes-container">
-      <p>Chargement des recettes…</p>
+    <!-- Carte fond blanc -->
+    <div class="card">
+      <div id="recettes-container">
+        <p>Chargement des recettes...</p>
+      </div>
     </div>
 
     <nav class="menu">
@@ -27,14 +33,12 @@
   </main>
 
 
-  <!-- ⭐ Script pour charger les recettes -->
+  <!-- Script -->
   <script>
     async function loadRecettes() {
       const container = document.getElementById("recettes-container");
 
       try {
-
-        // ⭐⭐ CORRECTION CRUCIALE : chemin complet GitHub Pages ⭐⭐
         const response = await fetch("/thesafeplaceuniverse/data/recettes.json?cache=" + Date.now());
         const recettes = await response.json();
 
