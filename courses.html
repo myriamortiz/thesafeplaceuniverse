@@ -1,75 +1,113 @@
-<script>
-  function getCategory(item) {
-    const i = item.toLowerCase().trim();
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛒 Liste de courses</title>
+  <link rel="stylesheet" href="style.css">
 
-    // 🍎 Fruits
-    const fruits = [
-      "pomme","banane","framboise","kiwi","raisin","raisins secs",
-      "mangue","mandarine","baies","fruit","fruits"
-    ];
-    if (fruits.some(w => i.includes(w))) return "🍎 Fruits";
+  <style>
+    .category {
+      margin-top: 25px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #e58ab2;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
+      margin: 8px 0;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.8);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    }
+    .item input {
+      transform: scale(1.3);
+      accent-color: #ffb4d0;
+    }
+  </style>
+</head>
 
-    // 🥬 Légumes
-    const legumes = [
-      "carotte","carottes","courgette","courgettes","poivron","poivrons",
-      "betterave","betteraves","salade","laitue","avocat","aubergine",
-      "aubergines","epinard","epinards","haricot","haricots","chou",
-      "asperge","asperges","legume","legumes","tomate","tomates",
-      "patate douce","patates douces","champignon","champignons"
-    ];
-    if (legumes.some(w => i.includes(w))) return "🥬 Légumes";
+<body>
 
-    // 🍗 Protéines
-    const proteines = [
-      "poulet","saumon","crevette","crevettes","boeuf","dinde",
-      "oeuf","oeufs","yaourt","tofu"
-    ];
-    if (proteines.some(w => i.includes(w))) return "🍗 Protéines";
+  <section class="splash">
+    <h1>🛒 Liste de courses</h1>
+    <p class="subtitle">Générée automatiquement selon tes recettes 🌸</p>
+  </section>
 
-    // 🥛 Laitages chèvre/brebis
-    const laitages = [
-      "chevre","brebis","fromage"
-    ];
-    if (laitages.some(w => i.includes(w))) return "🥛 Laitages chèvre/brebis";
+  <main class="content">
+    <div class="card">
+      <div id="courses-container">Chargement...</div>
+    </div>
 
-    // 🥣 Placard
-    const placard = [
-      "riz","quinoa","chia","amandes","noix","beurre","pain",
-      "huile","vinaigre","hummus","guacamole"
-    ];
-    if (placard.some(w => i.includes(w))) return "🥣 Placard";
+    <nav class="menu">
+      <a href="recettes.html">🧁 Recettes</a>
+      <a href="alimentation.html">🍱 Retour alimentation</a>
+    </nav>
+  </main>
 
-    return "🧂 Divers";
-  }
+  <script>
+    function normalize(str) {
+      return str
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
 
-  fetch("data/courses.json?cache=" + Date.now())
-    .then(r => r.json())
-    .then(list => {
-      const container = document.getElementById("courses-container");
-      container.innerHTML = "";
+    function getCategory(item) {
+      const i = normalize(item);
 
-      const grouped = {};
+      if (["pomme","banane","framboise","kiwi","mangue"].some(w => i.includes(w)))
+        return "🍎 Fruits";
 
-      list.forEach(item => {
-        const cat = getCategory(item);
-        if (!grouped[cat]) grouped[cat] = [];
-        grouped[cat].push(item);
-      });
+      if (["carotte","courgette","poivron","betterave","salade","avocat","aubergine","epinard","tomate","chou","asperge","haricot"].some(w => i.includes(w)))
+        return "🥬 Légumes";
 
-      for (const cat in grouped) {
-        container.innerHTML += `<div class="category">${cat}</div>`;
-        grouped[cat].forEach(item => {
-          container.innerHTML += `
-            <div class="item">
-              <input type="checkbox" id="${item}">
-              <label for="${item}">${item}</label>
-            </div>`;
+      if (["poulet","saumon","crevette","boeuf","dinde","oeuf"].some(w => i.includes(w)))
+        return "🍗 Protéines";
+
+      if (["chevre","brebis","yaourt","lait"].some(w => i.includes(w)))
+        return "🥛 Laitages chèvre/brebis";
+
+      if (["riz","quinoa","chia","amande","noix","beurre","pain"].some(w => i.includes(w)))
+        return "🥣 Placard";
+
+      return "🧂 Divers";
+    }
+
+    fetch("data/courses.json?cache=" + Date.now())
+      .then(r => r.json())
+      .then(list => {
+        const container = document.getElementById("courses-container");
+        container.innerHTML = "";
+
+        const grouped = {};
+
+        list.forEach(item => {
+          const cat = getCategory(item);
+          if (!grouped[cat]) grouped[cat] = [];
+          grouped[cat].push(item);
         });
-      }
-    })
-    .catch(err => {
-      document.getElementById("courses-container").innerHTML =
-        "<p>Impossible de charger la liste.</p>";
-      console.error(err);
-    });
-</script>
+
+        for (const cat in grouped) {
+          container.innerHTML += `<div class="category">${cat}</div>`;
+          grouped[cat].forEach(item => {
+            container.innerHTML += `
+              <div class="item">
+                <input type="checkbox" id="${item}">
+                <label for="${item}">${item}</label>
+              </div>
+            `;
+          });
+        }
+      })
+      .catch(() => {
+        document.getElementById("courses-container").innerHTML =
+          "❌ Impossible de charger la liste de courses.";
+      });
+  </script>
+
+</body>
+</html>
