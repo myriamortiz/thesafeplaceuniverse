@@ -92,37 +92,40 @@ li {
   margin: 0.4rem 0;
 }
 
-/* — MENU / EXPLORE TON UNIVERS — */
-.menu,
-.explore-menu {
+/* --- EXPLORE TON UNIVERS ---  */
+.menu {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
-  padding: 1.5rem 0;
+  margin-top: 2rem;
 }
 
-.menu a,
-.explore-menu a {
-  background: var(--blanc);
-  padding: 0.7rem 1.1rem;
-  text-decoration: none;
+.menu a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
   color: var(--texte);
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
   border-radius: 30px;
   font-weight: 500;
-  box-shadow: 0 4px 10px var(--shadow);
-  transition: 0.2s;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
 }
 
-.menu a:hover,
-.explore-menu a:hover {
+.menu a:hover {
   background: var(--accent);
   color: white;
-  transform: scale(1.05);
+  transform: translateY(-3px);
 }
 
 /* — CITATION / TEXTE CENTRÉ — */
-.citation {
+.citation-box {
+  text-align: center;
+}
   text-align: center;
   font-size: 1.1rem;
   padding: 1rem;
