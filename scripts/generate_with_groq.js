@@ -75,15 +75,15 @@ Répond UNIQUEMENT par un JSON strict. Pas de texte avant/après.
 
 // --- 2) RECETTES ---
 async function generateRecettes() {
-  const menu = JSON.parse(fs.readFileSync("data/menu.json", "utf-8"));
+  const menu = JSON.parse(fs.readFileSync("data/menu.json", "utf8"));
 
   const prompt = `
-Répond UNIQUEMENT par un JSON.
+Répond UNIQUEMENT par un tableau JSON strict.
 
 Menu :
 ${JSON.stringify(menu)}
 
-Format :
+Format exact :
 [
   {
     "jour": "Jour 1",
@@ -93,10 +93,32 @@ Format :
   }
 ]
 `;
+  // 1) On demande les recettes à Groq
+  const output = await askGroq(prompt);
 
-  const out = await askGroq(prompt);
-  fs.writeFileSync("data/recettes.json", out);
-  console.log("📖 recettes.json OK");
+  // 2) On parse le JSON renvoyé par Groq
+  let recettes = JSON.parse(output);
+
+  // 3) On ajoute un champ "nom" pour éviter les "undefined"
+  recettes = recettes.map((day) => ({
+    ...day,
+    brunch: {
+      ...day.brunch,
+      nom: day.brunch?.nom || "Brunch"
+    },
+    collation: {
+      ...day.collation,
+      nom: day.collation?.nom || "Collation"
+    },
+    diner: {
+      ...day.diner,
+      nom: day.diner?.nom || "Dîner"
+    }
+  }));
+
+  // 4) On sauvegarde le JSON propre
+  fs.writeFileSync("data/recettes.json", JSON.stringify(recettes, null, 2));
+  console.log("📖 recettes.json OK (avec noms)");
 }
 
 // --- 3) COURSES ---
