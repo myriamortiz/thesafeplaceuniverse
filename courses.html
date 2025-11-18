@@ -2,24 +2,40 @@
   function getCategory(item) {
     item = item.toLowerCase().trim();
 
-    // Fruits
-    if (["pomme","banane","framboise","kiwi","raisin","mandarine","mangue","baies"].some(w => item.includes(w)))
+    // --- Fruits ---
+    if ([
+      "pomme","banane","framboise","kiwi","raisin","raisins secs","mangue","mandarine",
+      "baies","fruits"
+    ].some(w => item.includes(w)))
       return "🍎 Fruits";
 
-    // Légumes
-    if (["carotte","courgette","poivron","betterave","salade","avocat","aubergine","épinard","haricot"].some(w => item.includes(w)))
+    // --- Légumes ---
+    if ([
+      "carotte","carottes","courgette","courgettes","poivron","poivrons","betterave",
+      "betteraves","salade","laitue","avocat","aubergine","aubergines","épinard","épinards",
+      "haricot","haricots","chou","asperges","légumes","tomate","tomates","patate douce","patates douces",
+      "champignon","champignons"
+    ].some(w => item.includes(w)))
       return "🥬 Légumes";
 
-    // Protéines
-    if (["poulet","saumon","crevette","boeuf","dinde","œuf","oeuf","yaourt","tofu"].some(w => item.includes(w)))
+    // --- Protéines ---
+    if ([
+      "poulet","saumon","crevette","crevettes","boeuf","bœuf","dinde","œuf","oeuf","œufs","oeufs",
+      "yaourt de brebis","yaourt","tofu"
+    ].some(w => item.includes(w)))
       return "🍗 Protéines";
 
-    // Laitages ok
-    if (["chèvre","brebis","fromage"].some(w => item.includes(w)))
+    // --- Laitages chèvre / brebis ---
+    if ([
+      "chèvre","brebis","fromage"
+    ].some(w => item.includes(w)))
       return "🥛 Laitages chèvre/brebis";
 
-    // Placard
-    if (["riz","quinoa","chia","amandes","noix","beurre","pain","huile","vinaigre"].some(w => item.includes(w)))
+    // --- Placard ---
+    if ([
+      "riz","quinoa","chia","amandes","noix","beurre","pain","huile","vinaigre","vinaigre de citron",
+      "hummus","guacamole"
+    ].some(w => item.includes(w)))
       return "🥣 Placard";
 
     return "🧂 Divers";
@@ -56,4 +72,3 @@
         "❌ Impossible de charger la liste.";
     });
 </script>
-
