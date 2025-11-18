@@ -392,3 +392,32 @@ td {
   background: #fff8fb;
   font-size: 0.95rem;
 }
+/* Explorer ton univers – disposition verticale */
+.menu {
+  display: flex;
+  flex-direction: column;   /* Alignement vertical */
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.menu a {
+  width: 90%;               /* Optionnel : pour un alignement propre */
+  max-width: 300px;
+  text-align: center;
+}
+.alim-citation {
+  text-align: center !important;
+  display: block;
+  margin: 0 auto 1.5rem auto;
+}
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.bottom-buttons a {
+  display: inline-block;
+}
