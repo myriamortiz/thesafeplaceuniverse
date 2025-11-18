@@ -4,68 +4,79 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🧁 Recettes – The Safe Place Universe</title>
-
-  <!-- STYLE -->
   <link rel="stylesheet" href="style.css">
+  <script defer src="autoUpdate.js"></script>
 </head>
 
 <body>
 
-  <!-- Splash -->
   <section class="splash">
     <h1>🧁 Recettes complètes</h1>
-    <p class="subtitle">21 recettes – brunch, collation, dîner 🌸</p>
+    <p class="subtitle">Ton carnet gourmand & équilibré 🌸</p>
   </section>
 
   <main class="content">
-
-    <!-- Carte fond blanc -->
-    <div class="card">
-      <div id="recettes-container">
-        <p>Chargement des recettes...</p>
-      </div>
-    </div>
+    <div id="recettes-container" class="recettes-wrapper">Chargement...</div>
 
     <nav class="menu">
-      <a href="alimentation.html">🍱 Retour à l’alimentation</a>
+      <a href="courses.html">🛒 Liste de courses</a>
+      <a href="alimentation.html">🍱 Retour alimentation</a>
     </nav>
-
   </main>
 
-
-  <!-- Script -->
   <script>
     async function loadRecettes() {
       const container = document.getElementById("recettes-container");
 
       try {
-        const response = await fetch("/thesafeplaceuniverse/data/recettes.json?cache=" + Date.now());
+        const response = await fetch("data/recettes.json?cache=" + Date.now());
         const recettes = await response.json();
 
         container.innerHTML = "";
 
         recettes.forEach(day => {
-          container.innerHTML += `
-            <div class="day-card">
-              <h2>🌸 ${day.jour}</h2>
 
-              <h3>${day.brunch.nom}</h3>
-              <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-              <p>${day.brunch.instructions}</p>
+          const card = document.createElement("div");
+          card.className = "recette-day";
 
-              <h3>${day.collation.nom}</h3>
-              <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-              <p>${day.collation.instructions}</p>
+          card.innerHTML = `
+            <h2 class="day-title">🌸 ${day.jour}</h2>
 
-              <h3>${day.diner.nom}</h3>
-              <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-              <p>${day.diner.instructions}</p>
+            <div class="recette-block">
+              <h3>🥗 ${day.brunch.nom}</h3>
+              <h4>Ingrédients</h4>
+              <ul class="ingredients">
+                ${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}
+              </ul>
+              <h4>Instructions</h4>
+              <p class="instructions">${day.brunch.instructions}</p>
+            </div>
+
+            <div class="recette-block">
+              <h3>🍎 ${day.collation.nom}</h3>
+              <h4>Ingrédients</h4>
+              <ul class="ingredients">
+                ${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}
+              </ul>
+              <h4>Instructions</h4>
+              <p class="instructions">${day.collation.instructions}</p>
+            </div>
+
+            <div class="recette-block">
+              <h3>🍽️ ${day.diner.nom}</h3>
+              <h4>Ingrédients</h4>
+              <ul class="ingredients">
+                ${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}
+              </ul>
+              <h4>Instructions</h4>
+              <p class="instructions">${day.diner.instructions}</p>
             </div>
           `;
+
+          container.appendChild(card);
         });
 
       } catch (e) {
-        console.error(e);
         container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
       }
     }
