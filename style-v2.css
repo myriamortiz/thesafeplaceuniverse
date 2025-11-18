@@ -1,0 +1,184 @@
+/* 🌸 THE SAFE PLACE UNIVERSE — STYLE GLOBAL */
+
+/* — TYPO & COULEURS — */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Playfair+Display:wght@500&display=swap');
+
+:root {
+  --rose: #f8d8e7;
+  --lavande: #e7d7f7;
+  --menthe: #dff3ec;
+  --pêche: #ffe5d0;
+  --blanc: #fffafc;
+
+  --texte: #514b52;
+  --accent: #f0b8ca;
+
+  --shadow: rgba(0,0,0,0.08);
+}
+
+/* — RESET — */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at top left, var(--rose) 0%, var(--lavande) 40%, var(--menthe) 80%, var(--pêche) 100%);
+  background-attachment: fixed;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--texte);
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+/* — TITRES — */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  color: var(--texte);
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* — CARTES BLANCHES — */
+.card {
+  background: var(--blanc);
+  border-radius: 22px;
+  padding: 1.8rem 2rem;
+  margin: 1.8rem auto;
+  max-width: 750px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* — TITRES DE SECTION — */
+.card h2, .section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* — FORM INPUTS — */
+textarea, input[type="text"] {
+  width: 100%;
+  background: var(--blanc);
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #e8d5ea;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+textarea:focus, input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(240, 184, 202, 0.4);
+}
+
+/* — LISTES — */
+ul {
+  list-style: none;
+  margin-top: 0.5rem;
+  padding-left: 0;
+}
+
+li {
+  margin: 0.4rem 0;
+}
+
+/* — MENU / EXPLORE TON UNIVERS — */
+.menu,
+.explore-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+
+.menu a,
+.explore-menu a {
+  background: var(--blanc);
+  padding: 0.7rem 1.1rem;
+  text-decoration: none;
+  color: var(--texte);
+  border-radius: 30px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: 0.2s;
+}
+
+.menu a:hover,
+.explore-menu a:hover {
+  background: var(--accent);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* — CITATION / TEXTE CENTRÉ — */
+.citation {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+/* — RECETTES — */
+.recette-day {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 22px;
+  box-shadow: 0 4px 14px var(--shadow);
+  margin-bottom: 30px;
+}
+
+.recette-bloc {
+  background: #ffeef6;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+/* — PAGE COURSES — */
+.course-item {
+  padding: 12px 18px;
+  background: var(--blanc);
+  border-radius: 14px;
+  margin: 10px 0;
+  box-shadow: 0 3px 8px rgba(255, 180, 220, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* — BOUTONS BAS (recettes, courses, accueil) — */
+.bottom-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.bottom-buttons a {
+  background: var(--blanc);
+  padding: 0.9rem 1.4rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--texte);
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: 0.2s;
+}
+
+.bottom-buttons a:hover {
+  background: var(--accent);
+  color: white;
+  transform: scale(1.05);
+}
