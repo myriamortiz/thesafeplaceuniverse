@@ -2,36 +2,36 @@
   {
     "jour": "Lundi",
     "type": "Séance maison full body",
-    "details": "Pompes, abdominaux, planche, gainage"
+    "details": "squats, pompes, planches, lunges"
   },
   {
     "jour": "Mardi",
-    "type": "Séance maison bras",
-    "details": "Bicep curls, tricep dips, élévations latérales"
+    "type": "Séance maison dos et bras",
+    "details": "tractions, extensions, rows, biceps"
   },
   {
     "jour": "Mercredi",
     "type": "Bachata",
-    "details": "Pratique de la danse Bachata"
+    "details": "cours de danse, pas de base, improvisation"
   },
   {
     "jour": "Jeudi",
-    "type": "Séance maison dos",
-    "details": "Tirage au sol, rows, extensions"
+    "type": "Séance maison jambes",
+    "details": "squats, lunges, fentes, extensions"
   },
   {
     "jour": "Vendredi",
-    "type": "Séance maison jambes",
-    "details": "Squats, lunges, extensions"
+    "type": "Séance maison abdominaux",
+    "details": "planches, crunchs, Russian twists, leg raises"
   },
   {
     "jour": "Samedi",
     "type": "Repos actif",
-    "details": "Marche, stretching doux"
+    "details": "marche de 30 minutes, stretching doux"
   },
   {
     "jour": "Dimanche",
     "type": "Repos actif",
-    "details": "Yoga, étirements"
+    "details": "yoga doux, étirements de base"
   }
 ]
