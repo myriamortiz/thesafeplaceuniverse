@@ -9,10 +9,13 @@
         const div = document.createElement("div");
         div.className = "day-card";
 
+        const label = day.type || day.exercice || "Séance";
+        const details = day.details || "";
+
         div.innerHTML = `
           <h3>${day.jour}</h3>
-          <p><strong>${day.type}</strong></p>
-          <p>${day.details}</p>
+          <p><strong>${label}</strong></p>
+          ${details ? `<p>${details}</p>` : ""}
         `;
 
         container.appendChild(div);
