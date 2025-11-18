@@ -1,43 +1,36 @@
 <script>
-  async function loadRecettes() {
-    const container = document.getElementById("recettes-container");
+async function loadRecettes() {
+  const container = document.getElementById("recettes-container");
 
-    try {
-      const response = await fetch("data/recettes.json?cache=" + Date.now());
-      const recettes = await response.json();
+  try {
+    const response = await fetch("data/recettes.json?cache=" + Date.now());
+    const recettes = await response.json();
 
-      container.innerHTML = "";
+    container.innerHTML = "";
 
-      recettes.forEach(day => {
+    recettes.forEach(day => {
+      container.innerHTML += `
+        <div class="day-card">
+          <h2>🌸 ${day.jour}</h2>
 
-        const brunchTitle = day.brunch.nom || "Brunch";
-        const collationTitle = day.collation.nom || "Collation";
-        const dinerTitle = day.diner.nom || "Dîner";
+          <h3>${day.brunch.nom}</h3>
+          <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+          <p>${day.brunch.instructions}</p>
 
-        container.innerHTML += `
-          <div class="day-card">
-            <h2>🌸 ${day.jour}</h2>
+          <h3>${day.collation.nom}</h3>
+          <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+          <p>${day.collation.instructions}</p>
 
-            <h3>${brunchTitle}</h3>
-            <ul>${day.brunch.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-            <p>${day.brunch.instructions}</p>
-
-            <h3>${collationTitle}</h3>
-            <ul>${day.collation.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-            <p>${day.collation.instructions}</p>
-
-            <h3>${dinerTitle}</h3>
-            <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
-            <p>${day.diner.instructions}</p>
-          </div>
-        `;
-      });
-
-    } catch (e) {
-      container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
-    }
+          <h3>${day.diner.nom}</h3>
+          <ul>${day.diner.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+          <p>${day.diner.instructions}</p>
+        </div>
+      `;
+    });
+  } catch (e) {
+    container.innerHTML = "<p>Impossible de charger les recettes 🌧️</p>";
   }
+}
 
-  document.addEventListener("DOMContentLoaded", loadRecettes);
+document.addEventListener("DOMContentLoaded", loadRecettes);
 </script>
-
