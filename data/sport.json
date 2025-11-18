@@ -1,11 +1,11 @@
 [
   {
     "jour": "Lundi",
-    "type": "Séance full body",
+    "type": "Full body",
     "series": "3 séries",
     "repetitions": "12 répétitions / exercice",
-    "repos": "30 sec entre chaque exercice",
     "tours": "2 tours",
+    "repos": "30 sec entre chaque exercice",
     "exercices": [
       "Squats",
       "Pompes (adaptées si besoin)",
@@ -19,54 +19,55 @@
     "type": "Dos & bras (haut du corps)",
     "series": "3 séries",
     "repetitions": "10 répétitions",
-    "repos": "40 sec",
     "tours": "2 tours",
+    "repos": "40 sec",
     "exercices": [
       "Tirage élastiques (ou row)",
       "Extensions triceps",
-      "Curl biceps",
-      "Gainage bras tendus 20 sec"
+      "Rows",
+      "Biceps curls"
     ]
   },
   {
     "jour": "Mercredi",
     "type": "Bachata",
-    "series": "1 séance complète",
+    "series": "—",
     "repetitions": "—",
-    "repos": "—",
     "tours": "—",
+    "repos": "—",
     "exercices": [
       "Pas de base",
-      "Guidage & musicalité",
-      "Enchaînements doux"
+      "Guidage",
+      "Musicalité",
+      "Enchaînements"
     ]
   },
   {
     "jour": "Jeudi",
-    "type": "Séance jambes & fessiers",
+    "type": "Jambes & fessiers",
     "series": "3 séries",
     "repetitions": "12 répétitions",
-    "repos": "30 sec",
     "tours": "2 tours",
+    "repos": "40 sec",
     "exercices": [
-      "Squats sumo",
+      "Squats",
+      "Lunges",
       "Fentes arrière",
-      "Kickback élastique",
-      "Pont fessier 20 sec"
+      "Extensions fessiers"
     ]
   },
   {
     "jour": "Vendredi",
-    "type": "Séance abdos",
+    "type": "Abdominaux",
     "series": "3 séries",
     "repetitions": "15 répétitions",
-    "repos": "30 sec",
     "tours": "2 tours",
+    "repos": "30 sec",
     "exercices": [
+      "Planches",
       "Crunchs",
       "Russian twists",
-      "Leg raises",
-      "Gainage 20 sec"
+      "Leg raises"
     ]
   },
   {
@@ -74,11 +75,11 @@
     "type": "Repos actif",
     "series": "—",
     "repetitions": "—",
-    "repos": "—",
     "tours": "—",
+    "repos": "—",
     "exercices": [
-      "Marche douce 30 min",
-      "Étirements 10 min"
+      "Marche douce 30 minutes",
+      "Stretching"
     ]
   },
   {
@@ -86,11 +87,11 @@
     "type": "Repos actif",
     "series": "—",
     "repetitions": "—",
-    "repos": "—",
     "tours": "—",
+    "repos": "—",
     "exercices": [
-      "Yoga doux 15 min",
-      "Respirations 5 min"
+      "Yoga doux",
+      "Étirements de base"
     ]
   }
 ]
