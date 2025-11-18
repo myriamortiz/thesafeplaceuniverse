@@ -770,7 +770,7 @@ html { -webkit-text-size-adjust: 100%; }
   border-radius: 12px;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
 }
-/* === RECETTES PAGE === */
+/* === RECETTES PAGE — VERSION CORRIGÉE === */
 
 #recettes-container {
   display: flex;
@@ -794,17 +794,16 @@ html { -webkit-text-size-adjust: 100%; }
   margin-bottom: 20px;
 }
 
-.recette-block {
+/* --- STYLE POUR LES CARTES DE TYPE repas — SANS BORDE GAUCHE --- */
+.recette-bloc {
   background: #ffeef6;
   padding: 20px;
   border-radius: 15px;
   margin-top: 25px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-  /* RETIRÉ : border-left */
 }
 
-}
-
+/* TITRES repas */
 .recette-bloc h3 {
   font-size: 20px;
   color: #d85c8a;
@@ -812,23 +811,27 @@ html { -webkit-text-size-adjust: 100%; }
   margin-bottom: 15px;
 }
 
+/* TITRES Ingrédients / Instructions */
 .recette-bloc h4 {
-  font-size: 15px;
-  font-weight: 600;
-  color: #444;
-  margin-top: 10px;
+  text-align: center !important;
+  color: #a84e78;
+  font-size: 16px;
+  margin-bottom: 10px;
+  margin-top: 15px;
 }
 
+/* LISTES ingrédients */
 .recette-bloc ul {
   padding-left: 22px;
   margin-top: 8px;
+  text-align: center;
 }
-
 .recette-bloc li {
   margin: 4px 0;
   font-size: 15px;
 }
 
+/* BLOCS Instructions */
 .recette-bloc p {
   background: #fff;
   padding: 12px 15px;
@@ -838,23 +841,4 @@ html { -webkit-text-size-adjust: 100%; }
   color: #444;
   margin-top: 10px;
   box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
-}
-.recette-bloc h4 {
-  text-align: center;
-  color: #a84e78;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-.meal-card h4 {
-  text-align: center !important;
-  width: 100%;
-  margin: 20px 0 10px 0;
-}
-/* --- FIX ALIGNEMENT INGREDIENTS & INSTRUCTIONS --- */
-.meal-card h4,
-.recette-bloc h4 {
-  text-align: center !important;
-  width: 100%;
-  margin: 20px 0 10px 0;
-  color: #a84e78;
 }
