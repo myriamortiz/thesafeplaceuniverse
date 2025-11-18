@@ -1,37 +1,80 @@
 [
   {
     "jour": "Lundi",
-    "type": "Séance maison full body",
-    "details": "squats, pompes, planches, lunges"
+    "type": "Full Body Challenge (45 min)",
+    "details": [
+      "✨ Circuit 1 — 3 tours",
+      "• Squats : 15 répétitions",
+      "• Pompes (genoux si besoin) : 10 répétitions",
+      "• Planche : 30 secondes",
+      "• Fentes alternées : 12 par jambe",
+      "",
+      "🌿 Repos : 1 min entre les tours"
+    ]
   },
   {
     "jour": "Mardi",
-    "type": "Séance maison dos et bras",
-    "details": "tractions, extensions, rows, biceps"
+    "type": "Upper Body Sculpt (40 min)",
+    "details": [
+      "✨ Circuit — 3 tours",
+      "• Row élastique / haltères : 15 répétitions",
+      "• Extensions triceps : 12 répétitions",
+      "• Curl biceps : 12 répétitions",
+      "• Planche bras tendus : 30 sec",
+      "",
+      "🌿 Repos : 1 min entre les tours"
+    ]
   },
   {
     "jour": "Mercredi",
-    "type": "Bachata",
-    "details": "cours de danse, pas de base, improvisation"
+    "type": "Cours de Bachata",
+    "details": [
+      "• Pas de base : 5 min",
+      "• Variations : 10 min",
+      "• Isolements du bassin : 5 min",
+      "• Petite routine / improvisation : 10–15 min"
+    ]
   },
   {
     "jour": "Jeudi",
-    "type": "Séance maison jambes",
-    "details": "squats, lunges, fentes, extensions"
+    "type": "Legs & Booty Sculpt (45 min)",
+    "details": [
+      "✨ Circuit — 3 tours",
+      "• Squats sumo : 15 répétitions",
+      "• Fentes arrière : 12 par jambe",
+      "• Hip Thrust : 15 répétitions",
+      "• Abduction élastique : 20 répétitions",
+      "",
+      "🌿 Repos : 1 min entre les tours"
+    ]
   },
   {
     "jour": "Vendredi",
-    "type": "Séance maison abdominaux",
-    "details": "planches, crunchs, Russian twists, leg raises"
+    "type": "Core & Waistline (30 min)",
+    "details": [
+      "✨ Circuit — 3 tours",
+      "• Crunchs : 20 répétitions",
+      "• Russian twists : 20 répétitions",
+      "• Leg raises : 12 répétitions",
+      "• Planche latérale : 20 sec par côté",
+      "",
+      "🌿 Repos : 1 min entre les tours"
+    ]
   },
   {
     "jour": "Samedi",
     "type": "Repos actif",
-    "details": "marche de 30 minutes, stretching doux"
+    "details": [
+      "• Marche douce 20–30 min",
+      "• Étirements 10 min"
+    ]
   },
   {
     "jour": "Dimanche",
     "type": "Repos actif",
-    "details": "yoga doux, étirements de base"
+    "details": [
+      "• Yoga doux 15 min",
+      "• Respiration / détente 5 min"
+    ]
   }
 ]
