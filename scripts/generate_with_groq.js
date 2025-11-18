@@ -1,99 +1,101 @@
-// ----- generate_with_groq.js -----
-const fs = require("fs");
+// ------------------------------------------------------------
+// generate_with_groq.js — VERSION STABLE
+// ------------------------------------------------------------
 
-// Import compatible GitHub Actions
+const fs = require("fs");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const apiKey = process.env.GROQ_API_KEY;
 
 // ------------------------------------------------------------
-// 🔥 EXTRACTION + CORRECTION AUTOMATIQUE DU JSON
+// 🔥 ExtractJSON : corrige TOUTES les merdes Unicode + JSON cassé
 // ------------------------------------------------------------
 function extractJSON(text) {
   const start = text.indexOf("[");
   const end = text.lastIndexOf("]") + 1;
 
   if (start === -1 || end === 0) {
-    throw new Error("Aucun JSON trouvé dans la réponse du modèle.");
+    throw new Error("Aucun JSON détecté dans la réponse.");
   }
 
   let jsonStr = text.slice(start, end);
 
-  // 🔥 Correction automatique
+  // ——————————————————————
+  // SUPER NETTOYAGE JSON
+  // ——————————————————————
   jsonStr = jsonStr
-    .replace(/“|”/g, '"')         // guillemets typographiques
-    .replace(/‘|’/g, "'")         // apostrophes typographiques
-    .replace(/\r?\n/g, "\\n")     // retours ligne sécurisés
-    .replace(/\t/g, " ")          // tabulations
-    .replace(/\\(?!["\\/bfnrt])/g, "\\\\"); // corrections antislash
+    .normalize("NFKD")                     // normalise accents
+    .replace(/[\u0300-\u036f]/g, "")       // supprime accents invisibles
+    .replace(/“|”/g, '"')                  // guillemets fancy → "
+    .replace(/‘|’/g, "'")                  // apostrophes fancy → '
+    .replace(/\r?\n/g, "\\n")              // retours ligne JSON-safe
+    .replace(/\t/g, " ")                   // tabulations
+    .replace(/\\(?!["\\/bfnrt])/g, "\\\\") // antislash invalides
+    .replace(/\u00A0/g, " ");              // espace insécable invisible
 
-  // 💥 test : JSON valide ?
+  // Vérifier que c’est valide
   try {
     JSON.parse(jsonStr);
   } catch (e) {
-    console.error("❌ JSON invalide même après correction :", jsonStr);
-    throw new Error("La réponse Groq contient un JSON impossible à parser.");
+    console.error("❌ JSON invalide :", jsonStr);
+    throw new Error("Impossible de parser le JSON généré.");
   }
 
   return jsonStr;
 }
 
 // ------------------------------------------------------------
-// 🔥 FONCTION APPEL GROQ
+// 🧠 Requête Groq
 // ------------------------------------------------------------
 async function askGroq(prompt) {
   const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${apiKey}`
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       model: "llama-3.3-70b-versatile",
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 2048,
-      temperature: 0.6
+      max_tokens: 4096
     })
   });
 
   if (!response.ok) {
-    const text = await response.text();
-    console.error("❌ ERREUR HTTP GROQ :", response.status, text);
-    throw new Error("Requête Groq échouée.");
+    const txt = await response.text();
+    console.error("❌ ERREUR API :", txt);
+    throw new Error("Requête IA échouée.");
   }
 
   const json = await response.json();
 
   if (!json.choices || !json.choices[0]) {
-    throw new Error("Aucune génération reçue de Groq.");
+    throw new Error("Aucune réponse IA reçue.");
   }
 
-  const raw = json.choices[0].message.content.trim();
-
-  return extractJSON(raw);
+  return extractJSON(json.choices[0].message.content.trim());
 }
 
 // ------------------------------------------------------------
-// 1) MENU — L'IA génère 7 jours COMPLETS
+// 1) MENU
 // ------------------------------------------------------------
 async function generateMenu() {
   const prompt = `
 Réponds STRICTEMENT en JSON. Aucun texte avant ou après.
 
-Format :
+Format attendu :
 [
   { "jour": "Jour 1", "brunch": "", "collation": "", "diner": "" }
 ]
 
 Règles :
-- 7 jours
-- 1400 kcal/jour
+- 7 jours complets
+- 1400 kcal
 - Sans blé
-- Sans lactose (OK chèvre / brebis / végétal)
+- Sans lactose sauf chèvre/brebis/végétal
 - Jeûne 17:7
-- Toujours 3 repas : brunch, collation, dîner
-- Variés (pas de répétition)
+- Varié et cohérent
   `;
 
   const output = await askGroq(prompt);
@@ -102,45 +104,33 @@ Règles :
 }
 
 // ------------------------------------------------------------
-// 2) RECETTES — L'IA génère TOUTES les recettes complètes
+// 2) RECETTES
 // ------------------------------------------------------------
 async function generateRecettes() {
   const menu = JSON.parse(fs.readFileSync("data/menu.json", "utf8"));
 
   const prompt = `
-Réponds STRICTEMENT en JSON. Aucun texte autour.
+Réponds STRICTEMENT en JSON.
 
-Produis toutes les recettes pour ce menu :
+Menu :
 ${JSON.stringify(menu)}
 
+Génère les recettes correspondantes.  
 Format :
 [
   {
-    "jour": "Jour 1",
-    "brunch": {
-      "nom": "",
-      "ingredients": [],
-      "instructions": ""
-    },
-    "collation": {
-      "nom": "",
-      "ingredients": [],
-      "instructions": ""
-    },
-    "diner": {
-      "nom": "",
-      "ingredients": [],
-      "instructions": ""
-    }
+    "jour": "",
+    "brunch": { "nom": "", "ingredients": [], "instructions": "" },
+    "collation": { "nom": "", "ingredients": [], "instructions": "" },
+    "diner": { "nom": "", "ingredients": [], "instructions": "" }
   }
 ]
 
 Règles :
-- Ingrédients clairs, simples, précis
-- Instructions courtes mais complètes
-- 100% sans blé
-- Sans lactose (OK chèvre/brebis)
-- Format JSON STRICT
+- Pas de texte autour
+- Ingrédients simples et clairs
+- Instructions courtes et cohérentes
+- Respect des règles alimentaires
   `;
 
   const output = await askGroq(prompt);
@@ -149,14 +139,16 @@ Règles :
 }
 
 // ------------------------------------------------------------
-// 3) COURSES — liste unique TRIÉE
+// 3) LISTE DE COURSES
 // ------------------------------------------------------------
 async function generateCourses() {
   const recettes = JSON.parse(fs.readFileSync("data/recettes.json", "utf8"));
 
-  const all = recettes.flatMap(day =>
-    [...day.brunch.ingredients, ...day.collation.ingredients, ...day.diner.ingredients]
-  );
+  const all = recettes.flatMap(day => [
+    ...day.brunch.ingredients,
+    ...day.collation.ingredients,
+    ...day.diner.ingredients
+  ]);
 
   const unique = [...new Set(all.map(i => i.trim()))];
 
@@ -165,11 +157,11 @@ async function generateCourses() {
 }
 
 // ------------------------------------------------------------
-// 4) SPORT — programme 7 jours
+// 4) SPORT
 // ------------------------------------------------------------
 async function generateSport() {
   const prompt = `
-Réponds STRICTEMENT en JSON. Aucun texte autour.
+Réponds STRICTEMENT en JSON.
 
 Format :
 [
@@ -178,7 +170,7 @@ Format :
 
 Règles :
 - 4 séances maison (45 min)
-- 1 séance Bachata le mercredi
+- Mercredi = bachata
 - 2 jours repos actif
   `;
 
