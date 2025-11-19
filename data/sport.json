@@ -1,97 +1,148 @@
 [
   {
     "jour": "Lundi",
-    "type": "Full body",
-    "series": "3 séries",
-    "repetitions": "12 répétitions / exercice",
-    "tours": "2 tours",
-    "repos": "30 sec entre chaque exercice",
-    "exercices": [
-      "Squats",
-      "Pompes (adaptées si besoin)",
-      "Gainage 30 sec",
-      "Lunges",
-      "Pont fessier"
-    ]
+    "type": "Full Body",
+    "details": "3 tours — squats 12, pompes 10, fentes 12/ jambe, gainage 30 sec"
   },
   {
     "jour": "Mardi",
-    "type": "Dos & bras (haut du corps)",
-    "series": "3 séries",
-    "repetitions": "10 répétitions",
-    "tours": "2 tours",
-    "repos": "40 sec",
-    "exercices": [
-      "Tirage élastiques (ou row)",
-      "Extensions triceps",
-      "Rows",
-      "Biceps curls"
-    ]
+    "type": "Haut du corps & bras",
+    "details": "3 tours — triceps dips 12, rowing élastique 15, élévations latérales 12, planche 30 sec"
   },
   {
     "jour": "Mercredi",
     "type": "Bachata",
-    "series": "—",
-    "repetitions": "—",
-    "tours": "—",
-    "repos": "—",
-    "exercices": [
-      "Pas de base",
-      "Guidage",
-      "Musicalité",
-      "Enchaînements"
-    ]
+    "details": "45 min — pas de base, guidage, style"
   },
   {
     "jour": "Jeudi",
-    "type": "Jambes & fessiers",
-    "series": "3 séries",
-    "repetitions": "12 répétitions",
-    "tours": "2 tours",
-    "repos": "40 sec",
-    "exercices": [
-      "Squats",
-      "Lunges",
-      "Fentes arrière",
-      "Extensions fessiers"
-    ]
+    "type": "Jambes + fessiers",
+    "details": "3 tours — squats sumo 15, hip thrust 15, fentes arrière 12/jambe, pont fessier 20"
   },
   {
     "jour": "Vendredi",
-    "type": "Abdominaux",
-    "series": "3 séries",
-    "repetitions": "15 répétitions",
-    "tours": "2 tours",
-    "repos": "30 sec",
-    "exercices": [
-      "Planches",
-      "Crunchs",
-      "Russian twists",
-      "Leg raises"
-    ]
+    "type": "Abdos & gainage",
+    "details": "3 tours — crunchs 15, russian twists 20, mountain climbers 20, gainage 40 sec"
   },
   {
     "jour": "Samedi",
     "type": "Repos actif",
-    "series": "—",
-    "repetitions": "—",
-    "tours": "—",
-    "repos": "—",
-    "exercices": [
-      "Marche douce 30 minutes",
-      "Stretching"
-    ]
+    "details": "30 min marche + étirements"
   },
   {
     "jour": "Dimanche",
     "type": "Repos actif",
-    "series": "—",
-    "repetitions": "—",
-    "tours": "—",
-    "repos": "—",
-    "exercices": [
-      "Yoga doux",
-      "Étirements de base"
-    ]
+    "details": "Yoga doux 20 min"
+  }
+]
+[
+  {
+    "jour": "Lundi",
+    "type": "Cardio doux + mobilité",
+    "details": "30 min — jumping jacks 30 sec, step touch 1 min, genoux hauts 30 sec + mobilité"
+  },
+  {
+    "jour": "Mardi",
+    "type": "Bras + dos",
+    "details": "3 tours — biceps 12, triceps 12, rowing 15, planche 30 sec"
+  },
+  {
+    "jour": "Mercredi",
+    "type": "Bachata",
+    "details": "45 min — coordination + jeux de pieds"
+  },
+  {
+    "jour": "Jeudi",
+    "type": "Jambes power",
+    "details": "3 tours — squats 20, fentes bulgares 10/jambe, step-up 12/jambe"
+  },
+  {
+    "jour": "Vendredi",
+    "type": "Abdos + obliques",
+    "details": "3 tours — crunchs 20, obliques 15/jambe, gainage latéral 20 sec"
+  },
+  {
+    "jour": "Samedi",
+    "type": "Repos actif",
+    "details": "Marche rapide 25 min"
+  },
+  {
+    "jour": "Dimanche",
+    "type": "Repos actif",
+    "details": "Étirements 15 min"
+  }
+]
+[
+  {
+    "jour": "Lundi",
+    "type": "Full Body tonique",
+    "details": "3 tours — squats 15, pompes 8, mountain climbers 20, gainage 45 sec"
+  },
+  {
+    "jour": "Mardi",
+    "type": "Haut du corps",
+    "details": "3 tours — rowing 20, élévations latérales 15, biceps curl 12"
+  },
+  {
+    "jour": "Mercredi",
+    "type": "Bachata",
+    "details": "45 min — enchaînements + style"
+  },
+  {
+    "jour": "Jeudi",
+    "type": "Jambes + cardio",
+    "details": "3 tours — squats sautés 10, fentes 12/jambe, pont fessier 20"
+  },
+  {
+    "jour": "Vendredi",
+    "type": "Abdos profond",
+    "details": "3 tours — hollow hold 20 sec, bicycle crunch 20, gainage 45 sec"
+  },
+  {
+    "jour": "Samedi",
+    "type": "Repos actif",
+    "details": "Marche + respiration 20 min"
+  },
+  {
+    "jour": "Dimanche",
+    "type": "Repos actif",
+    "details": "Yoga stretch 20 min"
+  }
+]
+[
+  {
+    "jour": "Lundi",
+    "type": "Full Body complet",
+    "details": "4 tours — squats 12, pompes 10, fentes 12/jambe, gainage 30 sec"
+  },
+  {
+    "jour": "Mardi",
+    "type": "Bras & dos intensif",
+    "details": "4 tours — rowing 15, dips 12, biceps 12"
+  },
+  {
+    "jour": "Mercredi",
+    "type": "Bachata",
+    "details": "45 min — technique + musicalité"
+  },
+  {
+    "jour": "Jeudi",
+    "type": "Jambes + fessiers",
+    "details": "4 tours — hip thrust 20, squats 15, élévations latérales jambe 20"
+  },
+  {
+    "jour": "Vendredi",
+    "type": "Abdos + gainage",
+    "details": "4 tours — crunch 20, russian twists 20, gainage 45 sec"
+  },
+  {
+    "jour": "Samedi",
+    "type": "Repos actif",
+    "details": "Marche douce 20 min"
+  },
+  {
+    "jour": "Dimanche",
+    "type": "Repos actif",
+    "details": "Étirements + respiration"
   }
 ]
