@@ -7,7 +7,8 @@ fetch("data/mot-du-mois.json")
     `;
   })
   .catch(() => {
-    document.getElementById("mot-container").innerHTML = "🌧 Impossible de charger le mot du mois";
+    document.getElementById("mot-container").innerHTML =
+      "🌧 Impossible de charger le mot du mois";
   });
 
 
@@ -20,7 +21,8 @@ fetch("data/affirmation.json")
     `;
   })
   .catch(() => {
-    document.getElementById("affirmation-container").innerHTML = "🌧 Impossible de charger l’affirmation du mois";
+    document.getElementById("affirmation-container").innerHTML =
+      "🌧 Impossible de charger l’affirmation du mois";
   });
 
 
@@ -36,8 +38,4 @@ intentionInputs.forEach((input, index) => {
     savedIntentions[index] = input.value;
     localStorage.setItem("intentions", JSON.stringify(savedIntentions));
   });
-});
-
-    localStorage.setItem(lastMonthKey, currentMonth);
-  }
 });
