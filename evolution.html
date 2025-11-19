@@ -6,6 +6,7 @@
   <title>📊 Évolution corporelle – The Safe Place Universe</title>
   <link rel="stylesheet" href="style-v2.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
     /* 🎀 Harmonisation du tableau */
     #progressTable {
@@ -55,7 +56,6 @@
       box-shadow: 0 0 5px rgba(240,184,202,0.4);
     }
 
-    /* 🌸 Courbe centrée et harmonieuse */
     canvas {
       display: block;
       margin: 1.5rem auto;
@@ -78,6 +78,7 @@
   </section>
 
   <main class="content">
+
     <div class="card">
       <h2>🌸 Suivi mensuel</h2>
       <p class="mantra">“Chaque progrès, même minime, est une victoire.” 💪</p>
@@ -95,18 +96,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Janvier</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Février</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Mars</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Avril</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Mai</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Juin</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Juillet</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Août</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Septembre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Octobre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Novembre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Décembre</td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Janvier</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Février</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Mars</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Avril</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Mai</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Juin</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Juillet</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Août</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Septembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Octobre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Novembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          <tr><td>Décembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
         </tbody>
       </table>
     </div>
@@ -122,27 +123,26 @@
   </main>
 
   <script>
-    const inputs = document.querySelectorAll("#progressTable input");
+    const weightInputs = document.querySelectorAll(".poids");
     const chartCtx = document.getElementById("weightChart");
 
-    // Charger les données sauvegardées
-    const savedData = JSON.parse(localStorage.getItem("bodyProgress")) || {};
+    const savedData = JSON.parse(localStorage.getItem("weightProgress")) || {};
 
-    inputs.forEach((input, i) => {
+    weightInputs.forEach((input, i) => {
       input.value = savedData[i] || "";
       input.addEventListener("input", () => {
         savedData[i] = input.value;
-        localStorage.setItem("bodyProgress", JSON.stringify(savedData));
+        localStorage.setItem("weightProgress", JSON.stringify(savedData));
         updateChart();
       });
     });
 
     function updateChart() {
       const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
-      const weights = [];
-      document.querySelectorAll("#progressTable tbody tr").forEach(row => {
-        const weight = parseFloat(row.cells[1].querySelector("input").value);
-        weights.push(isNaN(weight) ? null : weight);
+
+      const weights = Array.from(weightInputs).map(input => {
+        const val = parseFloat(input.value);
+        return isNaN(val) ? null : val;
       });
 
       if (window.weightChart) window.weightChart.destroy();
@@ -154,25 +154,23 @@
           datasets: [{
             label: "Poids (kg)",
             data: weights,
-            fill: false,
             borderColor: "#f0b8ca",
             tension: 0.3,
-            pointBackgroundColor: "#d16ba5"
+            pointBackgroundColor: "#d16ba5",
+            pointRadius: 5,
           }]
         },
         options: {
+          plugins: { legend: { display: false } },
           scales: {
             y: {
               beginAtZero: false,
-              ticks: { color: "#514b52" },
               grid: { color: "#f5e6f0" }
             },
             x: {
-              ticks: { color: "#514b52" },
               grid: { color: "transparent" }
             }
-          },
-          plugins: { legend: { display: false } }
+          }
         }
       });
     }
