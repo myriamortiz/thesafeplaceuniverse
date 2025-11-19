@@ -292,3 +292,15 @@ li {
   color: var(--texte);
   padding: 0.5rem 0;
 }
+/* 📱 Adaptation mobile des tableaux */
+table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+table thead th,
+table tbody td {
+  white-space: nowrap;
+  font-size: 0.85rem; /* adapte un peu la taille */
+}
