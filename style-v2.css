@@ -292,15 +292,33 @@ li {
   color: var(--texte);
   padding: 0.5rem 0;
 }
-/* 📱 Adaptation mobile des tableaux */
-table {
-  display: block;
+/* 📱 TABLEAUX 100% RESPONSIVE – VERSION MOBILE */
+.table-container {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   width: 100%;
 }
 
-table thead th,
-table tbody td {
+table {
+  border-collapse: collapse;
+  min-width: 650px; /* évite que les colonnes se cassent */
+  width: 100%;
+}
+
+table th, table td {
   white-space: nowrap;
-  font-size: 0.85rem; /* adapte un peu la taille */
+  padding: 8px 12px;
+  font-size: 0.85rem;
+}
+
+/* Pour mobile : réduire légèrement */
+@media (max-width: 600px) {
+  table th, table td {
+    font-size: 0.78rem;
+    padding: 6px 8px;
+  }
+
+  .table-container {
+    padding-bottom: 10px;
+  }
 }
