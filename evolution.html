@@ -122,14 +122,17 @@
     </nav>
   </main>
 
- <script>
-  // 🎀 Sélection des inputs
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
   const inputs = document.querySelectorAll("#progressTable input");
   const chartCtx = document.getElementById("weightChart");
 
-  // 🔄 Charger données sauvegardées
   const savedData = JSON.parse(localStorage.getItem("bodyProgress")) || {};
 
+  // Ré-appliquer les valeurs sauvegardées
   inputs.forEach((input, i) => {
     input.value = savedData[i] || "";
 
@@ -144,18 +147,14 @@
     const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
     const weights = [];
 
-    // 🔥 Correction ici :
-    // On prend exactement la 2ème colonne (Poids = colonne index 1)
     document.querySelectorAll("#progressTable tbody tr").forEach(row => {
-      const poidsInput = row.cells[1].querySelector("input"); // ← BONNE CELLULE
+      const poidsInput = row.cells[1].querySelector("input");
       const weight = parseFloat(poidsInput.value);
       weights.push(isNaN(weight) ? null : weight);
     });
 
-    // Détruire l’ancien graphique s’il existe
     if (window.weightChart) window.weightChart.destroy();
 
-    // Créer graphique
     window.weightChart = new Chart(chartCtx, {
       type: "line",
       data: {
@@ -170,15 +169,12 @@
         }]
       },
       options: {
-        scales: {
-          y: { beginAtZero: false },
-          x: { ticks: { color: "#514b52" } }
-        },
         plugins: { legend: { display: false } }
       }
     });
   }
 
-  // Charger graphique au démarrage
   updateChart();
+
+});
 </script>
