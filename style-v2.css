@@ -276,3 +276,12 @@ li {
 .sport-day-card li {
   margin: 4px 0;
 }
+.quote {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+.card h2 {
+  text-align: center;
+}
+
