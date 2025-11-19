@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>💪 Sport – The Safe Place Universe</title>
   <link rel="stylesheet" href="style-v2.css" />
+  <script src="sport.js" defer></script>
 </head>
 
 <body>
@@ -12,7 +13,7 @@
   <!-- Splash -->
   <section class="splash">
     <h1>💪 Programme Sportif</h1>
-    <p class="subtitle">4 séances maison – équilibre, tonus & douceur 🌷</p>
+    <p class="subtitle">Programme cyclique — 4 semaines 🌷</p>
   </section>
 
   <div class="mantra">
@@ -25,7 +26,6 @@
     <div class="card">
       <h2>🔥 Ton planning sportif</h2>
 
-      <!-- 👉 Ici s’affiche ton sport.json -->
       <div id="sport-container">Chargement…</div>
     </div>
 
@@ -41,45 +41,10 @@
     </div>
 
     <nav class="menu">
-  <a href="index.html">🏡 Retour à l’accueil</a>
-</nav>
-
+      <a href="index.html">🏡 Retour à l’accueil</a>
+    </nav>
 
   </main>
 
-<script>
-  fetch("data/sport.json?cache=" + Date.now())
-    .then(r => r.json())
-    .then(data => {
-      const container = document.getElementById("sport-container");
-      container.innerHTML = "";
-
-      data.forEach(day => {
-  const div = document.createElement("div");
-  div.className = "sport-day-card";
-
-  div.innerHTML = `
-    <h3>${day.jour}</h3>
-
-    <p><strong>${day.type}</strong></p>
-
-    <p><strong>Séries :</strong> ${day.series}</p>
-    <p><strong>Répétitions :</strong> ${day.repetitions}</p>
-    <p><strong>Tours :</strong> ${day.tours}</p>
-    <p><strong>Repos :</strong> ${day.repos}</p>
-
-    <p><strong>Exercices :</strong></p>
-    <ul>
-      ${day.exercices.map(e => `<li>${e}</li>`).join("")}
-    </ul>
-  `;
-
-  container.appendChild(div);
-});
-
-    })
-    .catch(() => {
-      document.getElementById("sport-container").innerHTML =
-        "<p>Impossible de charger ton planning sport 🌧</p>";
-    });
-</script>
+</body>
+</html>
