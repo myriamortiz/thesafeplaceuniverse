@@ -1,51 +1,35 @@
-function getCurrentWeek() {
-  const saved = JSON.parse(localStorage.getItem("sportWeek"));
-  const today = new Date();
-  const day = today.getDay(); // 1 = lundi
+// sport.js — version cyclique (4 semaines)
 
-  // Lundi = nouvelle semaine
-  if (day === 1) {
-    let newWeek = saved ? saved + 1 : 1;
-    if (newWeek > 4) newWeek = 1;
-    localStorage.setItem("sportWeek", JSON.stringify(newWeek));
-    return newWeek;
-  }
-
-  // Sinon: garde la semaine actuelle
-  return saved || 1;
-}
-
-async function loadSport() {
+document.addEventListener("DOMContentLoaded", () => {
   const container = document.getElementById("sport-container");
 
-  try {
-    const response = await fetch("data/sport.json?cache=" + Date.now());
-    const json = await response.json();
+  fetch("data/sport.json?cache=" + Date.now())
+    .then(r => r.json())
+    .then(data => {
 
-    const currentWeek = getCurrentWeek();
-    const weekData = json["semaine" + currentWeek];
+      // ⭐ Détermine numéro de la semaine
+      const today = new Date();
+      const weekNumber = Math.ceil(today.getDate() / 7); // 1 → 4
+      const semaineKey = "semaine" + Math.min(weekNumber, 4);
 
-    container.innerHTML = "";
+      const semaine = data[semaineKey];
 
-    weekData.forEach(day => {
-      const div = document.createElement("div");
-      div.className = "day-card";
+      container.innerHTML = "";
 
-      div.innerHTML = `
-        <h3>${day.jour}</h3>
-        <p><strong>${day.type}</strong></p>
-        <p>${day.details}</p>
-      `;
+      semaine.forEach(day => {
+        const div = document.createElement("div");
+        div.className = "sport-day-card";
 
-      container.appendChild(div);
+        div.innerHTML = `
+          <h3>${day.jour}</h3>
+          <p><strong>${day.type}</strong></p>
+          <p>${day.details}</p>
+        `;
+
+        container.appendChild(div);
+      });
+    })
+    .catch(() => {
+      container.innerHTML = "<p>Impossible de charger ton planning sport 🌧</p>";
     });
-
-  } catch (err) {
-    container.innerHTML = "<p>Erreur lors du chargement du programme sport 🌧</p>";
-  }
-}
-
-document.addEventListener("DOMContentLoaded", loadSport);
-
-  }
 });
