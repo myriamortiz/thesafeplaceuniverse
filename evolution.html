@@ -16,6 +16,7 @@
       overflow: hidden;
       box-shadow: 0 3px 10px rgba(0,0,0,0.05);
       margin-top: 1.2rem;
+      min-width: 650px; /* 🔥 Essentiel pour le scroll mobile */
     }
 
     #progressTable th {
@@ -25,12 +26,14 @@
       padding: 0.8rem;
       text-align: center;
       font-size: 1rem;
+      white-space: nowrap;
     }
 
     #progressTable td {
       padding: 0.6rem;
       text-align: center;
       border-bottom: 1px solid #f3e7f5;
+      white-space: nowrap;
     }
 
     #progressTable tr:last-child td {
@@ -55,6 +58,23 @@
       box-shadow: 0 0 5px rgba(240,184,202,0.4);
     }
 
+    /* 📱 CONTENEUR MOBILE POUR LE SCROLL */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 12px;
+    }
+
+    /* 📱 Ajustements mobiles */
+    @media (max-width: 600px) {
+      #progressTable th,
+      #progressTable td {
+        font-size: 0.8rem;
+        padding: 6px;
+      }
+    }
+
     canvas {
       display: block;
       margin: 1.5rem auto;
@@ -69,7 +89,6 @@
     }
   </style>
 
-  <!-- Charger Chart.js AVANT ton script -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -85,33 +104,38 @@
       <h2>🌸 Suivi mensuel</h2>
       <p class="mantra">“Chaque progrès, même minime, est une victoire.” 💪</p>
 
-      <table id="progressTable">
-        <thead>
-          <tr>
-            <th>Mois</th>
-            <th>Poids (kg)</th>
-            <th>Taille (cm)</th>
-            <th>Poitrine (cm)</th>
-            <th>Hanche (cm)</th>
-            <th>Bras (cm)</th>
-            <th>Cuisse (cm)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Janvier</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Février</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Mars</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Avril</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Mai</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Juin</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Juillet</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Août</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Septembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Octobre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Novembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-          <tr><td>Décembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
-        </tbody>
-      </table>
+      <!-- 📱 CONTENEUR RESPONSIVE AJOUTÉ -->
+      <div class="table-container">
+        <table id="progressTable">
+          <thead>
+            <tr>
+              <th>Mois</th>
+              <th>Poids (kg)</th>
+              <th>Taille (cm)</th>
+              <th>Poitrine (cm)</th>
+              <th>Hanche (cm)</th>
+              <th>Bras (cm)</th>
+              <th>Cuisse (cm)</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr><td>Janvier</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Février</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Mars</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Avril</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Mai</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Juin</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Juillet</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Août</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input}></td><td><input></td></tr>
+            <tr><td>Septembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Octobre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Novembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+            <tr><td>Décembre</td><td><input class="poids"></td><td><input></td><td><input></td><td><input></td><td><input></td><td><input></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- FIN CONTENEUR RESPONSIVE -->
     </div>
 
     <div class="card">
@@ -124,18 +148,14 @@
     </nav>
   </main>
 
-
-  <!-- 🎀 SCRIPT FINAL 100% FONCTIONNEL -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-
       const chartCanvas = document.getElementById("weightChart");
       let chart = null;
 
       const inputs = document.querySelectorAll("#progressTable input");
       const saved = JSON.parse(localStorage.getItem("bodyProgress")) || {};
 
-      // Charger sauvegarde
       inputs.forEach((input, i) => {
         input.value = saved[i] || "";
         input.addEventListener("input", () => {
@@ -149,18 +169,15 @@
         const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
         const weights = [];
 
-        // lire la colonne Poids = cellule index 1
         document.querySelectorAll("#progressTable tbody tr").forEach(row => {
           const val = parseFloat(row.cells[1].querySelector("input").value);
           weights.push(Number.isFinite(val) ? val : null);
         });
 
-        // Détruire l'ancien graphique si besoin
         if (chart && typeof chart.destroy === "function") {
           chart.destroy();
         }
 
-        // Créer nouveau graphique
         chart = new Chart(chartCanvas, {
           type: "line",
           data: {
@@ -176,9 +193,7 @@
           },
           options: {
             plugins: { legend: { display: false } },
-            scales: {
-              y: { beginAtZero: false }
-            }
+            scales: { y: { beginAtZero: false } }
           }
         });
       }
@@ -186,6 +201,5 @@
       updateChart();
     });
   </script>
-
 </body>
 </html>
