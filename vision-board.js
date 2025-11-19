@@ -1,41 +1,56 @@
-// --- MOT DU MOIS ---
-fetch("data/mot-du-mois.json")
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("mot-container").innerHTML = `
-      <p class="vision-text">${data.mot}</p>
-    `;
-  })
-  .catch(() => {
-    document.getElementById("mot-container").innerHTML =
-      "🌧 Impossible de charger le mot du mois";
+// ---------------------------------------------------------
+// 🌷 Vision Board – Chargement du mot du mois & de l'affirmation
+// ---------------------------------------------------------
+
+// 🔮 Charger un fichier JSON et retourner un élément au hasard
+async function chargerFichierJSON(url) {
+  try {
+    const res = await fetch(url + "?cache=" + Date.now());
+    if (!res.ok) throw new Error("Fichier introuvable");
+    const data = await res.json();
+    return data[Math.floor(Math.random() * data.length)];
+  } catch (e) {
+    return "❌ Impossible de charger ce contenu.";
+  }
+}
+
+// ---------------------------------------------------------
+// 🌸 Charger le mot du mois
+// ---------------------------------------------------------
+async function chargerMotDuMois() {
+  const motElem = document.getElementById("motMois");
+  motElem.textContent = await chargerFichierJSON("data/mot-du-mois.json");
+}
+
+// ---------------------------------------------------------
+// 💎 Charger l'affirmation du mois
+// ---------------------------------------------------------
+async function chargerAffirmation() {
+  const citationElem = document.getElementById("citationMois");
+  citationElem.textContent = await chargerFichierJSON("data/affirmations.json");
+}
+
+// ---------------------------------------------------------
+// 📝 Sauvegarde automatique des intentions
+// ---------------------------------------------------------
+function initialiserIntentions() {
+  const intentions = document.querySelectorAll(".intention");
+  const saved = JSON.parse(localStorage.getItem("intentionsTB")) || [];
+
+  intentions.forEach((input, i) => {
+    input.value = saved[i] || "";
+    input.addEventListener("input", () => {
+      saved[i] = input.value;
+      localStorage.setItem("intentionsTB", JSON.stringify(saved));
+    });
   });
+}
 
-
-// --- AFFIRMATION DU MOIS ---
-fetch("data/affirmation.json")
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("affirmation-container").innerHTML = `
-      <p class="vision-text">${data.affirmation}</p>
-    `;
-  })
-  .catch(() => {
-    document.getElementById("affirmation-container").innerHTML =
-      "🌧 Impossible de charger l’affirmation du mois";
-  });
-
-
-// --- SAUVEGARDE DES INTENTIONS ---
-const intentionInputs = document.querySelectorAll(".intention");
-
-const savedIntentions = JSON.parse(localStorage.getItem("intentions")) || {};
-
-intentionInputs.forEach((input, index) => {
-  input.value = savedIntentions[index] || "";
-
-  input.addEventListener("input", () => {
-    savedIntentions[index] = input.value;
-    localStorage.setItem("intentions", JSON.stringify(savedIntentions));
-  });
+// ---------------------------------------------------------
+// 🚀 Initialisation au chargement de la page
+// ---------------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  chargerMotDuMois();
+  chargerAffirmation();
+  initialiserIntentions();
 });
