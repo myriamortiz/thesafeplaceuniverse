@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>📊 Évolution corporelle – The Safe Place Universe</title>
   <link rel="stylesheet" href="style-v2.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     /* 🎀 Harmonisation du tableau */
@@ -69,6 +68,9 @@
       margin-bottom: 1rem;
     }
   </style>
+
+  <!-- Charger Chart.js AVANT ton script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -122,59 +124,68 @@
     </nav>
   </main>
 
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+  <!-- 🎀 SCRIPT FINAL 100% FONCTIONNEL -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
 
-  const inputs = document.querySelectorAll("#progressTable input");
-  const chartCtx = document.getElementById("weightChart");
+      const chartCanvas = document.getElementById("weightChart");
+      let chart = null;
 
-  const savedData = JSON.parse(localStorage.getItem("bodyProgress")) || {};
+      const inputs = document.querySelectorAll("#progressTable input");
+      const saved = JSON.parse(localStorage.getItem("bodyProgress")) || {};
 
-  // Ré-appliquer les valeurs sauvegardées
-  inputs.forEach((input, i) => {
-    input.value = savedData[i] || "";
+      // Charger sauvegarde
+      inputs.forEach((input, i) => {
+        input.value = saved[i] || "";
+        input.addEventListener("input", () => {
+          saved[i] = input.value;
+          localStorage.setItem("bodyProgress", JSON.stringify(saved));
+          updateChart();
+        });
+      });
 
-    input.addEventListener("input", () => {
-      savedData[i] = input.value;
-      localStorage.setItem("bodyProgress", JSON.stringify(savedData));
+      function updateChart() {
+        const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+        const weights = [];
+
+        // lire la colonne Poids = cellule index 1
+        document.querySelectorAll("#progressTable tbody tr").forEach(row => {
+          const val = parseFloat(row.cells[1].querySelector("input").value);
+          weights.push(Number.isFinite(val) ? val : null);
+        });
+
+        // Détruire l'ancien graphique si besoin
+        if (chart && typeof chart.destroy === "function") {
+          chart.destroy();
+        }
+
+        // Créer nouveau graphique
+        chart = new Chart(chartCanvas, {
+          type: "line",
+          data: {
+            labels: months,
+            datasets: [{
+              label: "Poids (kg)",
+              data: weights,
+              borderColor: "#f0b8ca",
+              tension: 0.3,
+              pointBackgroundColor: "#d16ba5",
+              pointRadius: 5
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { beginAtZero: false }
+            }
+          }
+        });
+      }
+
       updateChart();
     });
-  });
+  </script>
 
-  function updateChart() {
-    const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
-    const weights = [];
-
-    document.querySelectorAll("#progressTable tbody tr").forEach(row => {
-      const poidsInput = row.cells[1].querySelector("input");
-      const weight = parseFloat(poidsInput.value);
-      weights.push(isNaN(weight) ? null : weight);
-    });
-
-    if (window.weightChart) window.weightChart.destroy();
-
-    window.weightChart = new Chart(chartCtx, {
-      type: "line",
-      data: {
-        labels: months,
-        datasets: [{
-          label: "Poids (kg)",
-          data: weights,
-          borderColor: "#f0b8ca",
-          tension: 0.3,
-          pointBackgroundColor: "#d16ba5",
-          pointRadius: 5
-        }]
-      },
-      options: {
-        plugins: { legend: { display: false } }
-      }
-    });
-  }
-
-  updateChart();
-
-});
-</script>
+</body>
+</html>
