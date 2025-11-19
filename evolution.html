@@ -122,60 +122,63 @@
     </nav>
   </main>
 
-  <script>
-    const weightInputs = document.querySelectorAll(".poids");
-    const chartCtx = document.getElementById("weightChart");
+ <script>
+  // 🎀 Sélection des inputs
+  const inputs = document.querySelectorAll("#progressTable input");
+  const chartCtx = document.getElementById("weightChart");
 
-    const savedData = JSON.parse(localStorage.getItem("weightProgress")) || {};
+  // 🔄 Charger données sauvegardées
+  const savedData = JSON.parse(localStorage.getItem("bodyProgress")) || {};
 
-    weightInputs.forEach((input, i) => {
-      input.value = savedData[i] || "";
-      input.addEventListener("input", () => {
-        savedData[i] = input.value;
-        localStorage.setItem("weightProgress", JSON.stringify(savedData));
-        updateChart();
-      });
+  inputs.forEach((input, i) => {
+    input.value = savedData[i] || "";
+
+    input.addEventListener("input", () => {
+      savedData[i] = input.value;
+      localStorage.setItem("bodyProgress", JSON.stringify(savedData));
+      updateChart();
+    });
+  });
+
+  function updateChart() {
+    const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+    const weights = [];
+
+    // 🔥 Correction ici :
+    // On prend exactement la 2ème colonne (Poids = colonne index 1)
+    document.querySelectorAll("#progressTable tbody tr").forEach(row => {
+      const poidsInput = row.cells[1].querySelector("input"); // ← BONNE CELLULE
+      const weight = parseFloat(poidsInput.value);
+      weights.push(isNaN(weight) ? null : weight);
     });
 
-    function updateChart() {
-      const months = ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sep", "Oct", "Nov", "Déc"];
+    // Détruire l’ancien graphique s’il existe
+    if (window.weightChart) window.weightChart.destroy();
 
-      const weights = Array.from(weightInputs).map(input => {
-        const val = parseFloat(input.value);
-        return isNaN(val) ? null : val;
-      });
-
-      if (window.weightChart) window.weightChart.destroy();
-
-      window.weightChart = new Chart(chartCtx, {
-        type: "line",
-        data: {
-          labels: months,
-          datasets: [{
-            label: "Poids (kg)",
-            data: weights,
-            borderColor: "#f0b8ca",
-            tension: 0.3,
-            pointBackgroundColor: "#d16ba5",
-            pointRadius: 5,
-          }]
+    // Créer graphique
+    window.weightChart = new Chart(chartCtx, {
+      type: "line",
+      data: {
+        labels: months,
+        datasets: [{
+          label: "Poids (kg)",
+          data: weights,
+          borderColor: "#f0b8ca",
+          tension: 0.3,
+          pointBackgroundColor: "#d16ba5",
+          pointRadius: 5
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: false },
+          x: { ticks: { color: "#514b52" } }
         },
-        options: {
-          plugins: { legend: { display: false } },
-          scales: {
-            y: {
-              beginAtZero: false,
-              grid: { color: "#f5e6f0" }
-            },
-            x: {
-              grid: { color: "transparent" }
-            }
-          }
-        }
-      });
-    }
+        plugins: { legend: { display: false } }
+      }
+    });
+  }
 
-    updateChart();
-  </script>
-</body>
-</html>
+  // Charger graphique au démarrage
+  updateChart();
+</script>
